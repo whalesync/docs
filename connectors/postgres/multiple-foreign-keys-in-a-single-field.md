@@ -13,7 +13,7 @@ Unfortunately, Postgres (including Supabase) does not support arrays of foreign 
 
 At a high-level, you can configure a Postgres/Supabase column to be an array BUT signal to Whalesync that you'd like us to treat it as a foreign key array.
 
-Since Postgres (and Supabase) just sees this as an array, the field no longer has the same validation, but it will sync.
+Since Postgres just sees this as an array, the field no longer has the same validation, but it will sync.
 
 {% hint style="info" %}
 **Note:** a bad value here will not break Whalesync, that value will simply not sync until you correct it.&#x20;
