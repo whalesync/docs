@@ -1,5 +1,5 @@
 ---
-description: A quick tutorial on how to sync a Postgres view with Whalesync
+description: A quick tutorial on how to sync a Postgres (or Supabase) view with Whalesync
 ---
 
 # How to sync Postgres views
