@@ -10,6 +10,8 @@ Selective row-level sync lets you pause syncing for individual records without t
 
 ## How to enable selective row-level sync
 
+![Selective Sync Interface](../../.gitbook/assets/selective-sync.png)
+
 1. Edit your Whalesync base
 2. Select the desired table
 3. Open the Advanced Settings tab
