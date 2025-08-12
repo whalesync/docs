@@ -16,12 +16,12 @@ When you enable record sync delay, Whalesync will wait the specified number of s
 
 1. Edit your Whalesync base
 2. Select the desired table
-3. Click the **Advanced Settings** tab
+3. Click the **Advanced settings** tab
 4. Set the **Delay Before Syncing** field to your desired number of seconds (0-300)
 5. Save changes
 
 ### Best practices
 
-* Use delays of 5-30 seconds for frequently updated records
-* Avoid delays longer than 60 seconds unless you have specific requirements
-* Consider your use case - real-time dashboards may need shorter delays than batch processing workflows
+- Use delays of 5-30 seconds for frequently updated records
+- Avoid delays longer than 60 seconds unless you have specific requirements
+- Consider your use case - real-time dashboards may need shorter delays than batch processing workflows

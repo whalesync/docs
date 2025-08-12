@@ -14,7 +14,7 @@ Selective row-level sync lets you pause syncing for individual records without t
 
 1. Edit your Whalesync base
 2. Select the desired table
-3. Open the Advanced Settings tab
+3. Open the **Advanced settings** tab
 4. Enable the "Selective row-level sync" toggle for the app you want to control from
 5. Choose the field that you want to use to control syncing. Only [compatible fields](#compatible_columns) will be available.
 6. Save changes

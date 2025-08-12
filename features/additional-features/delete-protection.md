@@ -18,7 +18,7 @@ If you turn off deletes for a table, Whalesync will continue to 2-way sync all c
 
 1. Edit your Whalesync base
 2. Select the desired table
-3. Click the **Advanced Settings** tab
+3. Click the **Advanced settings** tab
 4. Set the **Delete Protection** field to enabled
 5. Save changes
 
