@@ -1,5 +1,6 @@
 ---
 description: A quick demo for syncing images into WordPress posts/pages
+hidden: true
 ---
 
 # How to sync images
