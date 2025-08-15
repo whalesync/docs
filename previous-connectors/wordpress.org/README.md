@@ -46,3 +46,4 @@ We recommend using a backup/restore plugin if connecting WordPress to a 2-way sy
 {% endhint %}
 
 {% embed url="https://wordpress.com/support/restore/" %}
+
