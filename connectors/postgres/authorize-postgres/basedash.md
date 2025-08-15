@@ -10,7 +10,7 @@ description: How to find get your Postgres connection URI when using Basedash
 
 Navigate to the [Basedash Connections page](https://app.basedash.com/connections). In the left panel, scroll down to the bottom to see your databases. Click on the gear icon of the database you want to connect:
 
-<div align="center"><figure><img src="../../../.gitbook/assets/image (19).png" alt="Screenshot of the settings icon for a database connection in Basedash"><figcaption><p>Connection settings for a database</p></figcaption></figure></div>
+<div align="center"><figure><img src="../../../.gitbook/assets/image (19) (1).png" alt="Screenshot of the settings icon for a database connection in Basedash"><figcaption><p>Connection settings for a database</p></figcaption></figure></div>
 
 Click "Manage credentials":
 

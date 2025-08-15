@@ -4,7 +4,7 @@ description: Preview the initial sync changes Whalesync will make.
 
 # Sync preview
 
-<figure><img src="../../.gitbook/assets/preview (1).png" alt=""><figcaption><p>Example sync preview page for an Airtable and Google Sheets sync</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/preview (1) (1).png" alt=""><figcaption><p>Example sync preview page for an Airtable and Google Sheets sync</p></figcaption></figure>
 
 When you set up your sync for the first time, you want to know exactly what will happen when you activate your sync... now you can!
 

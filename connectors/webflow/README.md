@@ -45,7 +45,7 @@ Whalesync requires you to republish your Webflow site any time you make a change
 
 Webflow sites need to be published to all domains otherwise Webflow rejects API calls (aka sync updates).
 
-![](<../../.gitbook/assets/publish (3).png>)
+![](<../../.gitbook/assets/publish (3) (2).png>)
 
 #### **Primary Field**
 

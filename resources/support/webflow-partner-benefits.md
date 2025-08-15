@@ -22,7 +22,7 @@ You also might be eligible to become a _Whalesync_ certified partner.
 
 Our partners earn 20% commission for 12 months when their clients use Whalesync.
 
-<figure><img src="../../.gitbook/assets/certified (1).png" alt=""><figcaption><p><a href="https://www.whalesync.com/partners">https://www.whalesync.com/partners</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/certified (1) (1).png" alt=""><figcaption><p><a href="https://www.whalesync.com/partners">https://www.whalesync.com/partners</a></p></figcaption></figure>
 
 To become a Whalesync Partner, simply mention your interest in the above email.
 

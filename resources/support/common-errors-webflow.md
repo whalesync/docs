@@ -50,7 +50,7 @@ Webflow doesn't like when sites are not published to all possible domains. Speci
 
 * Publish your Webflow site to all possible domains and retry sync
 
-![](<../../.gitbook/assets/publish (3).png>)
+![](<../../.gitbook/assets/publish (3) (2).png>)
 
 #### `Conflict: This item is still being used by:`
 

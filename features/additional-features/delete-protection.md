@@ -8,7 +8,7 @@ Sometimes you're syncing data that you really want to ensure teammates don't acc
 
 For these cases, you can set the table in Whalesync to not delete records.
 
-<figure><img src="../../.gitbook/assets/Edit 4.png" alt=""><figcaption><p>Delete protection means Whalesync will not delete records in HubSpot even with 2-way sync turned on</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Edit 4 (1).png" alt=""><figcaption><p>Delete protection means Whalesync will not delete records in HubSpot even with 2-way sync turned on</p></figcaption></figure>
 
 ### How it works
 

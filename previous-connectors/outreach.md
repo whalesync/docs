@@ -1,6 +1,6 @@
 # Outreach
 
-<figure><img src="../.gitbook/assets/Website Refresh Gitbook Cover.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Website Refresh Gitbook Cover (1).jpg" alt=""><figcaption></figcaption></figure>
 
 ## Supported Objects
 

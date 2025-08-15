@@ -21,7 +21,7 @@ Navigate to your [Supabase dashboard](https://app.supabase.com/projects) and sel
 
 Click "Connect":
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-12-31 at 1.10.36 AM (1).png" alt=""><figcaption><p>Connect button</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2024-12-31 at 1.10.36 AM (1) (1).png" alt=""><figcaption><p>Connect button</p></figcaption></figure>
 
 Copy the full connection string under "Direct connection":
 
