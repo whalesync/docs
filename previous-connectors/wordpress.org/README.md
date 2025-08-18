@@ -13,13 +13,13 @@ Whalesync requires Wordpress version **5.6** or greater.
 
 Whalesync has been tested against the following Wordpress hosting platforms:
 
-* [WP Engine](https://wpengine.com/)
-* [BlueHost](https://www.bluehost.com/)
+- [WP Engine](https://wpengine.com/)
+- [BlueHost](https://www.bluehost.com/)
 
 ## Recommended Settings
 
-* We recommend that the user you generate the Application Password from for Whalesync has the role "Administrator".
-* We recommend making sure your Wordpress Permalinks are not set to "Plain":
+- We recommend that the user you generate the Application Password from for Whalesync has the role "Administrator".
+- We recommend making sure your Wordpress Permalinks are not set to "Plain":
 
 <figure><img src="../../.gitbook/assets/Screenshot 2025-08-15 at 1.20.51 PM.png" alt=""><figcaption></figcaption></figure>
 
@@ -42,8 +42,7 @@ Whalesync works with WordPress.com version 5.6 and above
 {% endhint %}
 
 {% hint style="info" %}
-We recommend using a backup/restore plugin if connecting WordPress to a 2-way sync tool like Whalesync :point\_down:
+We recommend using a backup/restore plugin if connecting WordPress to a 2-way sync tool like Whalesync :point_down:
 {% endhint %}
 
 {% embed url="https://wordpress.com/support/restore/" %}
-
