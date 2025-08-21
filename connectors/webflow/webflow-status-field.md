@@ -60,3 +60,31 @@ For example, the following will result in an error from the Webflow API:
 6. In Airtable, set the Webflow Status field on the "Marketing" item to "Draft"
 
 This will result in an error that will show up on the Whalesync Issues page. Webflow will reject the attempt to set the "Marketing" item to "Draft" because the **published** person "Sally Smith" is referencing the item. Unfortunately Whalesync does not have a workaround for this.
+
+### Field Validation and Error Handling
+
+#### Enforced Status Options
+
+Whalesync now strictly enforces that the Webflow Status field must contain exactly one of these three values:
+
+- **Archived**
+- **Draft**
+- **Active**
+
+If you use any other value in your status field, you will receive an error message like:
+
+```
+Data "Pending" isn't one of the valid values: [Draft, Active, Archived].
+```
+
+This validation helps ensure consistency and prevents sync errors.
+
+#### "Published" Option Support
+
+We understand that "Published" might feel like a more natural option name for many users, so Whalesync accepts "Published" as a valid value to make your setup easier. However, here's what happens when you use it:
+
+- Whalesync will automatically sync "Published" values back as "Active" to maintain consistency with our three-option system
+- This ensures your data stays aligned with the standard status options (Draft, Active, Archived)
+- You can use "Published" if it makes more sense for your workflow, just be aware that it will appear as "Active" when synced back
+
+This flexibility allows you to use the terminology that feels most natural while keeping the system consistent.
