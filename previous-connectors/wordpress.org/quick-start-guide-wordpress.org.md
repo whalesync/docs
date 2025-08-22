@@ -18,23 +18,17 @@ If syncing WordPress and Airtable, we recommend starting with our template which
 
 {% embed url="https://www.whalesync.com/template-packs/wordpress-blog-3" %}
 
-### 3) Create a Media table
+###
 
-In order to sync images in WordPress, you'll need to create a table called "Media" in your connected app. You can then add images to your Posts/Pages using linked records.
+### 4) Create tables for Categories and Tags
 
-Our template already includes a Media table, but here's what it looks like:
-
-<figure><img src="../../.gitbook/assets/Media.png" alt=""><figcaption><p>Example WordPress Media table in Airtable</p></figcaption></figure>
+Similar to the Media table, Categories and Tags must exist as linked records on your Posts. Once again, if you're unsure about how this all works you can just copy our [Airtable template](https://www.whalesync.com/template-packs/wordpress-blog-3).&#x20;
 
 See the below docs for further explanation of supporting tables :point\_down:
 
 {% content-ref url="supporting-tables.md" %}
 [supporting-tables.md](supporting-tables.md)
 {% endcontent-ref %}
-
-### 4) Create tables for Categories and Tags
-
-Similar to the Media table, Categories and Tags must exist as linked records on your Posts. Once again, if you're unsure about how this all works you can just copy our [Airtable template](https://www.whalesync.com/template-packs/wordpress-blog-3).&#x20;
 
 <figure><img src="../../.gitbook/assets/categories.png" alt=""><figcaption><p>Categories as a linked record on the Posts table</p></figcaption></figure>
 
