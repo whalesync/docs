@@ -21,34 +21,28 @@ When you connect, you'll be redirected to Wix to approve the connection. As part
 
 Whalesync does not provide full support for all fields in Wix CMS. If you need anything that is missing, please [reach out and let us know](../../resources/support/) to inform our planning.
 
-#### Fully supported
-
-- **Text**
-- **Number**
-- **Date**
-- **Time**
-- **Boolean**
-- **Image**
-- **URL**
-- **Document**
-- **Tags**
-- **Color**
-- **Reference**
-- **Multi-reference**
-- **Javascript object & array**
-
-#### Supported with limitations
-
-- **Rich content**: Does not support embedded media
-- **Media Gallery**: Read-only
-- **Address**: Read-only
-
-#### Not supported
-
-- **Rich text**
-- **Audio**
-- **Video**
-- **Multiple documents**
+| Field                     | Status                        | Notes                           |
+| ------------------------- | ----------------------------- | ------------------------------- |
+| Text                      | ✅ Fully supported            |                                 |
+| Number                    | ✅ Fully supported            |                                 |
+| Date                      | ✅ Fully supported            |                                 |
+| Time                      | ✅ Fully supported            |                                 |
+| Boolean                   | ✅ Fully supported            |                                 |
+| Image                     | ✅ Fully supported            |                                 |
+| URL                       | ✅ Fully supported            |                                 |
+| Document                  | ✅ Fully supported            |                                 |
+| Tags                      | ✅ Fully supported            |                                 |
+| Color                     | ✅ Fully supported            |                                 |
+| Reference                 | ✅ Fully supported            |                                 |
+| Multi-reference           | ✅ Fully supported            |                                 |
+| Javascript object & array | ✅ Fully supported            |                                 |
+| Rich content              | ⚠️ Supported with limitations | Does not support embedded media |
+| Media Gallery             | ➡️ Supported (1-Way)          | Read-only                       |
+| Address                   | ➡️ Supported (1-Way)          | Read-only                       |
+| Rich text                 | ✖️ Not supported              |                                 |
+| Audio                     | ✖️ Not supported              |                                 |
+| Video                     | ✖️ Not supported              |                                 |
+| Multiple documents        | ✖️ Not supported              |                                 |
 
 ### Additional Fields
 
