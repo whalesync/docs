@@ -13,3 +13,7 @@ When authorizing Notion, you must search for and select the specific _database_ 
 A [Notion database](https://www.notion.com/help/what-is-a-database) looks like this in Notion:
 
 <figure><img src="../../.gitbook/assets/database.avif" alt=""><figcaption></figcaption></figure>
+
+### “You have not authorized access to a page that can be used as a base for a sync. Please reauthorize the workspace and a page.”
+
+We recently added support for auto-create tables and fields for Notion. With this new feature, Notion now requires users to authorize a Notion page in addition to the usual databases used for syncing. The Notion page you authorized will be the destination for all auto-created tables and fields, should you choose to use this feature.
