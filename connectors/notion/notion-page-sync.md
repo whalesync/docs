@@ -8,7 +8,7 @@ description: Sync the contents of Notion pages to write blog posts and more
 
 ### About Notion page sync
 
-Notion Page Sync is one of Whalesync's most powerful Notion features. As you might have guessed, it allows you to sync data from Notion pages to rich text fields in other apps :exploding\_head:.
+Notion Page Sync is one of Whalesync's most powerful Notion features. As you might have guessed, it allows you to sync data from Notion pages to rich text fields in other apps :exploding_head:.
 
 This enables you to write entire blog posts in Notion and sync them instantly to your live blog or site. You can even use Notion AI to write these posts for you.
 
@@ -38,6 +38,14 @@ Notion page sync pairs really well with our [Webflow Status field extension](../
 If syncing Notion pages to the Webflow CMS, **some content may not appear in the Webflow CMS but WILL appear on your live site**. Webflow's CMS doesn't always interpret HTML properly, but web pages will.
 {% endhint %}
 
+{% hint style="warning" %}
+**Database limit**: Whalesync supports up to 100 databases shared with us through OAuth. If you need to sync more than 100 databases, please contact support@whalesync.com.
+{% endhint %}
+
+{% hint style="warning" %}
+**Shared OAuth settings**: Notion OAuth has only one set of settings per Notion account, which means all your Whalesync bases will always share the same OAuth permissions. If you have multiple bases and reauthorize one of them (changing which databases you're sharing), it will automatically update the shared databases for all your other bases as well.
+{% endhint %}
+
 <figure><img src="../../.gitbook/assets/CMS vs Site (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Supported blocks
@@ -51,4 +59,3 @@ If there are blocks or media formats that you need but do not see listed below, 
 
 We support the alt property on the image html tag and use the caption text for its value. We use the embed html tag for Unsplash images (because doesn't work otherwise) and the image tag for all other images.
 {% endhint %}
-
