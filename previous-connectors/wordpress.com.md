@@ -21,6 +21,6 @@ coverY: 0
 If you're looking to sync a self-hosted WordPress site, check out our docs on WordPress.org :point\_down:
 {% endhint %}
 
-{% content-ref url="wordpress.org/" %}
-[wordpress.org](wordpress.org/)
+{% content-ref url="../connectors/wordpress.org/" %}
+[wordpress.org](../connectors/wordpress.org/)
 {% endcontent-ref %}
