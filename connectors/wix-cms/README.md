@@ -1,5 +1,5 @@
 ---
-cover: ../../.gitbook/assets/gitbook-cover_wix.jpg
+cover: ../../.gitbook/assets/gitbook-cover_wix.png
 coverY: 0
 ---
 
