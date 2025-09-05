@@ -1,5 +1,6 @@
 ---
 description: How to sync Airtable and WordPress to create programmatic SEO pages
+hidden: true
 ---
 
 # Tutorial
