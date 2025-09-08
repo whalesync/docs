@@ -12,6 +12,14 @@ To use ACF Custom Fields, you'll need to toggle the setting "show in REST API" o
 
 <figure><img src="../../.gitbook/assets/Setting up ACF fields.png" alt=""><figcaption></figcaption></figure>
 
+Because of how Wordpress returns metadata for ACF fields through the API, you also need to have at least one rule in the "Location Rules" that checks for the Post Types you want the field to be a part of. For example, if you want to sync your ACF fields with the Posts table, you'll need a check for "Post Type is equal to Post".
+
+<figure><img src="../../.gitbook/assets/Screenshot 2025-09-08 at 11.02.46 AM.png" alt=""><figcaption></figcaption></figure>
+
+If you use more complex logic than this already, and don't want to always show the ACF fields in a group on a specific table, you can add a condition that will never match along with the check in a new rule group. This will still allow Whalesync to pick up the field, but won't affect how your fields are shown in the Wordpress UI.
+
+<figure><img src="../../.gitbook/assets/Screenshot 2025-09-08 at 11.13.43 AM.png" alt=""><figcaption></figcaption></figure>
+
 ## Image Fields
 
 {% hint style="warning" %}
