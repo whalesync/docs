@@ -1,6 +1,7 @@
 # Table of contents
 
 * [What is Whalesync?](README.md)
+* [🔧 Troubleshooting Guide](troubleshooting-guide.md)
 
 ## Start Here
 
@@ -13,6 +14,10 @@
 * [HubSpot + Notion](popular-syncs/hubspot-+-notion.md)
 * [Supabase + Airtable](popular-syncs/supabase-+-airtable.md)
 * [Notion + Google Sheets](popular-syncs/notion-+-google-sheets.md)
+
+## Use Case Templates
+
+* [Use Case Templates](use-cases/README.md)
 
 ## Connectors
 
@@ -150,6 +155,7 @@
   * [Troubleshooting attachment fields](resources/support/troubleshooting-attachment-fields.md)
   * [Webflow deprecating v1 APIs](resources/support/webflow-deprecating-v1-apis.md)
   * [Webflow partner benefits](resources/support/webflow-partner-benefits.md)
+* [Glossary](glossary.md)
 * [Template Packs](https://www.whalesync.com/template-packs)
 
 ***

@@ -48,3 +48,57 @@ As an example, for Airtable, Whalesync stores your records, your Airtable base I
 Yes, if you pause your subscription, syncing will be disabled but Whalesync will not delete your sync configurations.
 
 If you reactivate your subscription in the future, you will be able to resume your syncs and all pending changes will be synced over.
+
+## How fast is the sync? Is it real-time?
+
+Sync speed depends on the connectors you're using:
+
+**Real-time syncs (via webhooks):**
+- Airtable, Webflow, Notion, HubSpot, and most modern SaaS apps
+- Changes sync within seconds
+
+**Polling-based syncs:**
+- Google Sheets and some database connections
+- Changes sync every 1-5 minutes
+
+**Note**: Initial syncs for large datasets may take longer, but ongoing syncs are much faster.
+
+## Can I sync historical data or just new records?
+
+Whalesync can sync both:
+- **Historical data**: When you first set up a sync, it syncs all existing records
+- **Ongoing changes**: After setup, it keeps everything in sync automatically
+- **Filtered syncs**: You can use filters to sync only specific records
+
+## What happens if I delete a record in one app?
+
+By default, Whalesync will delete the corresponding record in the synced app. However, you can enable [Delete Protection](../features/additional-features/delete-protection.md) to prevent accidental deletions.
+
+## Can I sync the same data to multiple destinations?
+
+Yes! You can create multiple syncs from one source to many destinations. For example:
+- Sync Airtable to both Webflow AND Notion
+- Sync HubSpot to both Airtable AND Google Sheets
+
+Each sync operates independently with its own field mappings and settings.
+
+## Do both apps need to have the same field types?
+
+No, but field types need to be **compatible**. For example:
+- ✅ Text fields can sync to text, email, or URL fields
+- ✅ Number fields can sync to currency or percentage fields  
+- ❌ Attachment fields cannot sync to text fields
+
+See our [Field Compatibility Guide](field-compatibility.md) for detailed mappings.
+
+## Can I try Whalesync for free?
+
+Yes! Whalesync offers a free trial that lets you test syncing with a limited number of records. This helps you validate your use case before committing to a paid plan.
+
+## How do I handle duplicate records?
+
+Whalesync uses [Record Matching](../features/record-matching.md) to identify and handle duplicates. You can configure matching rules based on:
+- Unique IDs
+- Email addresses  
+- Custom fields
+- Multiple field combinations

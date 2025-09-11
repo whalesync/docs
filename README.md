@@ -41,6 +41,23 @@ For more details on the breakdown, check out: [How is Whalesync different from Z
 
 <figure><img src=".gitbook/assets/two-way sync.png" alt=""><figcaption></figcaption></figure>
 
+## Popular Connector Combinations
+
+Here are some of the most popular two-way sync combinations our users love:
+
+| Spreadsheet/Database | Business App | Use Case |
+| --- | --- | --- |
+| 📊 Airtable | 🌐 Webflow | Generate programmatic SEO pages |
+| 📝 Notion | 📈 HubSpot | Track sales deals and CRM data |
+| 🗄️ Postgres/Supabase | 📊 Airtable | Build internal tools and dashboards |
+| 📋 Google Sheets | 🤝 Affinity | Let investors update deal information |
+| 📊 Airtable | 🛍️ Shopify | Manage product catalogs |
+| 📝 Notion | 📧 Memberstack | User management and content access |
+
+{% hint style="info" %}
+All combinations support two-way sync, meaning changes in either app automatically update the other.
+{% endhint %}
+
 ## The best way to discover Whalesync is to try it
 
 {% content-ref url="start-here/quick-start.md" %}
