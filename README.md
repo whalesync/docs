@@ -37,9 +37,27 @@ Workflow automation tools like Zapier solve a different problem: on a trigger, r
 
 For more details on the breakdown, check out: [How is Whalesync different from Zapier?](https://www.whalesync.com/blog/how-is-whalesync-different-from-zapier)
 
-
-
 <figure><img src=".gitbook/assets/two-way sync.png" alt=""><figcaption></figcaption></figure>
+
+## Quick Start Tips
+
+### 🚀 Getting Started Right
+1. **Start small**: Test with 10-20 records before syncing your entire dataset
+2. **Map carefully**: Only sync the fields you actually need
+3. **Choose sync direction thoughtfully**: Not every field needs two-way sync
+4. **Use filters**: Sync only the records that matter to your workflow
+
+### ⚠️ Avoid Common Pitfalls
+- **Don't sync everything**: More fields = more complexity and potential issues
+- **Test destructive actions**: Always test delete behavior with sample data
+- **Check field compatibility**: Make sure field types can sync properly  
+- **Monitor initially**: Watch the Operations page closely during your first few days
+
+### 🛡️ Data Safety Best Practices
+- **Enable delete protection**: Prevent accidental data loss
+- **Backup critical data**: Keep backups of important datasets
+- **Use staging environments**: Test major changes in a safe environment first
+- **Document your setup**: Keep notes on field mappings and business logic
 
 ## Popular Connector Combinations
 

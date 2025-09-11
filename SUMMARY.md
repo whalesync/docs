@@ -2,6 +2,7 @@
 
 * [What is Whalesync?](README.md)
 * [🔧 Troubleshooting Guide](troubleshooting-guide.md)
+* [📊 Connector Overview](connector-overview.md)
 
 ## Start Here
 
