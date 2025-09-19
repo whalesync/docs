@@ -18,7 +18,7 @@ A [Notion database](https://www.notion.com/help/what-is-a-database) looks like t
 
 We recently added support for auto-create tables and fields for Notion. With this new feature, Notion now requires users to authorize a Notion page in addition to the usual databases used for syncing. The Notion page you authorized will be the destination for all auto-created tables and fields, should you choose to use this feature.
 
-<figure><img src="../../.gitbook/assets/CleanShot 2025-09-20 at 01.59.31@2x.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/CleanShot 2025-09-20 at 02.02.53@2x.png" alt=""><figcaption></figcaption></figure>
 
 ### Notion limit on number of Options in a field:
 
