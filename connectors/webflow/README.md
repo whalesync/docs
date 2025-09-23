@@ -21,9 +21,9 @@ Whalesync treats your Webflow **Sites** as "bases" and your **Collections** as "
 
 Whalesync can sync several types of data from Webflow:
 
-* **CMS Data**: Sync items from your Webflow CMS Collections.
-* **Users**: If you use Webflow Memberships, you can sync your user accounts.
-* **Form Submissions**: Data from your Webflow forms can be synced to other tools for analysis or processing.
+- **CMS Data**: Sync items from your Webflow CMS Collections.
+- **Users**: If you use Webflow Memberships, you can sync your user accounts.
+- **Form Submissions**: Data from your Webflow forms can be synced to other tools for analysis or processing.
 
 A special feature of the Webflow connector is the **"Webflow Status"** field. When you map a Webflow table, Whalesync creates this field. It lets you control whether a CMS item is "Published", "Draft", or "Archived".
 
@@ -59,6 +59,10 @@ Whalesync supports multi-reference fields out of the box! See the guide below to
 [reference-fields.md](../../features/additional-features/reference-fields.md)
 {% endcontent-ref %}
 
+#### Publishing Schedule Limitations
+
+When Whalesync updates your Webflow CMS items (whether creating new items or modifying existing ones), any publishing schedules configured for those items will be automatically cleared. Webflow schedules are for a specific version of the item content, so any change to that content invalidates the schedule. To maintain your publishing schedule, you'll need to manually reconfigure the publishing schedule in the Webflow Designer.
+
 ## Supported Fields
 
 <table><thead><tr><th>Field</th><th>Status<select><option value="6c90dea3d4b34f409e73be79b7076c4a" label="✖️ Not Yet" color="blue"></option><option value="9e01356060cc4ea4988d69f72fe19d39" label="✅ Supported" color="blue"></option><option value="bd4357bee12749d0b80f7bc4a94ec3b5" label="➡️ Supported (1-Way)" color="blue"></option></select></th><th data-hidden></th></tr></thead><tbody><tr><td>🎨 Color</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>📅  Date/Time</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>✉️ Email</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>📂 File</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>🖼️ Image</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>🆔 Item ID</td><td><span data-option="bd4357bee12749d0b80f7bc4a94ec3b5">➡️ Supported (1-Way)</span></td><td></td></tr><tr><td>🔗 Link</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>🖼️ Multi-image</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>🖇️ Multi-Reference</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>#️⃣ Number</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>🔽 Option</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>📞 Phone</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>📝 Plain text - single line</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>📝 Plain text - multiple line</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>🖇️ Reference</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>📰 Rich text</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>☑️ Switch</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr><tr><td>📹 Video link</td><td><span data-option="9e01356060cc4ea4988d69f72fe19d39">✅ Supported</span></td><td></td></tr></tbody></table>
@@ -75,6 +79,3 @@ Whalesync adds some special fields to your Webflow tables. These fields are not 
 | Updated On        | The timestamp for when a record was last updated in Webflow.   | Read-only |
 
 ###
-
-
-
