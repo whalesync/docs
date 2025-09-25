@@ -6,11 +6,11 @@ description: >-
 
 # HTML and Markdown field extensions
 
-#### TLDR
+### TLDR
 
 Add "\_html" to a text field to sync HTML into a rich text field. Add "\_md" to a text field to sync Markdown to a rich text field.
 
-#### Details
+### Details
 
 Sometimes you want more control over your rich text and want to directly edit HTML, such as controlling the exact HTML that gets stored in a Webflow rich text field. For that, we built the HTML field extension feature.
 
@@ -20,14 +20,24 @@ If you add "\_html" to the end of a long text field in Airtable, Google Sheets, 
 
 ![Rich text result in Webflow](<../../.gitbook/assets/html tag - rich text.png>)
 
+### Markdown
+
+In a Postgres or Supabase column, if you add "\_md" to the end of the column name, Whalesync will parse the data as Markdown and convert it to HTML. The column will be read-only on the Postgres/Supabase side, to prevent overwriting your Markdown with HTML. If you need two-way sync, use HTML instead.
+
+In an Airtable field, if you add "\_md" to the end of a rich text field's name, Whalesync will **preserve** the Markdown in the data instead of converting to HTML. This is because Airtable's rich text fields store Markdown internally, and you can enter limited Markdown into an Airtable cell to format text.
+
+{% hint style="warning" %}
+Google Sheets does not currently support the Markdown field extension.
+{% endhint %}
+
 ### **Things to keep in mind**
 
-You will need to refresh your fields in Whalesync if you want to convert an existing field into an HTML field.
+You will need to refresh your fields in Whalesync if you want to convert an existing field into an HTML or Markdown field.
 
 {% embed url="https://www.loom.com/share/79d8cb821f3e43ec8edfd79e4ffa5da4?sid=e534524a-fd44-4246-bfa7-25ac5f77995e" %}
 
 {% hint style="warning" %}
-**If using Airtable, make sure "enable rich text formatting" is toggled off**
+**If using an Airtable field as HTML, make sure "enable rich text formatting" is toggled off.**
 {% endhint %}
 
 <figure><img src="../../.gitbook/assets/CleanShot 2023-04-26 at 17.30.25.png" alt=""><figcaption></figcaption></figure>
