@@ -56,6 +56,10 @@ To use special field types like relations (linked records), multi-select dropdow
 
 Whalesync uses the first row of Google Sheets for sync mapping. Do not delete or move it to avoid issues.
 
+{% hint style="warning" %}
+When syncing with Google Sheets, ensure that the Sheet you’re connecting isn’t already used in another sync. Setting up multiple syncs using the same Sheet can lead to conflicts and issues in syncing.
+{% endhint %}
+
 ### Synthetic Fields
 
 Whalesync adds special read-only fields to your tables that contain metadata about the sync. These fields provide useful information but are managed by Whalesync and cannot be edited.
