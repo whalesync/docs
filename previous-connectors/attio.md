@@ -28,6 +28,6 @@ Some fields in Attio don’t support webhooks, which may result in delays when s
 
 For more details about how to use Relationship Fields (Foreign Keys) with Google Sheets:
 
-{% content-ref url="google-sheets/foreign-keys.md" %}
-[foreign-keys.md](google-sheets/foreign-keys.md)
+{% content-ref url="../connectors/google-sheets/foreign-keys.md" %}
+[foreign-keys.md](../connectors/google-sheets/foreign-keys.md)
 {% endcontent-ref %}
