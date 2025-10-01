@@ -39,17 +39,13 @@ If syncing Notion pages to the Webflow CMS, **some content may not appear in the
 {% endhint %}
 
 {% hint style="warning" %}
-**Database limit**: Whalesync supports up to 100 databases shared with us through OAuth. If you need to sync more than 100 databases, please contact support@whalesync.com.
-{% endhint %}
-
-{% hint style="warning" %}
 **Shared OAuth settings**: Notion OAuth has only one set of settings per Notion account, which means all your Whalesync bases will always share the same OAuth permissions. If you have multiple bases and reauthorize one of them (changing which databases you're sharing), it will automatically update the shared databases for all your other bases as well.
 {% endhint %}
 
 {% hint style="warning" %}
 **Page content limitations when syncing INTO Notion**:
 
-- **100 block limit**: Each Notion page is limited to 100 blocks when syncing into Notion
+- **200 block limit**: Each Notion page is limited to 200 blocks when syncing into Notion
 - **No style preservation**: Classes and styles are not preserved when syncing into Notion
   {% endhint %}
 
