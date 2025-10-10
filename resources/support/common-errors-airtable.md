@@ -69,3 +69,8 @@ Airtable is blocking Whalesync from making changes to your Airtable base due to 
 
 
 
+### 5) "Your sync has been turned off due to some connection issues with Airtable for the past 7 days"
+
+Whalesync automatically retries any issues that occur in your sync. However, if an Airtable connection issue remains unresolved for 7 days, the sync will be paused. To fix this, you would need to go to your sync with this issue and reauthorize your Airtable connection.
+
+<figure><img src="../../.gitbook/assets/CleanShot 2025-10-11 at 02.46.28@2x.png" alt=""><figcaption></figcaption></figure>
