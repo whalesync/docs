@@ -47,6 +47,6 @@ The Users table lists all the users of your site. Tables like Pages and Posts al
 The Media table contains media like images, audio, and videos that you've uploaded to your Wordpress site. Posts, Pages, and custom post types have a field called Featured Image that can point to a media item in this list.
 
 {% hint style="warning" %}
-**Note:** Whalesync does not support mapping the Media table at this time. Media must be uploaded and attached to posts in the WordPress UI.
+**Note:** Whalesync does not support mapping the Media table at this time. Compatible media will be automatically uploaded into the Wordpress Media Library during the sync.
 {% endhint %}
 

@@ -22,7 +22,7 @@ If syncing WordPress and Airtable, we recommend starting with our template which
 
 ### 4) Create tables for Categories and Tags
 
-Similar to the Media table, Categories and Tags must exist as linked records on your Posts. Once again, if you're unsure about how this all works you can just copy our [Airtable template](https://www.whalesync.com/template-packs/wordpress-blog-3).&#x20;
+Categories and Tags must exist as linked records on your Posts. Once again, if you're unsure about how this all works you can just copy our [Airtable template](https://www.whalesync.com/template-packs/wordpress-blog-3).&#x20;
 
 See the below docs for further explanation of supporting tables :point\_down:
 
