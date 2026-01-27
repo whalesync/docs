@@ -1,3 +1,7 @@
+{% hint style="warning" %}
+**Archived:** This connector is no longer offered by Whalesync. Existing syncs will continue to run, but future improvements and support will be limited. See [Previous Connectors](../) for more details.
+{% endhint %}
+
 # Authorize Bubble
 
 In order to connect Bubble to Whalesync, you'll need two things:

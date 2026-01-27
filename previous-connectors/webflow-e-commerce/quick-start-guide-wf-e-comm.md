@@ -2,6 +2,10 @@
 description: Tips to help you get started syncing Webflow E-Comm
 ---
 
+{% hint style="warning" %}
+**Archived:** This connector is no longer offered by Whalesync. Existing syncs will continue to run, but future improvements and support will be limited. See [Previous Connectors](../) for more details.
+{% endhint %}
+
 # Quick Start Guide: WF E-Comm
 
 ### 1) Start with our template

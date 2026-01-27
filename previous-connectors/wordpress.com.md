@@ -3,6 +3,10 @@ cover: ../.gitbook/assets/gitbook-cover_wordpress.jpg
 coverY: 0
 ---
 
+{% hint style="warning" %}
+**Archived:** This connector is no longer offered by Whalesync. Existing syncs will continue to run, but future improvements and support will be limited. See [Previous Connectors](./) for more details.
+{% endhint %}
+
 # WordPress.com
 
 ## Supported Fields

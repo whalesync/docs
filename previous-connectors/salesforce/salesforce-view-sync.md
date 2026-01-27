@@ -2,6 +2,10 @@
 description: Sync specific views in Salesforce
 ---
 
+{% hint style="warning" %}
+**Archived:** This connector is no longer offered by Whalesync. Existing syncs will continue to run, but future improvements and support will be limited. See [Previous Connectors](../) for more details.
+{% endhint %}
+
 # Salesforce view sync
 
 <figure><img src="../../.gitbook/assets/CleanShot 2025-05-31 at 05.05.24.png" alt=""><figcaption><p>Choosing to map a Salesforce view instead of the entire object</p></figcaption></figure>

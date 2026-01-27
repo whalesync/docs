@@ -2,6 +2,10 @@
 description: Understanding what a "shallow record" is in Affinity
 ---
 
+{% hint style="warning" %}
+**Archived:** This connector is no longer offered by Whalesync. Existing syncs will continue to run, but future improvements and support will be limited. See [Previous Connectors](../) for more details.
+{% endhint %}
+
 # Full records vs. shallow records
 
 Unless you are on Affinity's Enterprise plan, Affinity has significant API limitations which limits our ability to sync all records. To work around this, Whalesync groups your records into two categories:
