@@ -35,6 +35,19 @@ Whalesync has been tested against the following Wordpress hosting platforms:
 
 <table><thead><tr><th>Block</th><th>Status<select><option value="f15a9d7970f64475a1e42cabfeed8b70" label="✅ Supported" color="blue"></option><option value="a59365fcbbfa4ad186d76ffc8461936e" label="✖️ Not Yet" color="blue"></option></select></th></tr></thead><tbody><tr><td>🎧 Audio</td><td><span data-option="f15a9d7970f64475a1e42cabfeed8b70">✅ Supported</span></td></tr><tr><td>📍 Bullet List</td><td><span data-option="f15a9d7970f64475a1e42cabfeed8b70">✅ Supported</span></td></tr><tr><td><span data-gb-custom-inline data-tag="emoji" data-code="2328">⌨️</span> Code</td><td><span data-option="f15a9d7970f64475a1e42cabfeed8b70">✅ Supported</span></td></tr><tr><td><a href="https://emojipedia.org/framed-picture/">🖼️</a> Gallery</td><td><span data-option="f15a9d7970f64475a1e42cabfeed8b70">✅ Supported</span></td></tr><tr><td>📄 Heading (1-6)</td><td><span data-option="f15a9d7970f64475a1e42cabfeed8b70">✅ Supported</span></td></tr><tr><td><a href="https://emojipedia.org/framed-picture/">🖼️</a> Image</td><td><span data-option="f15a9d7970f64475a1e42cabfeed8b70">✅ Supported</span></td></tr><tr><td>📂 Media &#x26; Text</td><td><span data-option="f15a9d7970f64475a1e42cabfeed8b70">✅ Supported</span></td></tr><tr><td>#️⃣ Numbered List</td><td><span data-option="f15a9d7970f64475a1e42cabfeed8b70">✅ Supported</span></td></tr><tr><td>💬 Quote</td><td><span data-option="f15a9d7970f64475a1e42cabfeed8b70">✅ Supported</span></td></tr><tr><td>📄 Verse</td><td><span data-option="f15a9d7970f64475a1e42cabfeed8b70">✅ Supported</span></td></tr><tr><td>📹 Video</td><td><span data-option="f15a9d7970f64475a1e42cabfeed8b70">✅ Supported</span></td></tr><tr><td>🏛️ Classic</td><td><span data-option="a59365fcbbfa4ad186d76ffc8461936e">✖️ Not Yet</span></td></tr><tr><td><a href="https://emojipedia.org/framed-picture/">🖼️</a> Cover</td><td><span data-option="a59365fcbbfa4ad186d76ffc8461936e">✖️ Not Yet</span></td></tr><tr><td>📂 File</td><td><span data-option="a59365fcbbfa4ad186d76ffc8461936e">✖️ Not Yet</span></td></tr><tr><td>⏩ Preformatted</td><td><span data-option="a59365fcbbfa4ad186d76ffc8461936e">✖️ Not Yet</span></td></tr><tr><td>💬 Pullquote</td><td><span data-option="a59365fcbbfa4ad186d76ffc8461936e">✖️ Not Yet</span></td></tr><tr><td>📑 Table</td><td><span data-option="a59365fcbbfa4ad186d76ffc8461936e">✖️ Not Yet</span></td></tr><tr><td><span data-gb-custom-inline data-tag="emoji" data-code="1f3b9">🎹</span> Shortcode</td><td><span data-option="a59365fcbbfa4ad186d76ffc8461936e">✖️ Not Yet</span></td></tr></tbody></table>
 
+## WordPress Multisite
+
+Whalesync supports WordPress Multisite installations. Each site in your network is treated as its own independent instance, so **you need to create one base per site** you want to sync.
+
+The URL you provide when connecting determines which site Whalesync will sync with:
+
+| Site | URL Example |
+|------|-------------|
+| Main site | `https://whalesync-wp.com/` |
+| Subsite | `https://whalesync-wp.com/sub-site-1/` |
+
+If you want to sync multiple sites in your network, create a separate base for each one using the appropriate URL.
+
 ## Things to keep in mind
 
 {% hint style="info" %}
