@@ -44,6 +44,18 @@ Whalesync does not provide full support for all fields in Wix CMS. If you need a
 | Video                     | ✖️ Not supported              |                                 |
 | Multiple documents        | ✖️ Not supported              |                                 |
 
+### Item Visibility
+
+Wix CMS collections have a "Control item visibility" feature that adds a **Status** field to each item, which can be set to "Visible" or "Hidden." This feature is enabled by default for collections created after November 4th, 2025, and can be manually enabled for older collections.
+
+Items marked as "Hidden" in Wix are **not accessible via the Wix API**, which means they will not be synced by Whalesync. This is a Wix platform limitation — there is no way to query hidden items through the API for regular CMS collections.
+
+**If you notice items missing from your sync**, check the Status field in your Wix collection to confirm the items are set to "Visible."
+
+{% hint style="warning" %}
+If you are using the built-in visibility feature to manage draft or unpublished content, those items will not sync. Instead, we recommend creating a custom boolean field (e.g., "isPublished") in your collection to control your publishing workflow. Custom fields are always accessible via the API and will sync normally regardless of their value.
+{% endhint %}
+
 ### Additional Fields
 
 Whalesync adds special fields that are available to map in your sync but are not visible in Wix.
