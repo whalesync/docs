@@ -150,6 +150,7 @@
   - [Troubleshooting attachment fields](resources/support/troubleshooting-attachment-fields.md)
   - [Webflow deprecating v1 APIs](resources/support/webflow-deprecating-v1-apis.md)
   - [Webflow partner benefits](resources/support/webflow-partner-benefits.md)
+  - [Allowlisting Whalesync IP addresses](resources/support/allowlist-ip.md)
 - [Template Packs](https://www.whalesync.com/template-packs)
 
 ---
