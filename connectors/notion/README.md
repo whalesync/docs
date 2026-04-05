@@ -37,6 +37,8 @@ Whalesync supports relation fields out of the box! Note - Notion requires the "T
 
 Whalesync can [sync the full content of your Notion pages](notion-page-sync.md). However, there are limitations for pages with very high complexity (i.e. a large number of nested blocks). If you have issues syncing complex pages, please contact support.
 
+Note that the Notion API is significantly slower than most other APIs. When syncing page content across large databases (thousands of pages), sync times can be much longer than usual because each page requires multiple API calls to fetch its full block content. For best performance, keep your synced Notion databases small and focused. See [Notion page sync](notion-page-sync.md) for more details.
+
 #### Rollup Fields
 
 Syncing data from Notion's rollup fields is not yet supported.

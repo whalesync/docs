@@ -8,7 +8,7 @@ description: Sync the contents of Notion pages to write blog posts and more
 
 ### About Notion Page Sync
 
-Notion Page Sync is one of Whalesync's most powerful Notion features. As you might have guessed, it allows you to sync data from Notion pages to rich text fields in other apps :exploding\_head:.
+Notion Page Sync is one of Whalesync's most powerful Notion features. As you might have guessed, it allows you to sync data from Notion pages to rich text fields in other apps!
 
 This enables you to write entire blog posts in Notion and sync them instantly to your live blog or site. You can even use Notion AI to write these posts for you.
 
@@ -49,11 +49,15 @@ If syncing Notion pages to the Webflow CMS, **some content may not appear in the
 {% endhint %}
 
 {% hint style="warning" %}
+**Performance with large databases**: The Notion API is significantly slower than most other APIs that Whalesync integrates with. When syncing page content, Whalesync must make multiple API calls per page to fetch all the blocks and nested content. For databases with thousands of pages, this can result in long sync times. If you're experiencing slow syncs, consider moving the pages you want to sync into a smaller, dedicated Notion database with only the records you need. This reduces the number of API calls per polling round and can dramatically improve sync speed.
+{% endhint %}
+
+{% hint style="warning" %}
 **Page content limitations when syncing INTO Notion**:
 
-* **200 block limit**: Each Notion page is limited to 200 blocks when syncing into Notion
-* **No style preservation**: Classes and styles are not preserved when syncing into Notion
-{% endhint %}
+- **200 block limit**: Each Notion page is limited to 200 blocks when syncing into Notion
+- **No style preservation**: Classes and styles are not preserved when syncing into Notion
+  {% endhint %}
 
 <figure><img src="../../.gitbook/assets/CMS vs Site (1).png" alt=""><figcaption></figcaption></figure>
 
