@@ -120,6 +120,7 @@
 - [Additional features](features/additional-features/README.md)
   - [Automapping](features/additional-features/automapping.md)
   - [Creating users via Whalesync](features/additional-features/creating-users-via-whalesync.md)
+  - [Delete approval queue](features/additional-features/delete-approval-queue.md)
   - [Delete protection](features/additional-features/delete-protection.md)
   - [File hosting](features/additional-features/file-hosting.md)
   - [HTML and Markdown field extensions](features/additional-features/html-and-markdown-field-extensions.md)
