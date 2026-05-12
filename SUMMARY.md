@@ -137,6 +137,7 @@
   - [Common errors - Notion](resources/support/common-errors-notion.md)
   - [Common errors - Postgres](resources/support/common-errors-postgres.md)
   - [Common errors - Webflow](resources/support/common-errors-webflow.md)
+  - [Reconnecting a sync](resources/support/reconnecting-a-sync.md)
   - [FAQ](resources/support/faq.md)
   - [Field compatibility](resources/support/field-compatibility.md)
   - [How to get record IDs](resources/support/how-to-get-record-ids.md)
