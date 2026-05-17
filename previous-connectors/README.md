@@ -30,7 +30,6 @@ Just reach out to [support@whalesync.com](mailto:support@whalesync.com) and we'l
 
 # Previous connectors
 
-- [Affinity](affinity/)
 - [Attio](attio.md)
 - [Bubble](bubble/)
 - [Close](close.md)

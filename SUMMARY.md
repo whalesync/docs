@@ -16,6 +16,11 @@
 
 ## Connectors
 
+- [Affinity](connectors/affinity/README.md)
+  - [Authorize Affinity](connectors/affinity/authorize-affinity.md)
+  - [Full records vs. shallow records](connectors/affinity/full-records-vs.-shallow-records.md)
+  - [List-specific fields](connectors/affinity/list-specific-fields.md)
+  - [Notes in Affinity](connectors/affinity/notes-in-affinity.md)
 - [Airtable](connectors/airtable/README.md)
   - [Airtable view sync](connectors/airtable/airtable-view-sync.md)
   - [Airtable API quota](connectors/airtable/airtable-api-quota.md)
@@ -77,11 +82,6 @@
 ---
 
 - [Previous connectors](previous-connectors/README.md)
-  - [Affinity](previous-connectors/affinity/README.md)
-    - [Authorize Affinity](previous-connectors/affinity/authorize-affinity.md)
-    - [Full records vs. shallow records](previous-connectors/affinity/full-records-vs.-shallow-records.md)
-    - [List-specific fields](previous-connectors/affinity/list-specific-fields.md)
-    - [Notes in Affinity](previous-connectors/affinity/notes-in-affinity.md)
   - [Attio](previous-connectors/attio.md)
   - [Bubble](previous-connectors/bubble/README.md)
     - [Authorize Bubble](previous-connectors/bubble/authorize-bubble.md)
