@@ -35,6 +35,7 @@
   - [Memberstack custom fields](connectors/memberstack/memberstack-custom-fields.md)
 - [Notion](connectors/notion/README.md)
   - [Notion page sync](connectors/notion/notion-page-sync.md)
+  - [Multiple data sources](connectors/notion/multiple-data-sources.md)
 - [Postgres](connectors/postgres/README.md)
   - [Authorize Postgres](connectors/postgres/authorize-postgres/README.md)
     - [AWS (RDS)](connectors/postgres/authorize-postgres/aws-rds.md)
