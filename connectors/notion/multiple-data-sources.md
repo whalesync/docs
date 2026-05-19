@@ -26,7 +26,7 @@ To do this, open the database's view settings and click **Manage data sources**:
 
 <figure><img src="../../.gitbook/assets/notion-data-source-1.png" alt=""><figcaption><p>Open view settings, then click "Manage data sources"</p></figcaption></figure>
 
-Then click the **•••** menu next to the extra data source and choose **Move to** or **Move to Trash**:
+Then click the **•••** menu next to the extra data source and choose **Move to** to relocate it to another database:
 
 <figure><img src="../../.gitbook/assets/notion-data-source-2.png" alt=""><figcaption><p>Use the ••• menu to move or delete extra data sources</p></figcaption></figure>
 
