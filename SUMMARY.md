@@ -77,6 +77,7 @@
   - [Advanced Custom Fields (ACF)](connectors/wordpress.org/advanced-custom-fields-acf.md)
   - [How to sync images](connectors/wordpress.org/how-to-sync-images.md)
   - [Supporting tables](connectors/wordpress.org/supporting-tables.md)
+  - [Syncing custom taxonomies](connectors/wordpress.org/syncing-custom-taxonomies.md)
   - [Tutorial](connectors/wordpress.org/tutorial.md)
   - [WordPress status field](connectors/wordpress.org/wordpress-status-field.md)
 
