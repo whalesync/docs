@@ -51,7 +51,7 @@ If you want to sync multiple sites in your network, create a separate base for e
 ## Things to keep in mind
 
 {% hint style="info" %}
-Whalesync works with WordPress.com version 5.6 and above
+Whalesync works with WordPress version 5.6 and above
 {% endhint %}
 
 {% hint style="info" %}
