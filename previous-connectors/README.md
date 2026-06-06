@@ -41,5 +41,4 @@ Just reach out to [support@whalesync.com](mailto:support@whalesync.com) and we'l
 - [Salesforce](salesforce/)
 - [Shopify](shopify/)
 - [Webflow E-commerce](webflow-e-commerce/)
-- [WordPress.com](wordpress.com.md)
 - [Zoho CRM](zoho-crm.md)
