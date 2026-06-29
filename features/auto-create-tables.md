@@ -26,3 +26,7 @@ To auto-create tables simply:
 3. Choose the fields you want auto-created.
 
 <figure><img src="../.gitbook/assets/2024-12-30 12.35.50.gif" alt=""><figcaption><p>Kicking off auto-create for a Blog Posts table</p></figcaption></figure>
+
+{% hint style="info" %}
+Syncing a localized Webflow site? Each Webflow collection shows up once per locale (e.g. `Blog Posts (FR-FR)`), and you can auto-create a table for each. See [Webflow localization](../connectors/webflow/webflow-localization.md).
+{% endhint %}

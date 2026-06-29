@@ -31,6 +31,14 @@ A special feature of the Webflow connector is the **"Webflow Status"** field. Wh
 [webflow-status-field.md](webflow-status-field.md)
 {% endcontent-ref %}
 
+#### Localized Sites
+
+If your Webflow site uses Webflow Localization, Whalesync syncs each locale as its own table — you'll see your collections show up once per locale, with the locale tag in brackets (e.g. `Blog Posts (FR-FR)`). Note that creating a record in the primary collection creates it in every locale, but field edits are never copied between locales.
+
+{% content-ref url="webflow-localization.md" %}
+[webflow-localization.md](webflow-localization.md)
+{% endcontent-ref %}
+
 #### Automatic Table and Field Creation
 
 Whalesync can automatically create tables and fields in Webflow to match the structure of the other app you're syncing with.

@@ -70,6 +70,7 @@
   - [Supported fields - (AT x WF)](connectors/webflow/supported-fields-at-x-wf.md)
   - [Webflow Memberships sync](connectors/webflow/webflow-memberships-sync.md)
   - [Webflow status field](connectors/webflow/webflow-status-field.md)
+  - [Webflow localization](connectors/webflow/webflow-localization.md)
 - [Wix CMS](connectors/wix-cms/README.md)
 - [WordPress.org](connectors/wordpress.org/README.md)
   - [Quick Start Guide: WordPress.org](connectors/wordpress.org/quick-start-guide-wordpress.org.md)
