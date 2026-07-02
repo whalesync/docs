@@ -4,6 +4,8 @@ description: Sync localized Webflow CMS content across every locale on your site
 
 # Webflow localization
 
+{% embed url="https://www.loom.com/share/27af9bc5964149f2a26fc6b0f3db78a3" %}
+
 If your Webflow site uses [Webflow Localization](https://webflow.com/localization) to publish CMS content in more than one language, Whalesync can sync each locale.
 
 ### How localized collections appear in Whalesync
