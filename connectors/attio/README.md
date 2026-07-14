@@ -2,13 +2,9 @@
 description: >-
   You can use Whalesync to create a 2-way sync between Attio and Airtable,
   Google Sheets, Notion, and many more connectors!
-cover: ../.gitbook/assets/Attio Gitbook Cover.jpg
+cover: ../../.gitbook/assets/Attio Gitbook Cover.jpg
 coverY: 0
 ---
-
-{% hint style="warning" %}
-**Archived:** This connector is no longer offered by Whalesync. Existing syncs will continue to run, but future improvements and support will be limited. See [Previous Connectors](./) for more details.
-{% endhint %}
 
 # Attio
 
@@ -32,6 +28,6 @@ Some fields in Attio don’t support webhooks, which may result in delays when s
 
 For more details about how to use Relationship Fields (Foreign Keys) with Google Sheets:
 
-{% content-ref url="../connectors/google-sheets/foreign-keys.md" %}
-[foreign-keys.md](../connectors/google-sheets/foreign-keys.md)
+{% content-ref url="../google-sheets/foreign-keys.md" %}
+[foreign-keys.md](../google-sheets/foreign-keys.md)
 {% endcontent-ref %}

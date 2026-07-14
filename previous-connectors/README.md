@@ -30,15 +30,11 @@ Just reach out to [support@whalesync.com](mailto:support@whalesync.com) and we'l
 
 # Previous connectors
 
-- [Attio](attio.md)
 - [Bubble](bubble/)
 - [Close](close.md)
 - [Copper](copper.md)
-- [HubSpot](hubspot/)
 - [MS Dynamics CRM](ms-dynamics-crm.md)
 - [Outreach](outreach.md)
-- [Pipedrive](pipedrive/)
-- [Salesforce](salesforce/)
 - [Shopify](shopify/)
 - [Webflow E-commerce](webflow-e-commerce/)
 - [Zoho CRM](zoho-crm.md)
