@@ -6,7 +6,7 @@ description: Sync Attio lists as their own tables in Whalesync
 
 ### About Attio lists
 
-[Attio lists](https://attio.com/help/reference/lists-attributes/lists) let you organize a curated set of records — like the companies in your current fundraising pipeline or the people attending an event. Each entry in a list points at a record from the list's parent object (for example, a Company or a Person), and lists can have their own attributes such as a status or a rating that only exist on the list.
+[Attio lists](https://attio.com/help/reference/attio-101/attios-data-model/understanding-lists) let you organize a curated set of records — like the companies in your current fundraising pipeline or the people attending an event. Each entry in a list points at a record from the list's parent object (for example, a Company or a Person), and lists can have their own attributes such as a status or a rating that only exist on the list.
 
 With Whalesync, each of your Attio lists shows up as its own table that you can map and sync, just like People or Companies.
 
