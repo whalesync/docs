@@ -131,6 +131,10 @@
   - [Delay before syncing](features/additional-features/delay-before-syncing.md)
   - [Selective row-level sync](features/additional-features/selective-sync.md)
 
+## Live Export
+
+- [Live Export](live-export/README.md)
+
 ## Resources
 
 - [Support](resources/support/README.md)
