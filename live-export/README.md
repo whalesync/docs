@@ -12,6 +12,8 @@ Unlike a standard Whalesync sync, **Live Export** is one-way and read-only: your
 **Live Export** is separate from Whalesync's standard two-way sync. It's built for making a clean, read-only copy of your data rather than keeping two apps in sync.
 {% endhint %}
 
+{% embed url="https://www.loom.com/share/07cf25f5b2ee40ebb187d475d7007d89" %}
+
 ## Features
 
 - **Pick what to copy.** Choose exactly which tables and fields from your source get copied over.
