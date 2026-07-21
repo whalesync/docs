@@ -25,6 +25,7 @@
   - [Airtable view sync](connectors/airtable/airtable-view-sync.md)
   - [Airtable API quota](connectors/airtable/airtable-api-quota.md)
 - [Attio](connectors/attio/README.md)
+  - [Attio lists](connectors/attio/attio-lists.md)
 - [Google Sheets](connectors/google-sheets/README.md)
   - [Formatting columns](connectors/google-sheets/formatting-columns.md)
   - [Foreign keys](connectors/google-sheets/foreign-keys.md)
