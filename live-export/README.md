@@ -97,7 +97,7 @@ They're removed from the copy too, so the destination stays a true mirror. Rows 
 
 <summary>Does Live Export count against my plan's record limit?</summary>
 
-Yes, **Live Export** records count toward the same plan quota.
+Yes — **Live Export** records count toward your plan's record limit just like your other syncs. See [How record limits work](../resources/support/how-record-limits-work.md) for how counting works.
 
 </details>
 

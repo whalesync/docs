@@ -14,7 +14,7 @@ For a more detailed breakdown, check out: [How is Whalesync different from Zapie
 
 ## How does Whalesync count records?
 
-Whalesync only counts the records that you keep in sync and we don't "double-count" records across a Whalesync base.\
+Whalesync counts the records in your **active syncs** — syncs that have run at any point during the current calendar month — and we don't "double-count" records across a Whalesync base.\
 \
 For example, let's say you have two Airtable bases:
 
@@ -28,7 +28,11 @@ Then you use Whalesync to sync Base 1 and Base 2, so now each has:
 
 In total Whalesync would count that as 100 records.\
 \
-If you have other Airtable bases in your account (e.g. Base 3, Base 4, etc.). None of those would count towards your Whalesync total until you start syncing them.
+If you have other Airtable bases in your account (e.g. Base 3, Base 4, etc.), none of those count towards your Whalesync total until you start syncing them.
+
+**Paused syncs don't count against your limit.** If a sync stays paused for a full calendar month, its records stop counting the next month, and deleting a sync removes its records from your count right away. Your count resets at the start of each month, so it always reflects what you're actively syncing.
+
+For a full breakdown, see [How record limits work](how-record-limits-work.md).
 
 ## What data does Whalesync store?
 
@@ -48,3 +52,5 @@ As an example, for Airtable, Whalesync stores your records, your Airtable base I
 Yes, if you pause your subscription, syncing will be disabled but Whalesync will not delete your sync configurations.
 
 If you reactivate your subscription in the future, you will be able to resume your syncs and all pending changes will be synced over.
+
+Because your syncs are disabled while your subscription is paused, they stop counting toward your record limit the following calendar month. See [How record limits work](how-record-limits-work.md) for more on how record counting works.
