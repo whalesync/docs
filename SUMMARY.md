@@ -146,6 +146,7 @@
   - [Common errors - Webflow](resources/support/common-errors-webflow.md)
   - [Reconnecting a sync](resources/support/reconnecting-a-sync.md)
   - [FAQ](resources/support/faq.md)
+  - [How record limits work](resources/support/how-record-limits-work.md)
   - [Field compatibility](resources/support/field-compatibility.md)
   - [How to get record IDs](resources/support/how-to-get-record-ids.md)
   - [How to change your sign-in](resources/support/how-to-change-your-sign-in.md)

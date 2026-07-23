@@ -59,9 +59,9 @@ No. The control field should only exist on the side you want to control from and
 
 Changes are ignored while paused. When you re-enable syncing, edits made in either app will sync. If the same field was edited in both apps, the most recent change wins.
 
-### Will the records still count toward my limits if they are paused?
+### Will the records still count toward my record limit if they are paused?
 
-Yes. Selective sync is intended for temporarily pausing the syncing on a record while you edit it. The record still counts toward quota.
+Yes. Selective row-level sync pauses an individual record, not the whole sync — the sync is still active, so the record still counts toward your record limit. (Pausing or deleting an _entire_ sync is what changes your count — see [How record limits work](../../resources/support/how-record-limits-work.md).)
 
 ### Can I use filters with selective row-level sync?
 
