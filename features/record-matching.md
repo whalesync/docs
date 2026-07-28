@@ -4,9 +4,7 @@ description: Match records that already exist prior to turning on sync.
 
 # Record matching
 
-<figure><img src="../.gitbook/assets/record matching (1).gif" alt=""><figcaption><p>Using record matching to match contacts on the account name field across Salesforce and Airtable</p></figcaption></figure>
-
-
+<figure><img src="../.gitbook/assets/record matching.gif" alt=""><figcaption><p>Using record matching to match contacts on the account name field across Salesforce and Airtable</p></figcaption></figure>
 
 ### About record matching
 

@@ -30,7 +30,7 @@ Note - you are not always required to map the slug field. For example, with Webf
 
 Your app (eg. Webflow) is trying to create a record with a certain slug, but can't because a record already exists with the same slug. This may occur if you've previously created a record, then deleted it from Webflow, but not re-published your Webflow site. Webflow doesn't "fully delete" records until the site has been republished which can cause this issue.
 
-If the above is not the case, it could be an indicator that you have more than one record with the same slug in your source app. &#x20;
+If the above is not the case, it could be an indicator that you have more than one record with the same slug in your source app.
 
 <mark style="color:green;">Suggested Action:</mark>
 
@@ -50,7 +50,7 @@ Webflow doesn't like when sites are not published to all possible domains. Speci
 
 * Publish your Webflow site to all possible domains and retry sync
 
-![](<../../.gitbook/assets/publish (3) (2).png>)
+![](../../.gitbook/assets/publish.png)
 
 #### `Conflict: This item is still being used by:`
 

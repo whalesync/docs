@@ -28,7 +28,7 @@ No, adding a filter won’t remove existing data. Filters apply to any _future_ 
 
 Yes.
 
-<figure><img src="../.gitbook/assets/filter example (1).png" alt=""><figcaption><p>This will only sync records that equal "John" and will not sync records that equal "john"</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/filter example.png" alt=""><figcaption><p>This will only sync records that equal "John" and will not sync records that equal "john"</p></figcaption></figure>
 
 ### **How should I write percentage values?**
 
@@ -49,4 +49,3 @@ Let's say you have a sync between App A and App B. By deleting the existing sync
 5. When asked how you wish to match up existing records (via [record matching](record-matching.md)), choose the unique identifier you made a note of in step 1
 
 Now you should have a working sync that has the same configuration as the original sync, but with the new filter.
-
