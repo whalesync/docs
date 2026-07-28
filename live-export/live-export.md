@@ -9,7 +9,7 @@ description: Keep a live, updated copy of your data in another tool
 Unlike a standard Whalesync sync, **Live Export** is one-way and read-only: your source stays the system of record, while **Live Export** mirrors that data to a destination of your choice, and keeps it up-to-date as your source changes.
 
 {% hint style="info" %}
-**Live Export** is separate from Whalesync's standard two-way sync. It's built for making a clean, read-only copy of your data rather than keeping two apps in sync.
+**Live Export** is separate from Whalesync's standard two-way sync. It's built for making a clean, read-only copy of your data rather than keeping two apps in sync. See [Live Export vs. sync](live-export-vs-sync.md) for a full comparison.
 {% endhint %}
 
 {% embed url="https://www.loom.com/share/07cf25f5b2ee40ebb187d475d7007d89" %}
