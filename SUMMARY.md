@@ -137,6 +137,7 @@
 ## Live Export
 
 * [Live Export](live-export/live-export.md)
+  * [Live Export vs. sync](live-export/live-export-vs-sync.md)
 
 ## Resources
 
