@@ -92,6 +92,7 @@
   * [Syncing custom taxonomies](connectors/wordpress.org/syncing-custom-taxonomies.md)
   * [Tutorial](connectors/wordpress.org/tutorial.md)
   * [WordPress status field](connectors/wordpress.org/wordpress-status-field.md)
+  * [REST API endpoints](connectors/wordpress.org/rest-api-endpoints.md)
 
 ***
 
