@@ -17,7 +17,7 @@ If you aren't sure which you have, open the Supabase **SQL Editor** and run:
 select rolname from pg_roles where rolname like 'whalesync_service_account_%';
 ```
 
-If it returns a row, you have the first kind and should complete all three steps.
+If it returns a row, you have the first kind and should complete all three steps. Copy the `rolname` returned by the query as it will be used in **Step 3**.
 
 ### Step 1: Stop and delete your syncs
 
@@ -35,7 +35,7 @@ In the Supabase dashboard, remove Whalesync's authorization so its access can't 
 The exact labels move around in Supabase's dashboard. You're looking for the list of authorized third-party apps.
 {% endhint %}
 
-### Step 3: Remove the leftover database user
+### Step 3: Remove the Whalesync database user
 
 In the Supabase dashboard, open the project that was connected to Whalesync, then open the **SQL Editor** from the left sidebar.
 
@@ -57,8 +57,3 @@ drop role "<role>";
 
 Run the `select` from the top of this guide again to confirm the user is gone. It should return no rows.
 
-### If a step fails
-
-If any step fails — either a `42501: permission denied` error or the connection dropping — email us at [support@whalesync.com](mailto:support@whalesync.com) and we'll remove the user for you.
-
-There's no rush: you already stopped all syncing and revoked access in Steps 1 and 2, so the leftover user can't do anything until it's dropped.
