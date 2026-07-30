@@ -139,6 +139,7 @@
 
 * [Live Export](live-export/live-export.md)
   * [Live Export vs. sync](live-export/live-export-vs-sync.md)
+  * [Using Supabase or Postgres views as a source](live-export/postgres-views.md)
 
 ## Resources
 
