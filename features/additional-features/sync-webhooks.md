@@ -20,7 +20,9 @@ Every event corresponds to an operation you'd see in your sync's Operations feed
 
 When you save, Whalesync shows you a signing secret (starting with `whsec_`). Copy it now: it's only shown once. You'll use it to verify that requests really came from Whalesync.
 
-Use **Send test event** to fire a sample payload at your endpoint right away. The UI shows the response status your server returned, so you can confirm everything is wired up before real events flow.
+Whalesync then sends a test event to your endpoint. Your endpoint must respond with a 2xx status for the webhook to be activated; if it doesn't, fix your endpoint and save again.
+
+You can also use **Send test event** at any time to fire a sample payload and see the response status your server returned.
 
 By default, webhooks only fire for ongoing syncing. If you also want events for every record pushed during the initial sync, turn on **Send events during initial sync**. Careful: a large initial sync can generate thousands of events.
 
@@ -48,7 +50,7 @@ Events are delivered in batches. One POST contains up to 100 events, in the orde
         "tableId": "65f2ab...",
         "recordId": "66a1cd..."
       },
-      "changedFields": ["Name", "Slug"]
+      "changedFields": ["5f3ca1...", "9c81d2..."]
     }
   ]
 }
@@ -57,9 +59,9 @@ Events are delivered in batches. One POST contains up to 100 events, in the orde
 - `type` is one of `record.created`, `record.updated`, or `record.deleted`
 - `source` and `destination` identify the record on each side of the sync, using the IDs from the connected apps
 - `whalesyncRecordId` is Whalesync's own ID for the record. It stays the same across the record's lifetime, on both sides of the sync
-- `changedFields` lists the destination fields that were pushed. For creates it lists all pushed fields; for deletes it's empty
+- `changedFields` lists the IDs of the destination fields that were pushed, as defined in the destination app. Field IDs are stable across renames and are what the destination's API expects. For creates it lists all pushed fields; for deletes it's empty
 
-Payloads contain IDs and field names, not field values. If you need the data itself, fetch the record from your app using the IDs in the event.
+Payloads contain IDs, never field values. If you need the data itself, fetch the record from your app using the IDs in the event.
 
 ### Delivery guarantees
 
