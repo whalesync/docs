@@ -18,8 +18,6 @@ Open your sync, go to the **Settings** tab, and find the **Webhooks** section.
 2. (Optional) Under **Signing secret**, click **Copy** to grab the secret (it starts with `whsec_`) so you can verify that a delivery really came from Whalesync. Use **Regenerate** to roll it at any time.
 3. Under **Test delivery**, click **Send test** at any time to fire a sample payload and confirm your endpoint is reachable.
 
-By default, webhooks only fire for ongoing syncing. If you also want events for every record pushed during the initial sync, turn on **Send events during initial sync**. Careful: a large initial sync can generate thousands of events.
-
 ### The message structure
 
 Events are delivered in batches. One POST contains up to 100 events, in the order the operations happened. Your endpoint receives JSON like this:
@@ -62,6 +60,10 @@ Payloads contain IDs, never field values. If you need the data itself, fetch the
 - **Ordered.** Whalesync keeps a cursor into your sync's operation history and delivers events in order. A new batch isn't sent until the previous one succeeds.
 - **At least once.** Rarely, the same event can be delivered twice. Deduplicate by the event `id` if that matters for your use case.
 - **Respond fast.** Reply with any 2xx status within 10 seconds. Do slow processing after responding, not before.
+
+### Source IP address
+
+Webhook deliveries come from the same static outbound IP address Whalesync uses for database traffic: `34.66.3.22`. If your endpoint sits behind a firewall or IP allowlist, add this address. See [Allowlisting Whalesync IP addresses](../../resources/support/allowlist-ip.md) for details.
 
 ### Verifying signatures
 
