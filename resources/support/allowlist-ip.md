@@ -6,7 +6,7 @@ description: >-
 
 # Allowlisting Whalesync IP addresses
 
-In some cases, access to your databases or internal systems from Whalesync may be blocked by your organization's network security settings. Whalesync uses a static outbound IP address for syncing data with your connected databases and services. Other operations, such as webhook callbacks, may not use this static IP and could still be affected by your network security settings even after allowlisting.
+In some cases, access to your databases or internal systems from Whalesync may be blocked by your organization's network security settings. Whalesync uses a static outbound IP address for syncing data with your connected databases and services, and for [sync webhook](../../features/additional-features/sync-webhooks.md) deliveries.
 
 We recommend that your organization allows the following IP address:
 
