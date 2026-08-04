@@ -2,11 +2,7 @@
 description: Get an HTTP notification every time Whalesync pushes a change
 ---
 
-# Sync webhooks (Preview)
-
-{% hint style="warning" %}
-**PREVIEW**: Sync webhooks are in preview and details may change. Reach out with feedback or to request access at support@whalesync.com.
-{% endhint %}
+# Sync webhooks
 
 Sync webhooks notify your own endpoint every time Whalesync pushes a change to your data. Whenever a record is created, updated, or deleted by your sync, Whalesync sends an HTTP POST to a URL you choose. Use it to trigger cache rebuilds, audit logs, Slack alerts, or any downstream automation.
 
@@ -14,15 +10,13 @@ Every event corresponds to an operation you'd see in your sync's Operations feed
 
 ### Setting it up
 
-1. Open your sync and go to **Settings**
-2. Find the **Webhooks** section
-3. Enter your endpoint URL (must be HTTPS) and click **Save**
+Open your sync, go to the **Settings** tab, and find the **Webhooks** section.
 
-When you save, Whalesync shows you a signing secret (starting with `whsec_`). Copy it now: it's only shown once. You'll use it to verify that requests really came from Whalesync.
+<figure><img src="../../.gitbook/assets/sync-webhooks-settings.png" alt="The Webhooks section under a sync's Settings tab"><figcaption><p>The Webhooks section under a sync's Settings tab</p></figcaption></figure>
 
-Whalesync then sends a test event to your endpoint. Your endpoint must respond with a 2xx status for the webhook to be activated; if it doesn't, fix your endpoint and save again.
-
-You can also use **Send test event** at any time to fire a sample payload and see the response status your server returned.
+1. Under **Endpoint URL**, enter your HTTPS endpoint and save it. Whalesync sends a test event to confirm the endpoint is reachable; once it responds with a 2xx status, the endpoint shows as **Active**. If it doesn't respond, fix your endpoint and save again.
+2. (Optional) Under **Signing secret**, click **Copy** to grab the secret (it starts with `whsec_`) so you can verify that a delivery really came from Whalesync. Use **Regenerate** to roll it at any time.
+3. Under **Test delivery**, click **Send test** at any time to fire a sample payload and confirm your endpoint is reachable.
 
 By default, webhooks only fire for ongoing syncing. If you also want events for every record pushed during the initial sync, turn on **Send events during initial sync**. Careful: a large initial sync can generate thousands of events.
 
@@ -71,7 +65,7 @@ Payloads contain IDs, never field values. If you need the data itself, fetch the
 
 ### Verifying signatures
 
-Each request includes a signature header:
+Signing is optional, but recommended. If you've set a **Signing secret**, each request includes a signature header:
 
 ```
 Whalesync-Signature: t=1722448800,v1=5257a869e7...
@@ -89,7 +83,7 @@ function verify(secret, header, rawBody) {
 }
 ```
 
-You can regenerate the secret at any time from the Webhooks section.
+You can copy or regenerate the secret at any time with **Copy** and **Regenerate** in the Webhooks section.
 
 ### Retries and automatic disabling
 
