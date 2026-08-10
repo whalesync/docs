@@ -6,11 +6,11 @@ description: Set filters that determine which data syncs
 
 <figure><img src="../.gitbook/assets/sync filters.gif" alt=""><figcaption><p>Adding a filter that will only sync records when a particular field is true</p></figcaption></figure>
 
-### Filter settings can only be edited _before_ the initial sync
+### Filters can be changed at any time
 
-When you are creating a new table mapping, you are able to set filters. Once data in those tables sync, you cannot change the filter settings.
+You can set filters when you create a table mapping, and you can change them later by pausing the sync.
 
-<figure><img src="../.gitbook/assets/no edit.png" alt=""><figcaption></figcaption></figure>
+Because a new filter applies to records that have already synced, Whalesync needs to look at every record again. When you turn the sync back on it runs another initial sync, and the preview tells you how many records will start syncing and how many will stop before anything is applied.
 
 ### Filters sync the _final_ update before future updates are excluded
 
@@ -36,16 +36,12 @@ Percentage values should be written as numbers.
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>This will only sync records that have a "Percent" value above 10%</p></figcaption></figure>
 
-### Is there any way I can edit a filter after the initial sync?
+### What happens to records that stop matching when I change a filter?
 
-Unfortunately Whalesync does not support editing a sync filter after a sync has been turned on. However, by using [record matching](record-matching.md), you can work around this.
+They stop syncing, and nothing is deleted. Anything Whalesync already copied stays where it is, and later changes to those records no longer travel between your apps. Deleting one of them in one app no longer removes it from the other.
 
-Let's say you have a sync between App A and App B. By deleting the existing sync and creating a new sync, you can effectively edit the filter:
+Records that match the new filter start syncing.
 
-1. Make sure that all records in synced tables have a unique identifier that can be used for record matching
-2. Delete the original sync between App A and App B
-3. Create a new sync between App A and App B
-4. Create the desired filter
-5. When asked how you wish to match up existing records (via [record matching](record-matching.md)), choose the unique identifier you made a note of in step 1
+### Do I need to delete and rebuild my sync to change a filter?
 
-Now you should have a working sync that has the same configuration as the original sync, but with the new filter.
+No. Editing the filter on the table mapping is all you need. Earlier versions of Whalesync did require rebuilding the sync, but filters can now be changed on a sync that is already running.
