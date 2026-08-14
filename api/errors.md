@@ -1,5 +1,5 @@
 ---
-description: Every error code the Whalesync API can return, and what to do about each one.
+description: Handling failures from the Whalesync API
 ---
 
 # Error reference

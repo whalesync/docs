@@ -1,7 +1,5 @@
 ---
-description: >-
-  How an AI agent authenticates with the Whalesync API and builds a sync, and
-  which steps require a human.
+description: Guide for AI agents building syncs with the Whalesync API
 ---
 
 # Agent quickstart
@@ -34,7 +32,7 @@ A request without a usable key returns a `401` with a `required_action` containi
 >
 > Treat it like a password: it can read and change your syncs, including the contents of synced records.
 
-Request the `read` scope if monitoring is all you need. A `read` key can call every `GET` and `POST …/validate`; anything that changes state needs `readwrite`. Scope is fixed at creation.
+Request the `read` scope if you only need monitoring. A `read` key can call every `GET` and `POST …/validate`; anything that changes state needs `readwrite`. Scope is fixed at creation.
 
 Keys can be revoked at any time from the same page. Revocation is immediate.
 

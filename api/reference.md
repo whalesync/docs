@@ -1,12 +1,10 @@
 ---
-description: >-
-  Paths, authentication, and the conventions every endpoint follows. The full
-  reference for the Whalesync API.
+description: Paths, authentication, and conventions for the Whalesync API
 ---
 
 # API reference
 
-The Whalesync API creates and monitors syncs programmatically. It is a REST API: JSON in and out, API-key auth, cursor pagination, and stable machine-readable error codes. Responses include URLs for the next available operations, and anything that requires a human comes back as a structured action to relay.
+The Whalesync API creates and monitors syncs programmatically. It is a REST API with JSON request and response bodies, API-key authentication, cursor pagination, and stable machine-readable error codes. Responses include URLs for the next available operations, and anything that requires a human comes back as a structured action to relay.
 
 * **Base URL:** `https://api.whalesync.com/v1`
 * **Spec:** OpenAPI 3.1 at `https://api.whalesync.com/v1/openapi.json`
