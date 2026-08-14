@@ -6,12 +6,12 @@ description: >-
 
 # API reference
 
-The Whalesync API lets you create and monitor syncs programmatically. It is a plain REST API: JSON in and out, API-key auth, cursor pagination, and stable machine-readable error codes. It is designed to be driven by AI agents as well as humans. Every response includes the URLs for your next step, and every blocking condition tells you exactly what's required to proceed.
+The Whalesync API creates and monitors syncs programmatically. It is a REST API: JSON in and out, API-key auth, cursor pagination, and stable machine-readable error codes. Responses include URLs for the next available operations, and anything that requires a human comes back as a structured action to relay.
 
 * **Base URL:** `https://api.whalesync.com/v1`
 * **Spec:** OpenAPI 3.1 at `https://api.whalesync.com/v1/openapi.json`
 * **Discovery:** `https://api.whalesync.com/llms.txt`
-* **Companion pages:** [Agent quickstart](https://docs.whalesync.com/api/agent-quickstart) · [Error reference](https://docs.whalesync.com/api/errors)
+* **Companion pages:** [Agent quickstart](https://docs.whalesync.com/api/agent-quickstart) walks through the typical sync creation flow · [Error reference](https://docs.whalesync.com/api/errors) documents every error code
 
 All request and response fields are `snake_case`. The one exception is the keys *inside* a side's `auth`: those are the credential field ids each connector declares (for example Postgres's `connectionString`), passed through verbatim, so `GET /v1/connectors` and `auth` always agree and nothing is translated.
 
@@ -26,43 +26,32 @@ Authorization: Bearer ws_tok_XXXXXXXXXXXXXXXXXXXXXXXX
 Create keys in **Settings → API keys** in the Whalesync app. You can have multiple named keys; each key's secret is shown **once** at creation. Keys can be revoked at any time in Settings, revocation is immediate, and each key shows its `last_used_at`.
 
 {% hint style="warning" %}
-**There is no endpoint that creates an API key.** Minting a credential is a person's decision, so it happens in the app while signed in. Call the API without a key and the `401` says so and carries the link to hand to a person, naming the smallest scope that endpoint needs.
+**There is no endpoint that creates an API key.** API keys are created manually by a human in the app. A request without a key returns a `401` naming the smallest sufficient scope and carrying a key-creation link to give to a person.
 {% endhint %}
 
 Keys have one of two scopes:
 
 * `readwrite`: full access.
-* `read`: monitoring only. Anything that changes something fails with `403 insufficient_scope`. The one `POST` a `read` key may call is `…/validate`, which only checks a document and never writes. Note that `read` still exposes the *contents* of synced records (before/after values in the operations log), so treat it as data access, not just status access.
+* `read`: monitoring only. Anything that changes something fails with `403 insufficient_scope`. The one `POST` a `read` key may call is `…/validate`, which only checks a document and never writes. Note that `read` exposes the *contents* of synced records (before/after values in the operations log).
 
 There is no OAuth for the API itself.
 
 ## Conventions
 
-### Errors
+### Error responses
 
-Every error is:
+Every error has the same shape:
 
 ```json
 {"error": {"type": "invalid_request_error", "code": "incompatible_field_types",
            "message": "…", "doc_url": "https://docs.whalesync.com/api/errors#…"}}
 ```
 
-`code` values are stable. Branch on them, not on `message`.
+`code` values are stable. Branch on them, not on `message`. Some errors add a `details` object with machine-readable specifics, and `requires_action` errors add a `required_action` object for a human. Every code, and the `type` values that classify them, are documented in the [Error reference](https://docs.whalesync.com/api/errors).
 
-`type` tells you how to handle a failure and is independent of the HTTP status:
+### Pending actions
 
-* `invalid_request_error`: anything wrong with the request itself. Malformed, unknown resource, or a state the resource isn't in (so most 409s, like editing a non-draft sync).
-* `requires_action`: a person has to do something first. Always carries a `required_action` object to hand to your user. The two authentication codes carry one too, pointing at key creation.
-* `authentication_error`: missing, unknown, or revoked key.
-* `permission_error`: a `read` key attempting a write.
-* `rate_limit_error`: over your per-key budget.
-* `api_error`: a problem on our side.
-
-Some errors add a `details` object carrying the specifics machine-readably instead of only in the message. For example `base_ambiguous` lists the bases the credentials can reach in `details.bases`, and a rejected mappings `PUT` lists what's wrong in `details.issues`.
-
-### Blocked on a human: `requires_action`
-
-Some steps need a person signed in to Whalesync (connecting an app, starting a sync). A sync lists them in `pending_actions`, and each says outright that it is not yours to do:
+Some steps require a human signed in to Whalesync (connecting an app, starting a sync). A sync lists them in `pending_actions`:
 
 ```json
 "pending_actions": [
@@ -76,7 +65,7 @@ Some steps need a person signed in to Whalesync (connecting an app, starting a s
 ]
 ```
 
-Call something one of them is blocking and you get a `409` with the *same object* as `required_action`:
+Calling an endpoint one of them is blocking returns a `409` with the *same object* as `required_action`:
 
 ```json
 {"error": {"type": "requires_action", "code": "auth_required",
@@ -98,11 +87,11 @@ Whalesync IDs are prefixed (`sync_…`, `table_…`, `field_…`). Schema object
 
 ### Links
 
-Responses include `*_url` fields (`tables_url`, `fields_url`, `mappings_url`, and more) pointing at the next legal steps for that resource's current state. Follow them instead of building URLs.
+Responses include `*_url` fields (`tables_url`, `fields_url`, `mappings_url`, and more) pointing at the next valid steps for that resource's current state. Follow them instead of constructing URLs.
 
 ### Idempotency
 
-Send an `Idempotency-Key` header on `POST /v1/syncs` and on the mappings `PUT`, the two calls that create things, to make retries safe. The other writes are already safe to repeat: pause, activate, and issue retry converge on the same state.
+Send an `Idempotency-Key` header on `POST /v1/syncs` and on the mappings `PUT`, the two calls that create objects, to make retries safe. The other writes are already safe to repeat: pause, activate, and issue retry converge on the same state.
 
 A retry with the same key and body replays the original response (marked with an `Idempotent-Replayed: true` header). The same key with a different body is a `400 idempotency_key_reused`, and a retry that lands while the first request is still running is a `409 idempotency_key_in_use`. Keys expire after 24 hours; a failed request releases its key so the retry runs fresh.
 
@@ -110,9 +99,9 @@ A retry with the same key and body replays the original response (marked with an
 
 Per-key limits; `429` with `Retry-After` when exceeded. `RateLimit-*` headers on every response show the budget.
 
-### Credentials are never echoed
+### Credentials are not returned
 
-Credentials you send (connection strings, connector API keys) are never returned by any endpoint.
+Credentials you send (connection strings, connector API keys) are never included in any response.
 
 ## Connectors
 
@@ -124,7 +113,7 @@ GET /v1/connectors            All connectors: type slug, auth method, credential
 
 ## Credentials
 
-Each sync side holds its own credentials: inline `auth` for API-key connectors, given when the sync is created, or a browser sign-in for OAuth connectors, done by a person in Whalesync. **Credentials are scoped to their sync.** There are no connection endpoints, nothing to reuse across syncs, and nothing to clean up.
+Each sync side holds its own credentials: inline `auth` for API-key connectors, given when the sync is created, or a browser sign-in for OAuth connectors, done by a human in Whalesync. **Credentials are scoped to their sync.** There are no connection endpoints, nothing to reuse across syncs, and nothing to clean up.
 
 * Anything the API exposes about a credential (auth status, error codes) appears nested on the side object in sync responses, for example `"left": {"auth_status": "error", "auth_error": "invalid_credentials", …}`.
 * A broken credential also opens an issue (raising the sync's `open_issues` count) whose `remediation` explains how to fix it.
@@ -163,17 +152,17 @@ An **API-key** side takes a `connector`, `auth` (inline credentials), and a `bas
 
 `base` is the ID of the base/workspace/schema **in the connected app**: an Airtable `app…` ID, a Postgres schema name, and so on. An exact display name is accepted as a fallback when it's unambiguous. It resolves during the create itself: if it can't be found (or matches more than one base) the create fails with `base_not_found` / `base_ambiguous`, and the error's `details.bases` lists what the credentials can reach. Fix the request and retry.
 
-An **OAuth** side takes only its `connector`: no `auth`, no `base`. Its browser sign-in needs a person, so the API leaves that side unbuilt. It comes back `null` and the sync carries a `user_authorization` pending action naming the app you asked for. Relay it to your user; the link opens that app's sign-in directly, they pick the base, and you poll the sync until the side appears.
+An **OAuth** side takes only its `connector`: no `auth`, no `base`. Its browser sign-in requires a human, so the API leaves that side unbuilt. It comes back `null` and the sync carries a `user_authorization` pending action naming the app you asked for. Relay it to your user; the link opens that app's sign-in directly, they pick the base, and you poll the sync until the side appears.
 
-* That page needs a normal Whalesync login as the account's owner. It is not a capability link, so it can't be used to attach someone else's account to your sync.
+* That page requires a normal Whalesync login as the account's owner. It is not a capability link, so it can't be used to attach someone else's account to your sync.
 * Until both sides exist, mappings, schema, and activate calls answer `409 requires_action` (`auth_required`) carrying the same action.
 * When only one side is built, it takes the **left** slot; the side your user connects becomes the right. Read the sync back once both exist and write mappings against that shape.
 
 {% hint style="info" %}
-**A sync involving a browser sign-in app can be created over the API.** Declare that side by connector alone and hand the connection step to a person. Only sending credentials for such an app is unsupported.
+A sync involving a browser sign-in app **can** be created over the API. Only sending credentials for such an app is unsupported. Declare that side by connector alone; a human completes the connection.
 {% endhint %}
 
-Sync statuses: `draft → active ⇄ paused`. A sync is `draft` until your user starts it in Whalesync, and any mappings edit returns it to `draft`. There is no separate health field. A sync in trouble shows a nonzero `open_issues` count (and `auth_status: "error"` on the affected side); read `/v1/issues` for the details.
+Sync statuses: `draft → active ⇄ paused`. A sync is `draft` until your user starts it in Whalesync, and any mappings edit returns it to `draft`. There is no separate health field. A sync with problems has a nonzero `open_issues` count (and `auth_status: "error"` on the affected side); read `/v1/issues` for the details.
 
 ## Schema discovery
 
@@ -249,7 +238,7 @@ POST /v1/syncs/{sync_id}/activate      Turn a paused sync back on.
 POST /v1/syncs/{sync_id}/pause         Turn an active sync off.
 ```
 
-**A sync only runs under a configuration a person has started in the Whalesync app.** While a sync is `draft` (newly created, or edited since it last ran) there is nothing for the API to activate: the sync carries a `user_confirmation` pending action (and `review_url`, the same page). Relay it to your user; they review what was built (including record matching for tables that have data on both sides) and start the sync with a click. Poll the sync until `status` is `active`.
+**A sync only runs under a configuration a human has started in the Whalesync app.** While a sync is `draft` (newly created, or edited since it last ran) there is nothing for the API to activate: the sync carries a `user_confirmation` pending action (and `review_url`, the same page). Relay it to your user; they review what was built (including record matching for tables that have data on both sides) and start the sync with a click. Poll the sync until `status` is `active`.
 
 Calling `activate` on a `draft` sync returns the standard prerequisite error:
 
@@ -300,18 +289,8 @@ An issue (note `remediation`, written to be actionable by an agent):
  "first_seen_at": "…", "last_seen_at": "…", "occurrence_count": 14}
 ```
 
-`code` is a broad category (`authentication_error`, `connection_error`, `record_error`, `webhook_error`, `validation_error`, `sync_error`), deliberately coarse so it never says more about your credentials than that they failed. The specifics you should act on are in `remediation` and `message`. `type` is the area the issue is in (`connection`, `record`, `webhook`, `sync_preview`, or `other`) and is what `?type=` filters on.
+`code` is a broad category (`authentication_error`, `connection_error`, `record_error`, `webhook_error`, `validation_error`, `sync_error`), deliberately coarse: it does not reveal more about your credentials than that they failed. The specifics you should act on are in `remediation` and `message`. `type` is the area the issue is in (`connection`, `record`, `webhook`, `sync_preview`, or `other`) and is what `?type=` filters on.
 
-## The typical flow
+## Planned additions
 
-1. `GET /v1/connectors` to learn that Airtable is OAuth and Postgres wants a connection string.
-2. `POST /v1/syncs` with both sides: Postgres credentials inline, Airtable declared by name only.
-3. Relay the sync's `user_authorization` pending action to your user, who connects Airtable and picks its base. Poll the sync until both sides are there.
-4. Follow `tables_url` / `fields_url` to read the schema on both sides.
-5. `POST …/validate` your draft document, fix issues by `code` and `path`, then `PUT …/mappings`.
-6. Relay the sync's `user_confirmation` pending action to your user: "Everything's built. Review and start it here." They start it in Whalesync; poll until `active`.
-7. Monitor with `GET …/status`, `/v1/operations?sync=…`, and `/v1/issues?sync=…`. Retry issues after fixing their cause.
-
-## Not in v1 (planned)
-
-Per-table record filters (`tables[].filter` string expressions) · per-side advanced settings (sync-gating column, debounce) · webhooks, both per-sync record-change deliveries (`webhook_url`) and API-level events (`/v1/webhook_endpoints`) · record read/write endpoints · org-scoped API keys.
+Not yet in the API: per-table record filters (`tables[].filter` string expressions) · per-side advanced settings (sync-gating column, debounce) · webhooks, both per-sync record-change deliveries (`webhook_url`) and API-level events (`/v1/webhook_endpoints`) · record read/write endpoints · org-scoped API keys.

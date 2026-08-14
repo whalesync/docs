@@ -4,7 +4,7 @@ description: Every error code the Whalesync API can return, and what to do about
 
 # Error reference
 
-Every failure looks the same:
+Every error response has the same shape:
 
 ```json
 {"error": {"type": "invalid_request_error", "code": "base_not_found",
@@ -24,13 +24,13 @@ Branch on `code`. Messages are written for people and may change.
 | `rate_limit_error` | Over the per-key budget. Wait for `Retry-After`. |
 | `api_error` | A problem on our side. Retry. |
 
-Two error shapes carry extras. `required_action` is the step a person must take, with an `instruction` written to be relayed word for word; it appears on every `requires_action` error and on the two authentication codes. `details` carries machine-readable specifics for the codes that have them.
+Two fields appear on some errors. `required_action` is the step a person must take, with an `instruction` written to be relayed word for word; it appears on every `requires_action` error and on the two authentication codes. `details` carries machine-readable specifics for the codes that have them.
 
 ## Authentication and access
 
 ### `missing_api_key`
 
-`401` · No `Authorization: Bearer ws_tok_…` header. The `required_action` links a person to key creation and names the smallest scope this endpoint needs. **Agents cannot create keys.** There is no endpoint that mints one. Send a person to Whalesync → Settings → API keys.
+`401` · No `Authorization: Bearer ws_tok_…` header. The `required_action` links a person to key creation and names the smallest scope this endpoint needs. There is no endpoint that creates a key; API keys are created manually by a human in Whalesync → Settings → API keys.
 
 ### `invalid_api_key`
 
@@ -150,7 +150,7 @@ Two error shapes carry extras. `required_action` is the step a person must take,
 
 ### `base_ambiguous`
 
-`400` · The `base` matched more than one by name. `details.bases` lists the candidates; pick one by `remote_id` and retry. Two Airtable bases called "CRM" is normal.
+`400` · The `base` matched more than one by name. `details.bases` lists the candidates; pick one by `remote_id` and retry. Base names are not unique.
 
 ### `base_conflict`
 
@@ -220,7 +220,7 @@ A field reference doesn't resolve on that side. Same resolution rules as `unknow
 
 ### `orphaned_table`
 
-The reference resolves to a table the app no longer has. It was deleted or renamed since we last looked. Refresh the schema with `?refresh=true`.
+The reference resolves to a table the app no longer has. It was deleted or renamed since the schema was last fetched. Refresh the schema with `?refresh=true`.
 
 ### `orphaned_field`
 
@@ -250,4 +250,4 @@ Something with that name already exists, and the create will adopt it rather tha
 
 ### `internal_error`
 
-`500` · Something broke on our side. Retry; if it persists, contact support@whalesync.com. The response deliberately carries no internal detail.
+`500` · An unexpected error on Whalesync's side. Retry; if it persists, contact support@whalesync.com. The response deliberately carries no internal detail.
