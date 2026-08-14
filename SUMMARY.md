@@ -142,6 +142,12 @@
   * [Live Export vs. sync](live-export/live-export-vs-sync.md)
   * [Using Supabase or Postgres views as a source](live-export/postgres-views.md)
 
+## API
+
+* [Agent quickstart](api/agent-quickstart.md)
+* [API reference](api/reference.md)
+* [Error reference](api/errors.md)
+
 ## Resources
 
 * [Support](resources/support/README.md)
