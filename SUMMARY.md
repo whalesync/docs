@@ -134,6 +134,7 @@
   * [Sync preview](features/additional-features/sync-preview.md)
   * [Delay before syncing](features/additional-features/delay-before-syncing.md)
   * [Selective row-level sync](features/additional-features/selective-sync.md)
+  * [Sync frequency](features/additional-features/sync-frequency.md)
   * [Sync webhooks](features/additional-features/sync-webhooks.md)
 
 ## Live Export
