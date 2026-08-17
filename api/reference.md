@@ -59,7 +59,7 @@ Some steps require a human signed in to Whalesync (connecting an app, starting a
    "side": "right",
    "connector": "airtable",
    "url": "https://app.whalesync.com/syncs/9f2c…/connect-apps?connector=airtable&side=right",
-   "instruction": "Give this link to a person. They sign in to Whalesync and connect airtable in the browser; the API and agents cannot complete this step."}
+   "instruction": "Give this link to a person. They sign in to Whalesync and connect airtable in the browser — credentials entered there never pass through the API or an agent. Agents cannot complete this step."}
 ]
 ```
 
@@ -116,6 +116,7 @@ Each sync side holds its own credentials: inline `auth` for API-key connectors, 
 * Anything the API exposes about a credential (auth status, error codes) appears nested on the side object in sync responses, for example `"left": {"auth_status": "error", "auth_error": "invalid_credentials", …}`.
 * A broken credential also opens an issue (raising the sync's `open_issues` count) whose `remediation` explains how to fix it.
 * To fix or rotate an **API-key** credential, PATCH the side with a new `auth`, same shape as at creation: `PATCH /v1/syncs/{sync_id} {"right": {"auth": {"connectionString": "…"}}}`.
+* To finish an **API-key** side that was deferred at creation (declared by connector alone, still `null`), PATCH it with `connector`, `auth`, and `base` together while the sync is a `draft`. This fills the unconnected side over the API instead of waiting for a person — the alternative to relaying its connect link. OAuth sides can't be filled this way; they are always connected in the browser.
 * **OAuth** credentials can only be reconnected in the Whalesync app; the issue's `remediation` sends your user there.
 * To see which remote bases or workspaces a side's credentials can reach (for example after an ambiguous `base` name):
 
@@ -146,7 +147,11 @@ POST /v1/syncs
            "base": "public"}}
 ```
 
-An **API-key** side takes a `connector`, `auth` (inline credentials), and a `base`.
+An **API-key** side takes a `connector` and, optionally, `auth` (inline credentials) and a `base`. On such a side `auth` and `base` travel together: send both, or neither.
+
+* **Both.** The side is built during the create and its credentials are validated live.
+* **Neither.** The side is deferred to a person, exactly like an OAuth side. It comes back `null` and the sync carries a `user_authorization` pending action whose link sends someone to a Whalesync page where they enter the credentials in the browser and pick the base. This is not only for OAuth apps — any API-key side can be left for a person, so your user need not paste an app's credentials into an agent. Unlike an OAuth side, a deferred API-key side can still be finished over the API instead (see [Credentials](#credentials)).
+* **One without the other.** `base` without `auth` fails with `400 missing_auth`; `auth` without `base` fails with `400 missing_base`.
 
 `base` is the ID of the base/workspace/schema **in the connected app**: an Airtable `app…` ID, a Postgres schema name, and so on. An exact display name is accepted as a fallback when it's unambiguous. It resolves during the create itself: if it can't be found (or matches more than one base) the create fails with `base_not_found` / `base_ambiguous`, and the error's `details.bases` lists what the credentials can reach. Fix the request and retry.
 
@@ -157,7 +162,7 @@ An **OAuth** side takes only its `connector`: no `auth`, no `base`. Its browser 
 * When only one side is built, it takes the **left** slot; the side your user connects becomes the right. Read the sync back once both exist and write mappings against that shape.
 
 {% hint style="info" %}
-A sync involving a browser sign-in app **can** be created over the API. Only sending credentials for such an app is unsupported. Declare that side by connector alone; a human completes the connection.
+Any side can be left for a person to connect: declare it by connector alone, omitting `auth` and `base`, and a human completes the connection. For OAuth apps this is the only way; for API-key apps it is a choice, so credentials for the connected app need never pass through the API or an agent.
 {% endhint %}
 
 Sync statuses: `draft → active ⇄ paused`. A sync is `draft` until your user starts it in Whalesync, and any mappings edit returns it to `draft`. There is no separate health field. A sync with problems has a nonzero `open_issues` count (and `auth_status: "error"` on the affected side); read `/v1/issues` for the details.
