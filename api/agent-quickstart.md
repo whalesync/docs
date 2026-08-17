@@ -42,10 +42,10 @@ The API can create a sync, read the tables and fields on both sides, create tabl
 
 Two steps require a human. Both are deliberate design decisions, so there is no API path around them.
 
-**Connecting an app that signs in through a browser.** Airtable, HubSpot, Salesforce, Webflow, and similar connectors authenticate with OAuth in a browser, so their credentials cannot be sent over the API. The sync can still be created over the API: declare that side with `connector` only and omit `auth` and `base`. The created sync has that side `null` and a `pending_actions` entry with a link for a human, who signs in, connects the app, and picks its base. Connectors that accept credentials inline (Postgres, Supabase, and others) can be configured entirely over the API.
+**Connecting a side in the browser.** A person connects a side whenever its credentials aren't sent inline. That is always the case for apps that sign in through a browser — Airtable, HubSpot, Salesforce, Webflow, and similar OAuth connectors, whose credentials cannot be sent over the API at all. It is also a choice for connectors that take credentials inline (Postgres, Supabase, and others): if your user would rather not paste an app's credentials — a database password, a service API key — into the conversation, you can defer that side to a person too. Either way, declare that side with `connector` only and omit `auth` and `base`. The created sync has that side `null` and a `pending_actions` entry with a link for a human, who signs in, connects the app, and picks its base.
 
 {% hint style="info" %}
-A sync involving a browser sign-in app **can** be created over the API. Only sending credentials for such an app is unsupported. Declare that side by connector alone; a human completes the connection.
+Any side can be left for a person to connect in the browser: declare it by connector alone, omitting `auth` and `base`, and a human completes the connection. For OAuth apps this is the only way. For API-key apps it is a choice, so your user never has to paste an app's credentials into the conversation.
 {% endhint %}
 
 **Starting a sync.** A sync only runs under mappings a human has reviewed and started in the app. Build the sync, then hand over its `review_url`. Any later mappings edit returns the sync to `draft`, which requires a new review.
@@ -58,7 +58,7 @@ The same object appears on the sync as `pending_actions` and on a blocked call's
 {"type": "user_authorization", "audience": "end_user", "action": "open_in_browser",
  "side": "right", "connector": "airtable",
  "url": "https://app.whalesync.com/syncs/edit/9f2c…/connect-apps?connector=airtable&side=right",
- "instruction": "Give this link to a person. They sign in to Whalesync and connect airtable in the browser; the API and agents cannot complete this step."}
+ "instruction": "Give this link to a person. They sign in to Whalesync and connect airtable in the browser — credentials entered there never pass through the API or an agent. Agents cannot complete this step."}
 ```
 
 Relay `instruction` and `url` to your user. Do not fetch the URL; it is a login-protected page for a human. Poll the sync until the step is complete.
@@ -66,7 +66,7 @@ Relay `instruction` and `url` to your user. Do not fetch the URL; it is a login-
 ## Typical sync creation flow
 
 1. `GET /v1/connectors` to find your two apps and how each authenticates.
-2. `POST /v1/syncs` with credentials inline for the app that takes them, and connector alone for the browser one.
+2. `POST /v1/syncs` with credentials inline for the app that takes them, and connector alone for the browser one — or connector alone for any app whose credentials the user prefers to enter themselves.
 3. Relay the sync's `user_authorization` pending action. Poll until both sides are non-null.
 4. Follow `tables_url`, then each table's `fields_url`, to read the real tables and fields on both sides. Present these for your user to pick from; don't ask them to list tables and fields up front. Once a side is connected you can read its whole schema yourself.
 5. `POST …/validate` your mappings document, fix issues by `code` and `path`, then `PUT …/mappings`. Map to existing tables and fields, or have Whalesync create them on a side with `{"create": {"name": "…"}}` (see [Creating tables and fields](#creating-tables-and-fields)).
@@ -97,4 +97,5 @@ Creation happens when you `PUT …/mappings`: the response returns the document 
 * Send `Idempotency-Key` on `POST /v1/syncs` and the mappings `PUT`, the two calls that create objects, so retries are safe.
 * Use `If-Match` on the mappings `PUT` with the revision you read, so a concurrent edit made in the app fails with `412 revision_mismatch` instead of being overwritten.
 * Prefer `remote_id` over names when referencing bases, tables, and fields. Names are not unique and can be renamed.
+* Don't ask the user to paste an app's credentials into the conversation unless they offer — create that side without `auth` and hand over the connect link.
 * Branch on `code`, not `message`. Messages are written for people and may change.
