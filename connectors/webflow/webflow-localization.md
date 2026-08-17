@@ -39,11 +39,13 @@ After an item exists, **Whalesync never copies field edits from one locale to an
 This is intentional: localized content is supposed to differ per locale, so Whalesync keeps each locale's values isolated rather than overwriting one language's translation with another's. If you want the same value in every locale, set it in each locale's table (or in the source records that map to each locale table).
 
 {% hint style="warning" %}
-Because edits don't propagate across locales, the **primary-locale value is _not_ a default** for the other locales. A newly created item's secondary-locale fields start out as Webflow's own copy of the primary content, but from then on each locale is edited independently.
+Because edits don't propagate across locales, the **primary-locale value is&#x20;**_**not**_**&#x20;a default** for the other locales. A newly created item's secondary-locale fields start out as Webflow's own copy of the primary content, but from then on each locale is edited independently.
 {% endhint %}
 
 ### Things to keep in mind
 
-* **Republish to go live.** As with any Webflow change made through Whalesync, localized edits won't appear on your site until you publish it in Webflow. See [Webflow](README.md) for more on publishing.
+* **Republish to go live.** As with any Webflow change made through Whalesync, localized edits won't appear on your site until you publish it in Webflow. See [Webflow](./) for more on publishing.
 * **New locales.** If you add a secondary locale in Webflow after setting up your sync, re-fetch the schema (edit your base) in Whalesync so the new locale table shows up.
 * **Don't see the locale tables?** Make sure your Webflow site actually has secondary locales configured and that your connection is reauthorized after enabling Localization. If they still don't appear, reach out to support.
+* **Newly created items not being added to other locales?** Webflow localization is tricky and sometimes you don't want Whalesync to automatically create items in each locale, whereas sometimes you do. If you want your items created in all locales, make sure to turn on '_Create new items in all locales'_ in your sync settings.
+
