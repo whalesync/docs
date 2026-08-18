@@ -6,12 +6,12 @@ description: Paths, authentication, and conventions for the Whalesync API
 
 The Whalesync API creates and monitors syncs programmatically. It is a REST API with JSON request and response bodies, API-key authentication, cursor pagination, and stable machine-readable error codes. Responses include URLs for the next available operations, and anything that requires a human comes back as a structured action to relay.
 
-* **Base URL:** `https://api.whalesync.com/v1`
+* **Base URL:** `https://api.whalesync.com/v1`. Paths in this reference are relative to it: `GET /connectors` means `GET https://api.whalesync.com/v1/connectors`.
 * **Spec:** OpenAPI 3.1 at `https://api.whalesync.com/v1/openapi.json`
 * **Discovery:** `https://api.whalesync.com/llms.txt`
 * **Companion pages:** [Agent quickstart](https://docs.whalesync.com/api/agent-quickstart) walks through the typical sync creation flow · [Error reference](https://docs.whalesync.com/api/errors) documents every error code
 
-All request and response fields are `snake_case`. The one exception is the keys *inside* a side's `auth`: those are the credential field ids each connector declares (for example Postgres's `connectionString`), passed through verbatim, so `GET /v1/connectors` and `auth` always agree and nothing is translated.
+All request and response fields are `snake_case`. The one exception is the keys *inside* a side's `auth`: those are the credential field ids each connector declares (for example Postgres's `connectionString`), passed through verbatim, so `GET /connectors` and `auth` always agree and nothing is translated.
 
 ## Authentication
 
@@ -89,7 +89,7 @@ Responses include `*_url` fields (`tables_url`, `fields_url`, `mappings_url`, an
 
 ### Idempotency
 
-Send an `Idempotency-Key` header on `POST /v1/syncs` and on the mappings `PUT`, the two calls that create objects, to make retries safe. The other writes are already safe to repeat: pause, activate, and issue retry converge on the same state.
+Send an `Idempotency-Key` header on `POST /syncs` and on the mappings `PUT`, the two calls that create objects, to make retries safe. The other writes are already safe to repeat: pause, activate, and issue retry converge on the same state.
 
 A retry with the same key and body replays the original response (marked with an `Idempotent-Replayed: true` header). The same key with a different body is a `400 idempotency_key_reused`, and a retry that lands while the first request is still running is a `409 idempotency_key_in_use`. Keys expire after 24 hours; a failed request releases its key so the retry runs fresh.
 
@@ -104,10 +104,10 @@ Credentials you send (connection strings, connector API keys) are never included
 ## Connectors
 
 ```
-GET /v1/connectors            All connectors: type slug, auth method, credential fields, capabilities.
+GET /connectors               All connectors: type slug, auth method, credential fields, capabilities.
 ```
 
-`GET /v1/connectors` tells you how each connector authenticates: `"auth": {"method": "oauth"}` or `"auth": {"method": "api_key", "fields": [{"id": "connectionString", "label": "Postgres connection string", …}]}`. Each field's `id` is the key to send under a side's `auth`; send it exactly as given. Connectors your plan doesn't include are still listed, annotated with `"available": false` and the required plan.
+`GET /connectors` tells you how each connector authenticates: `"auth": {"method": "oauth"}` or `"auth": {"method": "api_key", "fields": [{"id": "connectionString", "label": "Postgres connection string", …}]}`. Each field's `id` is the key to send under a side's `auth`; send it exactly as given. Connectors your plan doesn't include are still listed, annotated with `"available": false` and the required plan.
 
 ## Credentials
 
@@ -115,13 +115,13 @@ Each sync side holds its own credentials: inline `auth` for API-key connectors, 
 
 * Anything the API exposes about a credential (auth status, error codes) appears nested on the side object in sync responses, for example `"left": {"auth_status": "error", "auth_error": "invalid_credentials", …}`.
 * A broken credential also opens an issue (raising the sync's `open_issues` count) whose `remediation` explains how to fix it.
-* To fix or rotate an **API-key** credential, PATCH the side with a new `auth`, same shape as at creation: `PATCH /v1/syncs/{sync_id} {"right": {"auth": {"connectionString": "…"}}}`.
+* To fix or rotate an **API-key** credential, PATCH the side with a new `auth`, same shape as at creation: `PATCH /syncs/{sync_id} {"right": {"auth": {"connectionString": "…"}}}`.
 * To finish an **API-key** side that was deferred at creation (declared by connector alone, still `null`), PATCH it with `connector`, `auth`, and `base` together while the sync is a `draft`. This fills the unconnected side over the API instead of waiting for a person — the alternative to relaying its connect link. OAuth sides can't be filled this way; they are always connected in the browser.
 * **OAuth** credentials can only be reconnected in the Whalesync app; the issue's `remediation` sends your user there.
 * To see which remote bases or workspaces a side's credentials can reach (for example after an ambiguous `base` name):
 
 ```
-GET /v1/syncs/{sync_id}/sides/{side}/bases
+GET /syncs/{sync_id}/sides/{side}/bases
 ```
 
 ## Syncs
@@ -129,17 +129,17 @@ GET /v1/syncs/{sync_id}/sides/{side}/bases
 A sync connects two apps (its `left` and `right` sides) and keeps mapped tables in sync.
 
 ```
-POST   /v1/syncs                       Create a sync with both sides declared.
-GET    /v1/syncs                       List syncs with status + open_issues.
-GET    /v1/syncs/{sync_id}             Full sync incl. per-side status and next-step URLs.
-PATCH  /v1/syncs/{sync_id}             Rename, amend a side while draft, update a side's auth.
-DELETE /v1/syncs/{sync_id}             Stops the sync and deletes it. Returns {"id": "sync_…", "deleted": true}.
+POST   /syncs                          Create a sync with both sides declared.
+GET    /syncs                          List syncs with status + open_issues.
+GET    /syncs/{sync_id}                Full sync incl. per-side status and next-step URLs.
+PATCH  /syncs/{sync_id}                Rename, amend a side while draft, update a side's auth.
+DELETE /syncs/{sync_id}                Stops the sync and deletes it. Returns {"id": "sync_…", "deleted": true}.
 ```
 
 ### Creating a sync
 
 ```json
-POST /v1/syncs
+POST /syncs
 {"name": "CRM sync",
  "left":  {"connector": "airtable"},
  "right": {"connector": "postgres",
@@ -165,15 +165,15 @@ An **OAuth** side takes only its `connector`: no `auth`, no `base`. Its browser 
 Any side can be left for a person to connect: declare it by connector alone, omitting `auth` and `base`, and a human completes the connection. For OAuth apps this is the only way; for API-key apps it is a choice, so credentials for the connected app need never pass through the API or an agent.
 {% endhint %}
 
-Sync statuses: `draft → active ⇄ paused`. A sync is `draft` until your user starts it in Whalesync, and any mappings edit returns it to `draft`. There is no separate health field. A sync with problems has a nonzero `open_issues` count (and `auth_status: "error"` on the affected side); read `/v1/issues` for the details.
+Sync statuses: `draft → active ⇄ paused`. A sync is `draft` until your user starts it in Whalesync, and any mappings edit returns it to `draft`. There is no separate health field. A sync with problems has a nonzero `open_issues` count (and `auth_status: "error"` on the affected side); read `/issues` for the details.
 
 ## Schema discovery
 
 Table and field listings are fetched from the connected app on demand and cached. Each listing carries a top-level `fetched_at` saying when its cache was filled, and each table in the table listing also carries `fields_fetched_at`, null until you ask for that table's fields. Pass `?refresh=true` to refetch; like in the app, refreshing needs the sync to be off, since an active sync's schema is kept fresh automatically. A first fetch can take a few seconds; if another request is already loading the same schema the endpoint returns `202` with `{"loading": true}` and a `Retry-After` header. Retry the same GET.
 
 ```
-GET /v1/syncs/{sync_id}/tables?side=left               Tables on one side.
-GET /v1/syncs/{sync_id}/tables/{table_id}/fields       Fields with type metadata.
+GET /syncs/{sync_id}/tables?side=left                  Tables on one side.
+GET /syncs/{sync_id}/tables/{table_id}/fields          Fields with type metadata.
 ```
 
 Fields look like:
@@ -205,9 +205,9 @@ Put the `value` in that side's `view` in the mappings document. `views` is null 
 The mappings document declares which tables and fields sync, and in which direction. It is read and written as a whole:
 
 ```
-GET  /v1/syncs/{sync_id}/mappings      Current document (+ ETag).
-PUT  /v1/syncs/{sync_id}/mappings      Full replace. Supports If-Match and Idempotency-Key.
-POST /v1/syncs/{sync_id}/validate      Check a document (body optional; defaults to the stored one).
+GET  /syncs/{sync_id}/mappings         Current document (+ ETag).
+PUT  /syncs/{sync_id}/mappings         Full replace. Supports If-Match and Idempotency-Key.
+POST /syncs/{sync_id}/validate         Check a document (body optional; defaults to the stored one).
 ```
 
 ```json
@@ -237,8 +237,8 @@ Errors block activation (not saving a draft); warnings never block. There are tw
 ## Starting and stopping
 
 ```
-POST /v1/syncs/{sync_id}/activate      Turn a paused sync back on.
-POST /v1/syncs/{sync_id}/pause         Turn an active sync off.
+POST /syncs/{sync_id}/activate         Turn a paused sync back on.
+POST /syncs/{sync_id}/pause            Turn an active sync off.
 ```
 
 **A sync only runs under a configuration a human has started in the Whalesync app.** While a sync is `draft` (newly created, or edited since it last ran) there is nothing for the API to activate: the sync carries a `user_confirmation` pending action (and `review_url`, the same page). Relay it to your user; they review what was built (including record matching for tables that have data on both sides) and start the sync with a click. Poll the sync until `status` is `active`.
@@ -258,17 +258,17 @@ Once started, `pause` and `activate` toggle the sync freely from the API, until 
 ## Monitoring
 
 ```
-GET  /v1/syncs/{sync_id}/status                Live snapshot: pending pushes, polling state, change detection.
-GET  /v1/operations?sync=…                     Record-level change log (also filter by table and since).
-GET  /v1/operations/{id}
-GET  /v1/issues?sync=…                         Open issues, with remediation guidance.
-GET  /v1/issues/{id}
-POST /v1/issues/{id}/retry                     Clear an issue and retry the failed work.
+GET  /syncs/{sync_id}/status                   Live snapshot: pending pushes, polling state, change detection.
+GET  /operations?sync=…                        Record-level change log (also filter by table and since).
+GET  /operations/{id}
+GET  /issues?sync=…                            Open issues, with remediation guidance.
+GET  /issues/{id}
+POST /issues/{id}/retry                        Clear an issue and retry the failed work.
 ```
 
 Operations and issues are top-level collections filtered by `?sync=`, with the filter param named after the resource. The `sync` filter is required: both collections are always read one sync at a time. Every sync response links to its own slices via `operations_url` and `issues_url`.
 
-An operation, as returned by `GET /v1/operations/{id}`:
+An operation, as returned by `GET /operations/{id}`:
 
 ```json
 {"id": "op_81…", "occurred_at": "…", "sync_id": "sync_9f…",
@@ -296,4 +296,4 @@ An issue (note `remediation`, written to be actionable by an agent):
 
 ## Planned additions
 
-Not yet in the API: per-table record filters (`tables[].filter` string expressions) · per-side advanced settings (sync-gating column, debounce) · webhooks, both per-sync record-change deliveries (`webhook_url`) and API-level events (`/v1/webhook_endpoints`) · record read/write endpoints · org-scoped API keys.
+Not yet in the API: per-table record filters (`tables[].filter` string expressions) · per-side advanced settings (sync-gating column, debounce) · webhooks, both per-sync record-change deliveries (`webhook_url`) and API-level events (`/webhook_endpoints`) · record read/write endpoints · org-scoped API keys.
