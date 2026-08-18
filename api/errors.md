@@ -68,7 +68,7 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `missing_sync`
 
-`400` · `/v1/operations` and `/v1/issues` require `?sync=`. Both are always read one sync at a time. Every sync carries pre-filtered `operations_url` and `issues_url`.
+`400` · `/operations` and `/issues` require `?sync=`. Both are always read one sync at a time. Every sync carries pre-filtered `operations_url` and `issues_url`.
 
 ### `invalid_sync`
 
@@ -110,7 +110,7 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `unknown_connector`
 
-`400` · No such connector, or it isn't available to this account. List them with `GET /v1/connectors`. Connectors above the account's plan appear there with `available: false` and the plan that unlocks them.
+`400` · No such connector, or it isn't available to this account. List them with `GET /connectors`. Connectors above the account's plan appear there with `available: false` and the plan that unlocks them.
 
 ### `connector_pair_not_allowed`
 
@@ -118,7 +118,7 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `missing_auth`
 
-`400` · An API-key side sent `base` without `auth`. On an API-key side the two travel together: send both, or omit both and a person connects it in the browser, picking the base there. Send both and the side is built and its credentials validated live; omit both and the side comes back `null` with a `user_authorization` pending action, exactly like an OAuth side. (This also fires when a PATCH changes a side's `connector` without supplying the full `auth` and `base` the new connector needs.) Field ids for `auth` come from `GET /v1/connectors`; send them exactly as given (they're the connector's own, for example `connectionString`).
+`400` · An API-key side sent `base` without `auth`. On an API-key side the two travel together: send both, or omit both and a person connects it in the browser, picking the base there. Send both and the side is built and its credentials validated live; omit both and the side comes back `null` with a `user_authorization` pending action, exactly like an OAuth side. (This also fires when a PATCH changes a side's `connector` without supplying the full `auth` and `base` the new connector needs.) Field ids for `auth` come from `GET /connectors`; send them exactly as given (they're the connector's own, for example `connectionString`).
 
 ### `missing_base`
 
