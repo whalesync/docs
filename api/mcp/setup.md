@@ -1,0 +1,73 @@
+---
+description: >-
+  Add the Whalesync MCP server to Claude, Claude Code, ChatGPT, Cursor,
+  VS Code, or any other MCP client.
+---
+
+# Client setup
+
+The server URL is all that a client needs to get started:
+
+```
+https://api.whalesync.com/mcp
+```
+
+There is no key or secret to put in the config. Authorization is [handled in the browser](#approving-the-connection) when you first connect.
+
+## Claude Code
+
+```bash
+claude mcp add --transport http whalesync https://api.whalesync.com/mcp
+```
+
+Reference: [Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp).
+
+## Claude (web and desktop)
+
+Add a custom connector and paste the server URL. Anthropic's guide: [Get started with custom connectors using remote MCP](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
+
+## ChatGPT
+
+Create a connector and paste the server URL. Custom MCP connectors in ChatGPT require developer mode, which is not available on every plan. OpenAI's guide: [Developer mode and MCP apps in ChatGPT](https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt).
+
+## Cursor
+
+Add the server to `~/.cursor/mcp.json`, or to `.cursor/mcp.json` inside a project:
+
+```json
+{
+  "mcpServers": {
+    "whalesync": {
+      "url": "https://api.whalesync.com/mcp"
+    }
+  }
+}
+```
+
+Reference: [Model Context Protocol](https://cursor.com/docs/mcp) in the Cursor docs.
+
+## VS Code
+
+```bash
+code --add-mcp '{"name":"whalesync","type":"http","url":"https://api.whalesync.com/mcp"}'
+```
+
+Reference: [Add and manage MCP servers in VS Code](https://code.visualstudio.com/docs/agent-customization/mcp-servers).
+
+## Other clients
+
+Any client that supports remote MCP servers over streamable HTTP works. Add `https://api.whalesync.com/mcp` as a remote server or custom connector. Where a config file is expected, the `mcpServers` JSON shown for Cursor is the common shape.
+
+## Approving the connection
+
+1. The first time the agent uses the server, the client opens your browser to Whalesync's consent page. 
+2. The page shows the client's name and the access it requested. A request for read and write can be downgraded to read only.
+3. Click **Connect**. The browser returns to the client and the agent is connected.
+
+The new connection appears under [Settings → MCP](https://app.whalesync.com/settings/mcp).
+
+## Troubleshooting
+
+* **The agent reports a 401 or an expired authorization**: reconnect from the client. If the connection no longer appears under Settings → MCP, it was revoked, and reconnecting runs consent again.
+* **"Connection request has expired"** on the consent page: more than ten minutes passed since the client started the connection. Retry from the client.
+

@@ -145,6 +145,8 @@
 
 ## API
 
+* [MCP server](api/mcp/README.md)
+  * [Client setup](api/mcp/setup.md)
 * [Agent quickstart](api/agent-quickstart.md)
 * [API reference](api/reference.md)
 * [Error reference](api/errors.md)
