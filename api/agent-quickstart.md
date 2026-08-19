@@ -6,6 +6,8 @@ description: Guide for AI agents building syncs with the Whalesync API
 
 This page is for AI agents driving the Whalesync API on someone's behalf, and for the people setting them up. Full endpoint documentation is in the [API reference](https://docs.whalesync.com/api/reference). Every error code is in the [Error reference](https://docs.whalesync.com/api/errors).
 
+If your runtime supports MCP, prefer the [MCP server](https://docs.whalesync.com/api/mcp). It wraps the same API, signs in through the browser instead of an API key, and helps guide you through the right steps.
+
 ## Connection details
 
 ```

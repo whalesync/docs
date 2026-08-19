@@ -32,7 +32,7 @@ Keys have one of two scopes:
 * `readwrite`: full access.
 * `read`: monitoring only. Anything that changes something fails with `403 insufficient_scope`. The one `POST` a `read` key may call is `…/validate`, which only checks a document and never writes. Note that `read` exposes the *contents* of synced records (before/after values in the operations log).
 
-There is no OAuth for the API itself.
+There is no OAuth for the REST API itself. Browser sign-in without an API key is available through the [MCP server](https://docs.whalesync.com/api/mcp).
 
 ## Conventions
 
