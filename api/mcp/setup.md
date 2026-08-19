@@ -1,7 +1,7 @@
 ---
 description: >-
-  Add the Whalesync MCP server to Claude, Claude Code, ChatGPT, Cursor,
-  VS Code, or any other MCP client.
+  Add the Whalesync MCP server to Claude, Claude Code, ChatGPT, Codex,
+  Cursor, VS Code, or any other MCP client.
 ---
 
 # Client setup
@@ -29,6 +29,21 @@ Add a custom connector and paste the server URL. Anthropic's guide: [Get started
 ## ChatGPT
 
 Create a connector and paste the server URL. Custom MCP connectors in ChatGPT require developer mode, which is not available on every plan. OpenAI's guide: [Developer mode and MCP apps in ChatGPT](https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt).
+
+## Codex
+
+```bash
+codex mcp add whalesync --url https://api.whalesync.com/mcp
+```
+
+Or add the server to `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.whalesync]
+url = "https://api.whalesync.com/mcp"
+```
+
+`codex mcp login whalesync` starts the browser sign-in without waiting for first use. Reference: [Model Context Protocol](https://developers.openai.com/codex/mcp) in the Codex docs.
 
 ## Cursor
 
