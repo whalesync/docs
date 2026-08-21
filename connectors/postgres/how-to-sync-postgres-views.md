@@ -71,28 +71,38 @@ FROM public.my_table t;
 
 ## Let an AI assistant write the query for you
 
-Copy the prompt below into Claude Code (or another AI assistant) along with your view definition, then run the SQL it returns in the Supabase SQL editor or your Postgres client.
+Copy the prompt below into Claude Code (or another AI assistant), paste in the SQL for your view and the tables it reads from (see [Getting the SQL to paste](#getting-the-sql-to-paste)), then run the SQL it returns in the Supabase SQL editor or your Postgres client.
 
-> Read https://docs.whalesync.com/connectors/postgres/how-to-sync-postgres-views.md for context.
-> My Postgres view needs a column named exactly `whalesync_postgres_id`. Its values must be unique across all rows of the view, never null, and never change for the life of a row — Whalesync reads it as each record's ID.
->
-> Prefer exposing an existing compatible column (such as the underlying table's primary key) by appending it to the view's select list as `AS whalesync_postgres_id`. Remember that `CREATE OR REPLACE VIEW` can only append new columns at the end of the column list. If the view joins or aggregates tables so that no single column is unique per row, build a stable composite value from the keys that define each row. Only if nothing compatible exists, add a column `whalesync_postgres_id uuid NOT NULL DEFAULT gen_random_uuid() UNIQUE` to the underlying table and include it in the view.
->
-> Here is my view definition:
->
-> ```sql
-> -- paste the SQL definition of your view here
-> ```
->
-> Give me the SQL to run, and tell me which existing column you chose and why it satisfies the uniqueness, non-null, and stability requirements.
+```
+Read https://docs.whalesync.com/connectors/postgres/how-to-sync-postgres-views.md for context.
+My Postgres view needs a column named exactly `whalesync_postgres_id`. Its values must be unique across all rows of the view, never null, and never change for the life of a row — Whalesync reads it as each record's ID.
 
-To get your view's definition, run:
+Prefer exposing an existing compatible column (such as the underlying table's primary key) by appending it to the view's select list as `AS whalesync_postgres_id`. Remember that `CREATE OR REPLACE VIEW` can only append new columns at the end of the column list. If the view joins or aggregates tables so that no single column is unique per row, build a stable composite value from the keys that define each row. Only if nothing compatible exists, add a column `whalesync_postgres_id uuid NOT NULL DEFAULT gen_random_uuid() UNIQUE` to the underlying table and include it in the view.
 
-```sql
-SELECT pg_get_viewdef('public.my_view'::regclass, true);
+Tell me which existing column you chose and why it satisfies the uniqueness, non-null, and stability requirements with minimal jargon and simple language. Then give me the SQL to run in a format that's easy to copy.
+
+Here is the SQL for my view and the tables it reads from:
+
+-- paste the SQL for your view and its underlying tables here
+
 ```
 
-(or copy it from the Supabase dashboard under Database → Views).
+### Getting the SQL to paste
+
+The assistant needs two things: the definition of the **view** and the definitions of the **tables it reads from** — including their names, so it can write SQL you can run as-is.
+
+The easiest way is to copy the full SQL from your database tool:
+
+- **Supabase**: go to Database → Tables, open the "…" menu on the view and on each table it reads from, and choose **Copy table schema**. Paste everything into the prompt.
+- **Other tools** (TablePlus, DBeaver, DataGrip, pgAdmin, …): open the view and each underlying table and copy the SQL from the **Schema** or **DDL** tab.
+
+If your tool doesn't offer that, run this query instead after replacing every `public.my_view` with the name of your view.
+
+```sql
+SELECT 'my_view' AS view_name, pg_get_viewdef('my_view', true) AS view_definition;
+```
+
+Paste both into the prompt, along with a description of each underlying table — at minimum its name, its columns, and which column is the primary key.
 
 ## After adding the column
 
