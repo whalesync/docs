@@ -5,6 +5,7 @@
 ## Start Here
 
 * [Quick start](start-here/quick-start.md)
+* [MCP quickstart](start-here/mcp-quickstart.md)
 * [Video tutorials](start-here/video-tutorials.md)
 
 ## Popular Syncs

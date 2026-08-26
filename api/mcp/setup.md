@@ -14,6 +14,12 @@ https://api.whalesync.com/mcp
 
 There is no key or secret to put in the config. Authorization is [handled in the browser](#approving-the-connection) when you first connect.
 
+## Claude (web, desktop, and mobile)
+
+Whalesync is in the Claude connectors directory: open [claude.ai/directory/whalesync](https://claude.ai/directory/whalesync) and click **Connect**, or find Whalesync under Settings → Connectors → Browse connectors. Claude opens a browser sign-in to Whalesync on first use.
+
+If your organization restricts directory connectors, you can still add a custom connector with the server URL `https://api.whalesync.com/mcp`. Anthropic's guide: [Get started with custom connectors using remote MCP](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
+
 ## Claude Code
 
 ```bash
@@ -21,12 +27,6 @@ claude mcp add --transport http whalesync https://api.whalesync.com/mcp
 ```
 
 Reference: [Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp).
-
-## Claude (web, desktop, and mobile)
-
-Whalesync is in the Claude connectors directory: open [claude.ai/directory/whalesync](https://claude.ai/directory/whalesync) and click **Connect**, or find Whalesync under Settings → Connectors → Browse connectors. Claude opens a browser sign-in to Whalesync on first use.
-
-If your organization restricts directory connectors, you can still add a custom connector with the server URL `https://api.whalesync.com/mcp`. Anthropic's guide: [Get started with custom connectors using remote MCP](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
 
 ## ChatGPT
 
