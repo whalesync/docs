@@ -45,6 +45,10 @@ url = "https://api.whalesync.com/mcp"
 
 `codex mcp login whalesync` starts the browser sign-in without waiting for first use. Reference: [Model Context Protocol](https://developers.openai.com/codex/mcp) in the Codex docs.
 
+## Grok
+
+In [grok.com/connectors](https://grok.com/connectors), choose **New Connector → Custom** and paste the server URL. Grok opens the browser sign-in when it first connects. xAI's guide: [Connectors](https://docs.x.ai/grok/connectors).
+
 ## Cursor
 
 Add the server to `~/.cursor/mcp.json`, or to `.cursor/mcp.json` inside a project:
