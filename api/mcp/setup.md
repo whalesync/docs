@@ -22,9 +22,11 @@ claude mcp add --transport http whalesync https://api.whalesync.com/mcp
 
 Reference: [Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp).
 
-## Claude (web and desktop)
+## Claude (web, desktop, and mobile)
 
-Add a custom connector and paste the server URL. Anthropic's guide: [Get started with custom connectors using remote MCP](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
+Whalesync is in the Claude connectors directory: open [claude.ai/directory/whalesync](https://claude.ai/directory/whalesync) and click **Connect**, or find Whalesync under Settings → Connectors → Browse connectors. Claude opens a browser sign-in to Whalesync on first use.
+
+If your organization restricts directory connectors, you can still add a custom connector with the server URL `https://api.whalesync.com/mcp`. Anthropic's guide: [Get started with custom connectors using remote MCP](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
 
 ## ChatGPT
 
@@ -44,6 +46,10 @@ url = "https://api.whalesync.com/mcp"
 ```
 
 `codex mcp login whalesync` starts the browser sign-in without waiting for first use. Reference: [Model Context Protocol](https://developers.openai.com/codex/mcp) in the Codex docs.
+
+## Grok
+
+In [grok.com/connectors](https://grok.com/connectors), choose **New Connector → Custom** and paste the server URL. Grok opens the browser sign-in when it first connects. xAI's guide: [Connectors](https://grok.com/connectors).
 
 ## Cursor
 
