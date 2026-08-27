@@ -6,12 +6,13 @@ description: Paths, authentication, and conventions for the Whalesync API
 
 The Whalesync API creates and monitors syncs programmatically. It is a REST API with JSON request and response bodies, API-key authentication, cursor pagination, and stable machine-readable error codes. Responses include URLs for the next available operations, and anything that requires a human comes back as a structured action to relay.
 
-* **Base URL:** `https://api.whalesync.com/v1`. Paths in this reference are relative to it: `GET /connectors` means `GET https://api.whalesync.com/v1/connectors`.
+* **Base URL:** `https://api.whalesync.com/v1`. Paths in this reference are relative to it: `GET /sync/connectors` means `GET https://api.whalesync.com/v1/sync/connectors`.
+* **Prefix:** Everything under `/sync/` belongs to the sync feature. Other Whalesync features will get their own prefix under the same base URL.
 * **Spec:** OpenAPI 3.1 at `https://api.whalesync.com/v1/openapi.json`
 * **Discovery:** `https://api.whalesync.com/llms.txt`
 * **Companion pages:** [Agent quickstart](https://docs.whalesync.com/api/agent-quickstart) walks through the typical sync creation flow · [Error reference](https://docs.whalesync.com/api/errors) documents every error code
 
-All request and response fields are `snake_case`. The one exception is the keys *inside* a side's `auth`: those are the credential field ids each connector declares (for example Postgres's `connectionString`), passed through verbatim, so `GET /connectors` and `auth` always agree and nothing is translated.
+All request and response fields are `snake_case`. The one exception is the keys *inside* a side's `auth`: those are the credential field ids each connector declares (for example Postgres's `connectionString`), passed through verbatim, so `GET /sync/connectors` and `auth` always agree and nothing is translated.
 
 ## Authentication
 
@@ -89,7 +90,7 @@ Responses include `*_url` fields (`tables_url`, `fields_url`, `mappings_url`, an
 
 ### Idempotency
 
-Send an `Idempotency-Key` header on `POST /syncs` and on the mappings `PUT`, the two calls that create objects, to make retries safe. The other writes are already safe to repeat: pause, activate, and issue retry converge on the same state.
+Send an `Idempotency-Key` header on `POST /sync/syncs` and on the mappings `PUT`, the two calls that create objects, to make retries safe. The other writes are already safe to repeat: pause, activate, and issue retry converge on the same state.
 
 A retry with the same key and body replays the original response (marked with an `Idempotent-Replayed: true` header). The same key with a different body is a `400 idempotency_key_reused`, and a retry that lands while the first request is still running is a `409 idempotency_key_in_use`. Keys expire after 24 hours; a failed request releases its key so the retry runs fresh.
 
@@ -104,10 +105,10 @@ Credentials you send (connection strings, connector API keys) are never included
 ## Connectors
 
 ```
-GET /connectors               All connectors: type slug, auth method, credential fields, capabilities.
+GET /sync/connectors          All connectors: type slug, auth method, credential fields, capabilities.
 ```
 
-`GET /connectors` tells you how each connector authenticates: `"auth": {"method": "oauth"}` or `"auth": {"method": "api_key", "fields": [{"id": "connectionString", "label": "Postgres connection string", …}]}`. Each field's `id` is the key to send under a side's `auth`; send it exactly as given. Connectors your plan doesn't include are still listed, annotated with `"available": false` and the required plan.
+`GET /sync/connectors` tells you how each connector authenticates: `"auth": {"method": "oauth"}` or `"auth": {"method": "api_key", "fields": [{"id": "connectionString", "label": "Postgres connection string", …}]}`. Each field's `id` is the key to send under a side's `auth`; send it exactly as given. Connectors your plan doesn't include are still listed, annotated with `"available": false` and the required plan.
 
 ## Credentials
 
@@ -115,13 +116,13 @@ Each sync side holds its own credentials: inline `auth` for API-key connectors, 
 
 * Anything the API exposes about a credential (auth status, error codes) appears nested on the side object in sync responses, for example `"left": {"auth_status": "error", "auth_error": "invalid_credentials", …}`.
 * A broken credential also opens an issue (raising the sync's `open_issues` count) whose `remediation` explains how to fix it.
-* To fix or rotate an **API-key** credential, PATCH the side with a new `auth`, same shape as at creation: `PATCH /syncs/{sync_id} {"right": {"auth": {"connectionString": "…"}}}`.
+* To fix or rotate an **API-key** credential, PATCH the side with a new `auth`, same shape as at creation: `PATCH /sync/syncs/{sync_id} {"right": {"auth": {"connectionString": "…"}}}`.
 * To finish an **API-key** side that was deferred at creation (declared by connector alone, still `null`), PATCH it with `connector`, `auth`, and `base` together while the sync is a `draft`. This fills the unconnected side over the API instead of waiting for a person — the alternative to relaying its connect link. OAuth sides can't be filled this way; they are always connected in the browser.
 * **OAuth** credentials can only be reconnected in the Whalesync app; the issue's `remediation` sends your user there.
 * To see which remote bases or workspaces a side's credentials can reach (for example after an ambiguous `base` name):
 
 ```
-GET /syncs/{sync_id}/sides/{side}/bases
+GET /sync/syncs/{sync_id}/sides/{side}/bases
 ```
 
 ## Syncs
@@ -129,17 +130,17 @@ GET /syncs/{sync_id}/sides/{side}/bases
 A sync connects two apps (its `left` and `right` sides) and keeps mapped tables in sync.
 
 ```
-POST   /syncs                          Create a sync with both sides declared.
-GET    /syncs                          List syncs with status + open_issues.
-GET    /syncs/{sync_id}                Full sync incl. per-side status and next-step URLs.
-PATCH  /syncs/{sync_id}                Rename, amend a side while draft, update a side's auth.
-DELETE /syncs/{sync_id}                Stops the sync and deletes it. Returns {"id": "sync_…", "deleted": true}.
+POST   /sync/syncs                     Create a sync with both sides declared.
+GET    /sync/syncs                     List syncs with status + open_issues.
+GET    /sync/syncs/{sync_id}           Full sync incl. per-side status and next-step URLs.
+PATCH  /sync/syncs/{sync_id}           Rename, amend a side while draft, update a side's auth.
+DELETE /sync/syncs/{sync_id}           Stops the sync and deletes it. Returns {"id": "sync_…", "deleted": true}.
 ```
 
 ### Creating a sync
 
 ```json
-POST /syncs
+POST /sync/syncs
 {"name": "CRM sync",
  "left":  {"connector": "airtable"},
  "right": {"connector": "postgres",
@@ -165,15 +166,17 @@ An **OAuth** side takes only its `connector`: no `auth`, no `base`. Its browser 
 Any side can be left for a person to connect: declare it by connector alone, omitting `auth` and `base`, and a human completes the connection. For OAuth apps this is the only way; for API-key apps it is a choice, so credentials for the connected app need never pass through the API or an agent.
 {% endhint %}
 
-Sync statuses: `draft → active ⇄ paused`. A sync is `draft` until your user starts it in Whalesync, and any mappings edit returns it to `draft`. There is no separate health field. A sync with problems has a nonzero `open_issues` count (and `auth_status: "error"` on the affected side); read `/issues` for the details.
+Sync statuses: `draft → active ⇄ paused`. A sync is `draft` until your user starts it in Whalesync, and any mappings edit returns it to `draft`. There is no separate health field. A sync with problems has a nonzero `open_issues` count (and `auth_status: "error"` on the affected side); read `/sync/issues` for the details.
+
+A sync also says how it handles deletes. `delete_approval` is `review_required`, where a record that goes missing on one side waits for a person before the delete is applied to the other side, or `auto_approve`, where deletes are applied as they're detected. Under `review_required`, `pending_deletes` counts what is waiting right now and `pending_deletes_url` links to the queue. See [Pending deletes](#pending-deletes).
 
 ## Schema discovery
 
 Table and field listings are fetched from the connected app on demand and cached. Each listing carries a top-level `fetched_at` saying when its cache was filled, and each table in the table listing also carries `fields_fetched_at`, null until you ask for that table's fields. Pass `?refresh=true` to refetch; like in the app, refreshing needs the sync to be off, since an active sync's schema is kept fresh automatically. A first fetch can take a few seconds; if another request is already loading the same schema the endpoint returns `202` with `{"loading": true}` and a `Retry-After` header. Retry the same GET.
 
 ```
-GET /syncs/{sync_id}/tables?side=left                  Tables on one side.
-GET /syncs/{sync_id}/tables/{table_id}/fields          Fields with type metadata.
+GET /sync/syncs/{sync_id}/tables?side=left             Tables on one side.
+GET /sync/syncs/{sync_id}/tables/{table_id}/fields     Fields with type metadata.
 ```
 
 Fields look like:
@@ -205,9 +208,9 @@ Put the `value` in that side's `view` in the mappings document. `views` is null 
 The mappings document declares which tables and fields sync, and in which direction. It is read and written as a whole:
 
 ```
-GET  /syncs/{sync_id}/mappings         Current document (+ ETag).
-PUT  /syncs/{sync_id}/mappings         Full replace. Supports If-Match and Idempotency-Key.
-POST /syncs/{sync_id}/validate         Check a document (body optional; defaults to the stored one).
+GET  /sync/syncs/{sync_id}/mappings    Current document (+ ETag).
+PUT  /sync/syncs/{sync_id}/mappings    Full replace. Supports If-Match and Idempotency-Key.
+POST /sync/syncs/{sync_id}/validate    Check a document (body optional; defaults to the stored one).
 ```
 
 ```json
@@ -223,7 +226,8 @@ POST /syncs/{sync_id}/validate         Check a document (body optional; defaults
 ```
 
 * Table and field references are strings for existing objects (a `remote_id`, a Whalesync id, or an exact name when it's unique on that side) or `{"create": {"name": "…"}}` to have Whalesync create the table or field on that side, typed from its mapped counterpart. Creation happens when you `PUT`; the response returns the document with real ids filled in, and retries safely adopt already-created objects. Only one side of a pair may be a `create`.
-* `direction` per table: `left_to_right | right_to_left | two_way`. Fields default to their table's direction.
+* `direction` per table: `left_to_right | right_to_left | two_way`. Fields default to their table's direction. A read can additionally show `"invalid"` for a pair whose allowed directions have all been disabled by schema drift; fix the mapping and PUT back a real direction.
+* A side's `record_delete_behavior` says what a delete on the other side does to this table's records: `sync` (the default) or `do_nothing`, which is [Delete protection](https://docs.whalesync.com/features/additional-features/delete-protection) for that table.
 * Full-replace semantics: anything omitted is unmapped, and omitted settings revert to defaults. Fetch-modify-put is the intended editing pattern.
 * `validate` returns issues you can fix mechanically:
 
@@ -234,11 +238,20 @@ POST /syncs/{sync_id}/validate         Check a document (body optional; defaults
 
 Errors block activation (not saving a draft); warnings never block. There are two failure channels. A structurally malformed document (wrong types, an invalid `direction`, a create placeholder on both sides of a pair) is a `400 invalid_mappings` naming the path. Everything semantic about a well-formed document (unknown or orphaned references, incompatibilities, unmapped required fields) comes back as a `200` with issues.
 
+A `PUT` can also fail on a table the connector couldn't prepare for syncing — some connectors add a Whalesync ID column to a table first — which is a `400 table_setup_failed`.
+
+### Read-only table settings
+
+A table pair carries two settings that are configured in the app and returned for reading only. Both are absent when there is nothing to report, and both are ignored on a `PUT`.
+
+* `filter` is the sync filter on the pair. Records that fail it sync in neither direction, and show `is_filtered` on their record status. It is a structured object: `match` (`all` or `any`) over `conditions`, which may nest further groups, plus a `summary` sentence safe to relay to a person. Filters are edited in the app, before the first sync. See [Filters](https://docs.whalesync.com/features/filters).
+* `advanced_settings` lists the pair's advanced settings that are off their default: `delay_before_syncing` (changes wait out a quiet period), `row_level_sync` (only records whose sync-enabled field is true sync out of that table), and `connector_option` (a per-table choice the connector asks for). Each entry names the `side` it's on, its `value`, and a one-sentence `description` safe to relay.
+
 ## Starting and stopping
 
 ```
-POST /syncs/{sync_id}/activate         Turn a paused sync back on.
-POST /syncs/{sync_id}/pause            Turn an active sync off.
+POST /sync/syncs/{sync_id}/activate    Turn a paused sync back on.
+POST /sync/syncs/{sync_id}/pause       Turn an active sync off.
 ```
 
 **A sync only runs under a configuration a human has started in the Whalesync app.** While a sync is `draft` (newly created, or edited since it last ran) there is nothing for the API to activate: the sync carries a `user_confirmation` pending action (and `review_url`, the same page). Relay it to your user; they review what was built (including record matching for tables that have data on both sides) and start the sync with a click. Poll the sync until `status` is `active`.
@@ -258,17 +271,17 @@ Once started, `pause` and `activate` toggle the sync freely from the API, until 
 ## Monitoring
 
 ```
-GET  /syncs/{sync_id}/status                   Live snapshot: pending pushes, polling state, change detection.
-GET  /operations?sync=…                        Record-level change log (also filter by table and since).
-GET  /operations/{id}
-GET  /issues?sync=…                            Open issues, with remediation guidance.
-GET  /issues/{id}
-POST /issues/{id}/retry                        Clear an issue and retry the failed work.
+GET  /sync/syncs/{sync_id}/status              Live snapshot: pending pushes, polling state, change detection.
+GET  /sync/operations?sync=…                   Record-level change log (also filter by table and since).
+GET  /sync/operations/{id}
+GET  /sync/issues?sync=…                       Open issues, with remediation guidance.
+GET  /sync/issues/{id}
+POST /sync/issues/{id}/retry                   Clear an issue and retry the failed work.
 ```
 
-Operations and issues are top-level collections filtered by `?sync=`, with the filter param named after the resource. The `sync` filter is required: both collections are always read one sync at a time. Every sync response links to its own slices via `operations_url` and `issues_url`.
+Operations and issues are their own collections rather than sub-resources of a sync, filtered by `?sync=`, with the filter param named after the resource. The `sync` filter is required: both collections are always read one sync at a time. Every sync response links to its own slices via `operations_url` and `issues_url`.
 
-An operation, as returned by `GET /operations/{id}`:
+An operation, as returned by `GET /sync/operations/{id}`:
 
 ```json
 {"id": "op_81…", "occurred_at": "…", "sync_id": "sync_9f…",
@@ -288,12 +301,54 @@ An issue (note `remediation`, written to be actionable by an agent):
  "message": "Airtable authorization expired.",
  "remediation": {"explanation": "…", "suggested_action": "Reconnect Airtable…",
                  "links": [{"name": "Reconnecting an app", "url": "https://…"}]},
- "table": null,
+ "table": null, "record": null,
  "first_seen_at": "…", "last_seen_at": "…", "occurrence_count": 14}
 ```
 
+`table` and `record` are null on issues that aren't about one table or one record. A record-level issue carries that record's id, `remote_id`, name, and a link into the connected app, and the same issue also appears on the record's status document.
+
 `code` is a broad category (`authentication_error`, `connection_error`, `record_error`, `webhook_error`, `validation_error`, `sync_error`), deliberately coarse: it does not reveal more about your credentials than that they failed. The specifics you should act on are in `remediation` and `message`. `type` is the area the issue is in (`connection`, `record`, `webhook`, `sync_preview`, or `other`) and is what `?type=` filters on.
+
+## Records
+
+```
+GET /sync/records?sync=…&query=…       Find records by remote id, rec_ id, or display text.
+GET /sync/records/{record_id}          Everything known about one record's sync state.
+```
+
+These answer questions about one record: why it hasn't arrived, whether something is blocking it, whether it's waiting on a delete review. They report state only. Nothing in this API creates, edits, or deletes record data in a connected app — writing records is what the sync itself does.
+
+Search is capped rather than paginated. `limit` is at most 25, `next_cursor` is always null, and `has_more: true` means more matched than came back, so narrow the `query`. Exact id matches come first, and `table` restricts the search to one table. Each hit carries a `url` to that record's status document and a `browser_url` that opens the record in the connected app.
+
+The status document gathers everything about one record:
+
+* `left` and `right`, each null when that side has no copy of the record, with `is_deleted`, `is_filtered` (a sync filter currently excludes it), `is_sync_disabled` (turned off through a sync-enabled field), and `queued_operations`.
+* `issues`, the record's open issues. An issue here usually blocks it from syncing.
+* `pending_delete`, a delete awaiting review, or null, plus `pending_delete_events` as history (`detected`, `approved`, `ignored`).
+* `operations`, the most recent operations on the record with both sides merged, plus `operations_has_more` and `operations_url` for the rest.
+
+`queued_operations` distinguishes empty from unknown: `[]` means nothing is queued, `null` means the queue couldn't be consulted just then. Each entry has a `type` (`push` writes to the app, `refetch` re-reads the record, `verify_delete` checks that a record detected as missing is really gone) and its `position` in the queue.
+
+`record_id` may be a `rec_` id or the record's id in the connected app. For the latter, `?sync=` is required, and `?table=` picks a table when the same id exists in more than one; without it the call fails with `400 ambiguous_record`.
+
+## Pending deletes
+
+```
+GET /sync/pending-deletes?sync=…       One sync's deletes waiting on a person, newest first.
+```
+
+When a record goes missing on one side of a sync with `delete_approval: "review_required"`, Whalesync holds the delete rather than applying it to the other side, so an outage, a pagination bug, or a mistaken write can't destroy data downstream. [Delete approval queue](https://docs.whalesync.com/features/additional-features/delete-approval-queue) describes the feature itself.
+
+`state` defaults to `awaiting_review`; pass `ignored` for the deletes a person chose to keep the record for. Neither state is resolved — an ignored delete is dormant and stops being raised, and can be restored in the app. Standard `limit` and `cursor` pagination.
+
+Each entry names the `missing_side` whose record disappeared, the `delete_from_side` the record would be deleted from, `pending_since`, `ignored_at`, and the `record` itself (null when the other side no longer holds a copy of it). `record_url` is that record's status document; `review_url` is the page where a person decides.
+
+{% hint style="warning" %}
+**Approving or ignoring a delete is not in this API.** The decision is irreversible, so it stays with a person in the app. Relay the entry's `review_url`.
+{% endhint %}
+
+A sync that auto-approves deletes has no queue, and this endpoint answers `409 delete_approval_disabled`. The sync's `delete_approval` field tells you which mode it's in before you call.
 
 ## Planned additions
 
-Not yet in the API: per-table record filters (`tables[].filter` string expressions) · per-side advanced settings (sync-gating column, debounce) · webhooks, both per-sync record-change deliveries (`webhook_url`) and API-level events (`/webhook_endpoints`) · record read/write endpoints · org-scoped API keys.
+Not yet in the API: webhooks, both per-sync record-change deliveries (`webhook_url`) and API-level events (`/webhook_endpoints`) · org-scoped API keys. Filters and advanced settings can be read on a mapped table pair but only changed in the app, and deciding a pending delete is deliberately app-only.

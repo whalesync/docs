@@ -68,7 +68,7 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `missing_sync`
 
-`400` · `/operations` and `/issues` require `?sync=`. Both are always read one sync at a time. Every sync carries pre-filtered `operations_url` and `issues_url`.
+`400` · `/sync/operations`, `/sync/issues`, `/sync/records`, and `/sync/pending-deletes` require `?sync=`. All are read one sync at a time. Every sync carries pre-filtered `operations_url`, `issues_url`, and `pending_deletes_url`. `/sync/records/{record_id}` needs `?sync=` too when the id is a connected-app id rather than a `rec_` id.
 
 ### `invalid_sync`
 
@@ -110,7 +110,7 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `unknown_connector`
 
-`400` · No such connector, or it isn't available to this account. List them with `GET /connectors`. Connectors above the account's plan appear there with `available: false` and the plan that unlocks them.
+`400` · No such connector, or it isn't available to this account. List them with `GET /sync/connectors`. Connectors above the account's plan appear there with `available: false` and the plan that unlocks them.
 
 ### `connector_pair_not_allowed`
 
@@ -118,7 +118,7 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `missing_auth`
 
-`400` · An API-key side sent `base` without `auth`. On an API-key side the two travel together: send both, or omit both and a person connects it in the browser, picking the base there. Send both and the side is built and its credentials validated live; omit both and the side comes back `null` with a `user_authorization` pending action, exactly like an OAuth side. (This also fires when a PATCH changes a side's `connector` without supplying the full `auth` and `base` the new connector needs.) Field ids for `auth` come from `GET /connectors`; send them exactly as given (they're the connector's own, for example `connectionString`).
+`400` · An API-key side sent `base` without `auth`. On an API-key side the two travel together: send both, or omit both and a person connects it in the browser, picking the base there. Send both and the side is built and its credentials validated live; omit both and the side comes back `null` with a `user_authorization` pending action, exactly like an OAuth side. (This also fires when a PATCH changes a side's `connector` without supplying the full `auth` and `base` the new connector needs.) Field ids for `auth` come from `GET /sync/connectors`; send them exactly as given (they're the connector's own, for example `connectionString`).
 
 ### `missing_base`
 
@@ -177,6 +177,10 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 ### `create_failed`
 
 `400` · A `{"create": …}` placeholder couldn't be created in the destination app. The message carries the app's reason and the document path. Re-sending a `create` that matches an object of the same name adopts it, so retrying after a partial failure is safe.
+
+### `table_setup_failed`
+
+`400` · A mapped table couldn't be prepared for syncing. Some connectors add a Whalesync ID column to a table before it can sync, and that step failed. The message carries the app's reason.
 
 ### `table_ambiguous`
 
@@ -245,6 +249,16 @@ The connector can't create tables or fields, so a `{"create": …}` placeholder 
 ### `create_name_collision`
 
 Something with that name already exists, and the create will adopt it rather than make a new one. Severity `warning`; it never blocks.
+
+## Records and deletes
+
+### `ambiguous_record`
+
+`400` · A record id from a connected app matched records in more than one table. Add `?table=` to pick one. A `rec_` id is never ambiguous.
+
+### `delete_approval_disabled`
+
+`409` · `/sync/pending-deletes` was called on a sync that auto-approves deletes, so it has no queue. A sync's `delete_approval` field says which mode it is in before you call.
 
 ## Server
 

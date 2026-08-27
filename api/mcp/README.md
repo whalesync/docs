@@ -22,9 +22,9 @@ The first time your agent calls the server, the browser opens Whalesync's consen
 
 ## Capabilities
 
-A connection with `read` scope can monitor your syncs. This includes the tables and fields in the mappings, the operations log, and open issues. `readwrite` adds creating, editing, pausing, activating, and deleting syncs, editing mappings, and retrying issues.
+A connection with `read` scope can monitor your syncs. This includes the tables and fields in the mappings, the operations log, open issues, the sync state of any single record, and the deletes waiting for review. `readwrite` adds creating, editing, pausing, activating, and deleting syncs, editing mappings, and retrying issues.
 
-The `whats_next` tool reports where a sync is in the setup flow and the next steps to get it up and running.
+Every tool name starts with `sync_` (`sync_list`, `sync_create`, `sync_get_status`, and so on). The `sync_whats_next` tool reports where a sync is in the setup flow and the next steps to get it up and running.
 
 ## Steps that happen in the browser
 
@@ -32,6 +32,7 @@ By design, there are a few steps that are always done by a person in the app. Yo
 
 * **Connecting an app that signs in with OAuth.** Apps like Airtable, HubSpot, and Webflow are connected by a person in the browser. The agent sends you a connect link; you sign in and pick the base. Credentials never pass through the agent.
 * **Starting a new sync.** A person needs to review and approve a sync in the app before it can be run: the first time, and after a sync has been edited. The agent builds the draft and sends you its review link.
+* **Approving a delete.** On a sync that holds deletes for review, a record that goes missing on one side waits for you instead of being deleted on the other. The agent can list what's waiting and send you the review link, but approving or ignoring a delete is irreversible, so you make that call in the app.
 
 ## Scopes
 

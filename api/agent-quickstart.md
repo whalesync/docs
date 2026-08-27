@@ -17,7 +17,7 @@ Auth:      Authorization: Bearer ws_tok_…
 Scopes:    read (monitor) · readwrite (build and change)
 ```
 
-Fetch the OpenAPI spec first. Everything else can be read from it. Paths in this guide are relative to the base URL: `GET /connectors` means `GET https://api.whalesync.com/v1/connectors`.
+Fetch the OpenAPI spec first. Everything else can be read from it. Paths in this guide are relative to the base URL: `GET /sync/connectors` means `GET https://api.whalesync.com/v1/sync/connectors`.
 
 ## Ask a human for an API key
 
@@ -40,9 +40,9 @@ Keys can be revoked at any time from the same page. Revocation is immediate.
 
 ## Steps requiring human intervention
 
-The API can create a sync, read the tables and fields on both sides, create tables and fields on a side where they don't exist yet, write and validate mappings, pause, activate, and delete syncs, and read the operations log and open issues.
+The API can create a sync, read the tables and fields on both sides, create tables and fields on a side where they don't exist yet, write and validate mappings, pause, activate, and delete syncs, read the operations log and open issues, look up a single record's sync state, and list the deletes waiting for review.
 
-Two steps require a human. Both are deliberate design decisions, so there is no API path around them.
+Three steps require a human. All are deliberate design decisions, so there is no API path around them.
 
 **Connecting a side in the browser.** A person connects a side whenever its credentials aren't sent inline. That is always the case for apps that sign in through a browser — Airtable, HubSpot, Salesforce, Webflow, and similar OAuth connectors, whose credentials cannot be sent over the API at all. It is also a choice for connectors that take credentials inline (Postgres, Supabase, and others): if your user would rather not paste an app's credentials — a database password, a service API key — into the conversation, you can defer that side to a person too. Either way, declare that side with `connector` only and omit `auth` and `base`. The created sync has that side `null` and a `pending_actions` entry with a link for a human, who signs in, connects the app, and picks its base.
 
@@ -51,6 +51,8 @@ Any side can be left for a person to connect in the browser: declare it by conne
 {% endhint %}
 
 **Starting a sync.** A sync only runs under mappings a human has reviewed and started in the app. Build the sync, then hand over its `review_url`. Any later mappings edit returns the sync to `draft`, which requires a new review.
+
+**Deciding a pending delete.** On a sync with `delete_approval: "review_required"`, a record that goes missing on one side waits for a person before the delete reaches the other side. Approving or ignoring one is irreversible, so no endpoint does it. `GET /sync/pending-deletes?sync=…` lists what's waiting; relay each entry's `review_url`.
 
 ## How human steps appear in the API
 
@@ -67,13 +69,14 @@ Relay `instruction` and `url` to your user. Do not fetch the URL; it is a login-
 
 ## Typical sync creation flow
 
-1. `GET /connectors` to find your two apps and how each authenticates.
-2. `POST /syncs` with credentials inline for the app that takes them, and connector alone for the browser one — or connector alone for any app whose credentials the user prefers to enter themselves.
+1. `GET /sync/connectors` to find your two apps and how each authenticates.
+2. `POST /sync/syncs` with credentials inline for the app that takes them, and connector alone for the browser one — or connector alone for any app whose credentials the user prefers to enter themselves.
 3. Relay the sync's `user_authorization` pending action. Poll until both sides are non-null.
 4. Follow `tables_url`, then each table's `fields_url`, to read the real tables and fields on both sides. Present these for your user to pick from; don't ask them to list tables and fields up front. Once a side is connected you can read its whole schema yourself.
 5. `POST …/validate` your mappings document, fix issues by `code` and `path`, then `PUT …/mappings`. Map to existing tables and fields, or have Whalesync create them on a side with `{"create": {"name": "…"}}` (see [Creating tables and fields](#creating-tables-and-fields)).
 6. Relay the sync's `user_confirmation` pending action. Poll until `status` is `active`.
-7. Monitor with `GET …/status`, `/operations?sync=…`, and `/issues?sync=…`. Issues carry `remediation` written to be acted on; `POST /issues/{id}/retry` once the cause is fixed.
+7. Monitor with `GET …/status`, `/sync/operations?sync=…`, and `/sync/issues?sync=…`. Issues carry `remediation` written to be acted on; `POST /sync/issues/{id}/retry` once the cause is fixed.
+8. For a question about one record ("why hasn't this contact arrived?"), `GET /sync/records?sync=…&query=…` to find it, then follow the hit's `url` for its status: both sides, its open issues, what's queued for it, and whether a delete is waiting on a person.
 
 ## Creating tables and fields
 
@@ -96,7 +99,7 @@ Creation happens when you `PUT …/mappings`: the response returns the document 
 
 * Follow the `*_url` fields in responses instead of constructing URLs. They point at the next valid steps for the resource's current state.
 * Read the schema; don't ask your user for it. Once a side is connected you can list its tables and fields yourself and present them to pick from. A destination table or field that doesn't exist yet doesn't have to be built by hand either — create it with `{"create": {"name": "…"}}`.
-* Send `Idempotency-Key` on `POST /syncs` and the mappings `PUT`, the two calls that create objects, so retries are safe.
+* Send `Idempotency-Key` on `POST /sync/syncs` and the mappings `PUT`, the two calls that create objects, so retries are safe.
 * Use `If-Match` on the mappings `PUT` with the revision you read, so a concurrent edit made in the app fails with `412 revision_mismatch` instead of being overwritten.
 * Prefer `remote_id` over names when referencing bases, tables, and fields. Names are not unique and can be renamed.
 * Don't ask the user to paste an app's credentials into the conversation unless they offer — create that side without `auth` and hand over the connect link.
