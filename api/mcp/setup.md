@@ -65,7 +65,7 @@ Add the server to `~/.cursor/mcp.json`, or to `.cursor/mcp.json` inside a projec
 }
 ```
 
-Reference: [Model Context Protocol](https://cursor.com/docs/mcp) in the Cursor docs.
+Reference: [Whalesync](https://cursor.directory/plugins/whalesync) in the Cursor directory.
 
 ## VS Code
 
