@@ -15,6 +15,8 @@ To connect Salesforce to Whalesync, you will need to authenticate using your Sal
 
 When you set up a new Salesforce connection, you will be prompted to log in to your Salesforce account. After logging in, Salesforce will ask you to grant Whalesync permission to access your data. The data that Whalesync can access is determined by the permissions of the Salesforce user who authorizes the connection. We recommend using a Salesforce account with administrative privileges to ensure Whalesync has access to all the objects and fields you intend to sync.
 
+To connect to a Salesforce sandbox instead of your production org, check the "Use sandbox" box when authenticating.
+
 ### Syncing Data
 
 #### Salesforce Views
