@@ -30,7 +30,9 @@ Reference: [Connect Claude Code to tools via MCP](https://code.claude.com/docs/e
 
 ## ChatGPT
 
-Create a connector and paste the server URL. Custom MCP connectors in ChatGPT require developer mode, which is not available on every plan. OpenAI's guide: [Developer mode and MCP apps in ChatGPT](https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt).
+Whalesync is in the ChatGPT app directory: open [the Whalesync app in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a8db5955114819183be4fea4322f628) and click **Connect**. ChatGPT opens a browser sign-in to Whalesync on first use.
+
+If your workspace admin restricts apps, you can still add a custom connector with the server URL `https://api.whalesync.com/mcp`. Custom MCP connectors in ChatGPT require developer mode, which is not available on every plan. OpenAI's guide: [Developer mode and MCP apps in ChatGPT](https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt).
 
 ## Codex
 
