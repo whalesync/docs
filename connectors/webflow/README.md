@@ -23,7 +23,6 @@ Whalesync can sync several types of data from Webflow:
 
 * **CMS Data**: Sync items from your Webflow CMS Collections.
 * **Users**: If you use Webflow Memberships, you can sync your user accounts.
-* **Form Submissions**: Data from your Webflow forms can be synced to other tools for analysis or processing.
 
 A special feature of the Webflow connector is the **"Webflow Status"** field. When you map a Webflow table, Whalesync creates this field. It lets you control whether a CMS item is "Published", "Draft", or "Archived".
 
