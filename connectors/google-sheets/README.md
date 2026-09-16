@@ -31,6 +31,8 @@ Whalesync uses the name of a sheet (i.e. a tab in a workbook) for syncing. Avoid
 
 Whalesync uses the first row to define the fields for syncing. By default, Whalesync freezes the first row to preserve this mapping.
 
+The first row must be a single header row: one row of column names with no merged cells. Whalesync can't set up a sheet that has a merged title banner across the top or a header that spans two rows. If your sheet has one, unmerge those cells or move the title to its own tab before you map the sheet. Whalesync will also freeze row 1 during setup, so any existing frozen rows are reduced to one.
+
 Don't delete or move the first row. Altering it will cause sync problems because Whalesync uses it to map your data. After the initial sync, you're free to reorder rows or columns—just keep the first row unchanged.
 
 **Columns**
