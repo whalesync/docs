@@ -168,6 +168,7 @@
   * [How to change your sign-in](resources/support/how-to-change-your-sign-in.md)
   * [How to change your email](resources/support/how-to-change-your-email.md)
   * [How to add additional email addresses](resources/support/how-to-add-additional-email-addresses.md)
+  * [How to delete your account](resources/support/how-to-delete-your-account.md)
   * [How to update your tax ID number](resources/support/how-to-update-your-tax-id-number.md)
   * [How to create a slug field in Airtable](resources/support/how-to-create-a-slug-field-in-airtable.md)
   * [Known issues](resources/support/known-issues.md)
