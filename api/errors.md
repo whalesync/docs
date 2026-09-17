@@ -118,7 +118,7 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `missing_auth`
 
-`400` · An API-key side sent `base` without `auth`. On an API-key side the two travel together: send both, or omit both and a person connects it in the browser, picking the base there. Send both and the side is built and its credentials validated live; omit both and the side comes back `null` with a `user_authorization` pending action, exactly like an OAuth side. (This also fires when a PATCH changes a side's `connector` without supplying the full `auth` and `base` the new connector needs.) Field ids for `auth` come from `GET /sync/connectors`; send them exactly as given (they're the connector's own, for example `connectionString`).
+`400` · An API-key side sent `base` without `auth`. Airtable behaves as an API-key side here. On an API-key side the two travel together: send both, or omit both and a person connects it in the browser, picking the base there. Send both and the side is built and its credentials validated live; omit both and the side comes back `null` with a `user_authorization` pending action, exactly like an OAuth side. (This also fires when a PATCH changes a side's `connector` without supplying the full `auth` and `base` the new connector needs.) Field ids for `auth` come from `GET /sync/connectors`; send them exactly as given (they're the connector's own, for example `connectionString`).
 
 ### `missing_base`
 
@@ -126,15 +126,15 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `auth_not_supported`
 
-`400` · This side's app signs in through a browser, so it takes no `auth`. Send only `{"connector": "…"}` for it. The sync comes back with that side `null` and a pending action linking a person to the step that connects it, where they also choose its base. Deferring a side to a person this way now works for every connector, not only browser sign-in apps: an API-key side declared by connector alone is deferred the same way (a choice there, rather than the only option — see `missing_auth`).
+`400` · This side's app signs in through a browser, so it takes no `auth`. Send only `{"connector": "…"}` for it. The sync comes back with that side `null` and a pending action linking a person to the step that connects it, where they also choose its base. Deferring a side to a person this way now works for every connector, not only browser sign-in apps: an API-key side declared by connector alone is deferred the same way (a choice there, rather than the only option — see `missing_auth`). Airtable is not one of these; it takes `auth` inline like an API-key connector.
 
 ### `base_not_supported`
 
-`400` · Same as `auth_not_supported`: a browser sign-in side takes no `base` either. The person who connects the app picks its base.
+`400` · Same as `auth_not_supported`: a browser sign-in side takes no `base` either. The person who connects the app picks its base. Airtable is not one of these; it takes `auth` inline like an API-key connector.
 
 ### `oauth_connector_not_supported`
 
-`400` · Credentials for a browser sign-in app can't be sent over the API, so they can't be set or rotated here. This does **not** mean such syncs must be built in the app: creating one works, per `auth_not_supported` above. Reconnecting an existing one is done by a person in Whalesync.
+`400` · Credentials for a browser sign-in app can't be sent over the API, so they can't be set or rotated here. This does **not** mean such syncs must be built in the app: creating one works, per `auth_not_supported` above. Reconnecting an existing one is done by a person in Whalesync. Airtable is not one of these; it takes `auth` inline like an API-key connector.
 
 ### `invalid_auth`
 

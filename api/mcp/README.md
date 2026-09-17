@@ -30,7 +30,7 @@ Every tool name starts with `sync_` (`sync_list`, `sync_create`, `sync_get_statu
 
 By design, there are a few steps that are always done by a person in the app. Your agent will send you a link to complete them:
 
-* **Connecting an app that signs in with OAuth.** Apps like Airtable, HubSpot, and Webflow are connected by a person in the browser. The agent sends you a connect link; you sign in and pick the base. Credentials never pass through the agent.
+* **Connecting an app that signs in with OAuth.** Apps like Salesforce, HubSpot, and Webflow are connected by a person in the browser. The agent sends you a connect link; you sign in and pick the base. Credentials never pass through the agent. Airtable can also be connected with a personal access token passed as `auth`, when the person has already handed one to the agent.
 * **Starting a new sync.** A person needs to review and approve a sync in the app before it can be run: the first time, and after a sync has been edited. The agent builds the draft and sends you its review link.
 * **Approving a delete.** On a sync that holds deletes for review, a record that goes missing on one side waits for you instead of being deleted on the other. The agent can list what's waiting and send you the review link, but approving or ignoring a delete is irreversible, so you make that call in the app.
 
