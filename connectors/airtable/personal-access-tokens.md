@@ -44,7 +44,10 @@ If you expect to add bases later, give the token access to the whole workspace.
 ## Paste the token into Whalesync
 
 1. In the connect step, choose **Use a personal access token instead**.
-2. Paste the token.
+
+<figure><img src="../../.gitbook/assets/airtable-connect-use-personal-access-token.png" alt="The Connect with Airtable dialog, with the personal access token link below the sign-in prompt"><figcaption></figcaption></figure>
+
+2. Paste the token and click **Authorize**.
 3. Pick the base to sync.
 
 A connection keeps its method. To switch between token and sign-in, create a new connection.
