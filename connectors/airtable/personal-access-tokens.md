@@ -58,7 +58,7 @@ A connection keeps its method. To switch between token and sign-in, create a new
 | --- | --- |
 | Airtable did not accept this personal access token | The token was copied wrong or revoked. Copy it again, or create a new one. |
 | This token is missing a scope Whalesync needs | Create a new token with all seven scopes above. Scopes can't be added to an existing token. |
-| This token does not have access to a base this connection syncs (base app…) | The message ends with the id of the missing base. In Airtable, edit the token and add that base under **Access**. |
+| This token does not have access to a base this connection syncs | In Airtable, edit the token and add the missing base under **Access**. |
 
 ## Revoking the token
 
