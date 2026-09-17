@@ -110,13 +110,24 @@ GET /sync/connectors          All connectors: type slug, auth method, credential
 
 `GET /sync/connectors` tells you how each connector authenticates: `"auth": {"method": "oauth"}` or `"auth": {"method": "api_key", "fields": [{"id": "connectionString", "label": "Postgres connection string", …}]}`. Each field's `id` is the key to send under a side's `auth`; send it exactly as given. Connectors your plan doesn't include are still listed, annotated with `"available": false` and the required plan.
 
+`auth` also carries an `alternate`: `null`, or a second way to authenticate, `{"method": "api_key", "fields": [...]}`. When present, a side for that connector may be created with those fields as its `auth` plus a `base`, exactly like an API-key connector, and a PATCH of its `auth` rotates the token. Airtable is the first connector with one: its default is a browser sign-in, and its alternate is a [personal access token](https://docs.whalesync.com/connectors/airtable/personal-access-tokens).
+
+```json
+{"type": "airtable",
+ "auth": {"method": "oauth",
+          "alternate": {"method": "api_key", "fields": [{"id": "…", "label": "Airtable personal access token", …}]}},
+ …}
+```
+
+A side keeps the method it was created with. A side connected by signing in can't be switched to a token through the API; create a new side instead.
+
 ## Credentials
 
 Each sync side holds its own credentials: inline `auth` for API-key connectors, given when the sync is created, or a browser sign-in for OAuth connectors, done by a human in Whalesync. **Credentials are scoped to their sync.** There are no connection endpoints, nothing to reuse across syncs, and nothing to clean up.
 
 * Anything the API exposes about a credential (auth status, error codes) appears nested on the side object in sync responses, for example `"left": {"auth_status": "error", "auth_error": "invalid_credentials", …}`.
 * A broken credential also opens an issue (raising the sync's `open_issues` count) whose `remediation` explains how to fix it.
-* To fix or rotate an **API-key** credential, PATCH the side with a new `auth`, same shape as at creation: `PATCH /sync/syncs/{sync_id} {"right": {"auth": {"connectionString": "…"}}}`.
+* To fix or rotate an **API-key** credential, PATCH the side with a new `auth`, same shape as at creation: `PATCH /sync/syncs/{sync_id} {"right": {"auth": {"connectionString": "…"}}}`. This includes a side created with a connector's `alternate` API-key method, such as an Airtable personal access token.
 * To finish an **API-key** side that was deferred at creation (declared by connector alone, still `null`), PATCH it with `connector`, `auth`, and `base` together while the sync is a `draft`. This fills the unconnected side over the API instead of waiting for a person — the alternative to relaying its connect link. OAuth sides can't be filled this way; they are always connected in the browser.
 * **OAuth** credentials can only be reconnected in the Whalesync app; the issue's `remediation` sends your user there.
 * To see which remote bases or workspaces a side's credentials can reach (for example after an ambiguous `base` name):
@@ -156,7 +167,7 @@ An **API-key** side takes a `connector` and, optionally, `auth` (inline credenti
 
 `base` is the ID of the base/workspace/schema **in the connected app**: an Airtable `app…` ID, a Postgres schema name, and so on. An exact display name is accepted as a fallback when it's unambiguous. It resolves during the create itself: if it can't be found (or matches more than one base) the create fails with `base_not_found` / `base_ambiguous`, and the error's `details.bases` lists what the credentials can reach. Fix the request and retry.
 
-An **OAuth** side takes only its `connector`: no `auth`, no `base`. Its browser sign-in requires a human, so the API leaves that side unbuilt. It comes back `null` and the sync carries a `user_authorization` pending action naming the app you asked for. Relay it to your user; the link opens that app's sign-in directly, they pick the base, and you poll the sync until the side appears.
+An **OAuth** side takes only its `connector`: no `auth`, no `base`. Its browser sign-in requires a human, so the API leaves that side unbuilt. It comes back `null` and the sync carries a `user_authorization` pending action naming the app you asked for. Relay it to your user; the link opens that app's sign-in directly, they pick the base, and you poll the sync until the side appears. The exception is a connector whose `auth` lists an `alternate` API-key method (see [Connectors](#connectors)): send that method's fields as `auth` with a `base`, and the side is built like an API-key side, with no sign-in.
 
 * That page requires a normal Whalesync login as the account's owner. It is not a capability link, so it can't be used to attach someone else's account to your sync.
 * Until both sides exist, mappings, schema, and activate calls answer `409 requires_action` (`auth_required`) carrying the same action.

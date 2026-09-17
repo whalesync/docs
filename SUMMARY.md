@@ -25,6 +25,7 @@
 * [Airtable](connectors/airtable/README.md)
   * [Airtable view sync](connectors/airtable/airtable-view-sync.md)
   * [Airtable API quota](connectors/airtable/airtable-api-quota.md)
+  * [Connect with a personal access token](connectors/airtable/personal-access-tokens.md)
 * [Attio](connectors/attio/README.md)
   * [Attio lists](connectors/attio/attio-lists.md)
   * [Attio custom objects](connectors/attio/attio-custom-objects.md)

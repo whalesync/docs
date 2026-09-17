@@ -22,6 +22,12 @@ When you connect, Airtable will ask you to authorize Whalesync to perform specif
 
 You will need to grant access to the specific Bases you want to sync with Whalesync.
 
+If you run many syncs and hit Airtable's limit on authorizations, prefer not to sign in, or are connecting Airtable through the API or MCP server, you can use a personal access token instead:
+
+{% content-ref url="personal-access-tokens.md" %}
+[personal-access-tokens.md](personal-access-tokens.md)
+{% endcontent-ref %}
+
 ### Syncing Data
 
 #### Bases and Tables
