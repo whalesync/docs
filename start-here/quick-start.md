@@ -42,6 +42,10 @@ After mapping a table, you can map the specific fields you want to sync and choo
 Field names do not have to match, but field _types_ do need to be compatible.
 {% endhint %}
 
+{% hint style="success" %}
+Recommended: map each app's built-in "\<App> Record ID" field into a text field on the other side. See [store-record-ids-on-both-sides.md](../features/store-record-ids-on-both-sides.md "mention").
+{% endhint %}
+
 ## Step 5: Activate sync
 
 <figure><img src="../.gitbook/assets/activate sync.gif" alt=""><figcaption></figcaption></figure>

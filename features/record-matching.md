@@ -28,7 +28,9 @@ Sometimes matched records do not have the exact same data in every field. In the
 
 ### Advanced settings
 
-We strongly suggest matching with unique fields (like IDs) wherever possible. If you match on a non-unique, Whalesync will alert you to any records that cannot be matched because they are not unique.
+We strongly suggest matching with unique fields (like IDs) wherever possible. If each app stores the other app's record ID in a text field, you can match on that field and get an exact match for every record. See [store-record-ids-on-both-sides.md](store-record-ids-on-both-sides.md "mention").
+
+If you match on a non-unique field, Whalesync will alert you to any records that cannot be matched because they are not unique.
 
 <figure><img src="../.gitbook/assets/record matching advanced record matching.png" alt=""><figcaption><p>Example where two records in Airtable have the same value in the "Email" field so they cannot be matched</p></figcaption></figure>
 

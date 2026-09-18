@@ -123,6 +123,7 @@
 * [Issues](features/issues.md)
 * [Operations](features/operations.md)
 * [Record matching](features/record-matching.md)
+* [Store record IDs on both sides](features/store-record-ids-on-both-sides.md)
 * [Filters](features/filters.md)
 * [Auto-create tables](features/auto-create-tables.md)
 * [Additional features](features/additional-features/README.md)

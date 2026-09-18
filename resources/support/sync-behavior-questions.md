@@ -25,3 +25,9 @@ For an existing synced table, let's say you:
 Whalesync will consider the field mapping to be brand new and the previous history of the mapping will be lost. In this case, when adding the field mapping back, Whalesync will show the field initialization modal again (see above: [#if-i-add-a-field-mapping-to-an-existing-synced-table-what-happens](sync-behavior-questions.md#if-i-add-a-field-mapping-to-an-existing-synced-table-what-happens "mention")).
 
 When sync is activated, every record in the destination table will be updated again. In the above example, if "My New Field" on the Airtable side is picked, every record in that table in Webflow will get updated with data from "My New Field" from Airtable.
+
+### If I rebuild or recreate a sync, how do I keep existing records paired?
+
+When you create a new sync over tables that already have data on both sides, Whalesync runs [record-matching.md](../../features/record-matching.md "mention") during the initial sync. Matching on a unique field avoids duplicates.
+
+The most reliable field to match on is a stored record ID. If each app holds the other app's Record ID in a text field, you can match on that field and every existing pair is re-matched exactly. See [store-record-ids-on-both-sides.md](../../features/store-record-ids-on-both-sides.md "mention").

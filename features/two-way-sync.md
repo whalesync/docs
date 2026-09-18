@@ -26,6 +26,8 @@ There are certain field types you cannot sync data into. For example, a formula 
 
 If you map a read-only field and choose two-way sync, that read-only field will be one-way while the rest of your fields remain two-way.
 
+The built-in "\<App> Record ID" field is a read-only field that is worth mapping. Each app's Record ID flows one-way into a text field on the other side, and the rest of the table stays two-way. See [store-record-ids-on-both-sides.md](store-record-ids-on-both-sides.md "mention").
+
 | Example read-only field types |
 | ----------------------------- |
 | Formula                       |
