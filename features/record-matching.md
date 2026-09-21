@@ -27,9 +27,7 @@ If at least one table has records in both apps, the page asks "Do some records a
 
 This is one decision for the whole sync. You can still treat a single table's records as separate later, in the matching results.
 
-[IMAGE: activate-decision]
-
-<!-- Alt: The Activate step asks whether records already exist in both apps before matching. -->
+<figure><img src="../.gitbook/assets/activate-decision.png" alt="The Activate step asks whether records already exist in both apps before matching."><figcaption><p>The Activate step asks whether records already exist in both apps before matching</p></figcaption></figure>
 
 The Activate step also appears whenever a sync needs an initial sync again, such as after you add a table to a paused sync.
 
@@ -41,9 +39,7 @@ Tables and field mappings are locked during the scan. Changing them discards the
 
 If reading fails, the page says so and offers **Retry** or **Skip matching**.
 
-[IMAGE: activate-scanning]
-
-<!-- Alt: Whalesync reads every record from both apps before matching. -->
+<figure><img src="../.gitbook/assets/activate-scanning.png" alt="Whalesync reads every record from both apps before matching."><figcaption><p>Whalesync reads every record from both apps, table by table, before matching</p></figcaption></figure>
 
 ### Choosing a match field
 
@@ -51,9 +47,7 @@ Once your records are read, the **Matched records** panel shows one card per tab
 
 Choosing a field runs matching for that table right away, and only that table. Results appear in the card within seconds. Large tables show "Still matching — this can take a while for large tables."
 
-[IMAGE: activate-pick-field]
-
-<!-- Alt: Choosing the field Whalesync uses to identify matching records. -->
+<figure><img src="../.gitbook/assets/activate-pick-field.png" alt="Choosing the field Whalesync uses to identify matching records."><figcaption><p>A table card before a match field is chosen</p></figcaption></figure>
 
 A good match field is unique within each app and already identical on both sides. Matching is exact:
 
@@ -69,33 +63,29 @@ Below a divider, the picker also offers **Treat all records as separate** for th
 
 ### Reading the results
 
-Each card's header gives the verdict: "All 120 matched", "2 matched · 17 to create", or "No records matched". Below the picker is a table with the same three rows every time.
+The card header gives the verdict at a glance: how many records matched, in green, and how many will be created, in orange. A table that matched cleanly shows only the matched count. Below the picker, the same three rows appear every time.
 
-| Row                     | What happens on activation                                                                                                   |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| N matched               | The records are linked. Whalesync treats each pair as one record from then on.                                                 |
-| N only in \[left app]   | The records are created in the other app. On a one-way sync that flows the other way, the row says "Won't be created" instead. |
-| N only in \[right app]  | The same, for the other side.                                                                                                  |
+| Row                    | What happens on activation                                                                                                       |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| N matched              | "Will be linked". Whalesync treats each pair as one record from then on.                                                           |
+| N only in \[first app]  | "Will be created in \[other app]". On a one-way sync that flows the other way, the row says "Won't be created" instead.              |
+| N only in \[other app]  | The same, for the other side.                                                                                                      |
 
-Each non-empty row has **Show samples**, which lists up to ten records with the match-field value and the record ID on each side. Empty values appear as `<empty>`.
+Each non-empty row has **Show samples**, which lists up to ten of its records with the match-field value and the record ID, and says how many of the total are shown. Empty values appear as `<empty>`.
 
-A record whose match value is shared with another record gets a stack icon and a note such as "8 records have duplicate values for email. Records can only be matched if they have a unique value. Choose a different field or require a second field to match." Those records count as "only in" their app and will be created, not linked.
+A record whose match value is shared with another record gets a stack icon and a note: "2 records have duplicate values for title. Records can only be matched if they have a unique value. Choose a different field or require a second field to match." Those records count as "only in" their app and will be created, not linked.
 
 "No records matched", or a "to create" number larger than you expect, means the field you chose does not identify your records well. Pick a different field rather than activating.
 
-[IMAGE: activate-match-results]
-
-<!-- Alt: Matching results for one table, with sample records. -->
+<figure><img src="../.gitbook/assets/activate-match-results.png" alt="Matching results for one table, with sample records."><figcaption><p>Matching results for Blog Posts. The two unmatched Airtable records share a title, so they cannot be matched</p></figcaption></figure>
 
 ### Requiring a second field
 
-If the field you chose is not unique, open the **⋯** menu next to the picker and choose **Require a second field to match**. A second picker appears, joined to the first by an **And** badge.
+If the field you chose is not unique, open the **⋯** menu next to the picker and choose **Require a second field to match**. A second picker appears, joined to the first by an **AND** badge.
 
 A record then matches only when both fields are equal on both sides. The second field is not a fallback; Whalesync does not try the first field and then the second. Matching re-runs for that table as soon as you choose the second field. Removing the second field returns the table to single-field matching.
 
-[IMAGE: activate-second-field]
-
-<!-- Alt: Requiring two fields to match for records with non-unique values. -->
+<figure><img src="../.gitbook/assets/activate-second-field.png" alt="Requiring two fields to match for records with non-unique values."><figcaption><p>With a second field required, a record matches only when both title and slug are equal</p></figcaption></figure>
 
 ### When matched records disagree
 
@@ -103,9 +93,7 @@ Once a table has at least one match, the card shows a setting: **Where matched r
 
 The setting applies only to matched records, and only to fields other than the match fields, which already agree by definition. On a one-way table there is no choice: the app records flow from always wins, and the row says "this table syncs one way".
 
-[IMAGE: activate-conflict-winner]
-
-<!-- Alt: Choosing which app's values win when matched records disagree. -->
+<figure><img src="../.gitbook/assets/activate-conflict-winner.png" alt="Choosing which app's values win when matched records disagree."><figcaption><p>Airtable values are kept where a matched pair disagrees</p></figcaption></figure>
 
 ### Rescanning and activating
 
