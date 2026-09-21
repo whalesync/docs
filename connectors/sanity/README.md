@@ -73,7 +73,7 @@ Whalesync does not support every Sanity field type yet. If you need one that is 
 Whalesync adds fields that are not part of your Studio schema.
 
 <table><thead><tr><th width="220">Field</th><th>Explanation</th><th width="120">Writable</th></tr></thead><tbody>
-<tr><td>Sanity Record ID</td><td>The document's <code>_id</code>.</td><td>No</td></tr>
+<tr><td>Record ID</td><td>The document's <code>_id</code>. When creating a document from another app, map this field to choose the id; it cannot be changed afterwards.</td><td>Once, on create</td></tr>
 <tr><td>Draft</td><td>True when the document has an unpublished draft (or is only a draft). See <a href="#drafts-and-publishing">Drafts and publishing</a>.</td><td>Yes</td></tr>
 <tr><td>Published</td><td>True when a published version of the document exists.</td><td>No</td></tr>
 <tr><td>Created at</td><td>The document's <code>_createdAt</code>.</td><td>No</td></tr>
