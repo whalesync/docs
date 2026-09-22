@@ -29,5 +29,6 @@ A connection keeps its method. To switch between token and sign-in, create a new
 | Message | What to do |
 | --- | --- |
 | Asana did not accept this personal access token | The token was copied wrong or revoked. Copy it again, or create a new one. |
+| This personal access token cannot reach an Asana workspace this connection already syncs | The token belongs to a user who is not in a workspace the connection syncs. Use a token for the same Asana account. |
 | Asana no longer accepts the credentials Whalesync is using | The sign-in was revoked or the token deleted. Reconnect Asana. |
 | Whalesync doesn't have permission to access this in Asana | The connected user lost access to the project. Add them back, or reconnect as someone who has access. |
