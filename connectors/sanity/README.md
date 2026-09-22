@@ -59,9 +59,9 @@ Whalesync does not support every Sanity field type yet. If you need one that is 
 <tr><td>Array of strings</td><td>✅ Supported</td><td></td></tr>
 <tr><td>Object</td><td>✅ Supported</td><td>Flattened into one field per sub-field, up to three levels deep. Deeper objects are synced as JSON, read only.</td></tr>
 <tr><td>Reference (several target types)</td><td>➡️ Supported (1-Way)</td><td>Read only. Whalesync links point at one table, so the target document id is synced as text.</td></tr>
-<tr><td>Portable Text (block content)</td><td>➡️ Supported (1-Way)</td><td>Read only, converted to HTML. Custom blocks inside the text, such as images and code, are left out.</td></tr>
-<tr><td>Image</td><td>➡️ Supported (1-Way)</td><td>Read only, synced as the image's CDN URL.</td></tr>
-<tr><td>File</td><td>➡️ Supported (1-Way)</td><td>Read only, synced as the file's CDN URL.</td></tr>
+<tr><td>Portable Text (block content)</td><td>✅ Supported</td><td>Synced as HTML: headings, paragraphs, quotes, bold, italic, underline, strikethrough, inline code, links, nested lists, and line breaks. Images and code blocks sync when your schema allows them in the field; images pasted in from another app are uploaded to Sanity. Other custom blocks are not carried across an edit from the other app.</td></tr>
+<tr><td>Image</td><td>✅ Supported</td><td>Read as the image's CDN URL. An image from another app is uploaded to your dataset; the same file is only stored once.</td></tr>
+<tr><td>File</td><td>✅ Supported</td><td>Read as the file's CDN URL. A file from another app is uploaded to your dataset.</td></tr>
 <tr><td>Geopoint</td><td>✅ Supported (as JSON)</td><td>Read only.</td></tr>
 <tr><td>Array of objects or images</td><td>✅ Supported (as JSON)</td><td>Read only.</td></tr>
 <tr><td>Fields marked <code>readOnly</code> in the Studio</td><td>➡️ Supported (1-Way)</td><td>Read only in Whalesync too.</td></tr>
@@ -104,4 +104,4 @@ In Sanity, a document with unpublished edits exists twice: the published version
 * **Sanity refuses to delete a referenced document.** If another document holds a strong reference to it, Sanity blocks the delete until the reference is removed or made weak.
 * **Content Releases are not synced.** Documents that only exist inside a release are ignored.
 * **Studio autosaves as you type,** so a document you are editing in the Studio updates its draft many times. Whalesync syncs the latest state.
-* **Images and files can be read but not written yet.** Uploading assets from another app into Sanity is not supported in this version.
+* **Uploads are capped at 20 MB per file.** Larger files fail with a sync issue that names the file.
