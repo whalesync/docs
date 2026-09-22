@@ -62,6 +62,8 @@
   * [Terminology](connectors/postgres/terminology.md)
   * [Multiple foreign keys in a single field](connectors/postgres/multiple-foreign-keys-in-a-single-field.md)
   * [How to sync Postgres views](connectors/postgres/how-to-sync-postgres-views.md)
+* [Sanity](connectors/sanity/README.md)
+  * [Authorize Sanity](connectors/sanity/authorize-sanity.md)
 * [Salesforce](connectors/salesforce/README.md)
   * [Salesforce view sync](connectors/salesforce/salesforce-view-sync.md)
 * [Stripe](connectors/stripe/README.md)
