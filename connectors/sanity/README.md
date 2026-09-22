@@ -80,6 +80,12 @@ Whalesync adds fields that are not part of your Studio schema.
 <tr><td>Updated at</td><td>The document's <code>_updatedAt</code>. When a draft exists, this is the draft's timestamp.</td><td>No</td></tr>
 </tbody></table>
 
+## Real-time updates
+
+Whalesync registers a webhook in your Sanity project (named "Whalesync", visible under API → Webhooks in sanity.io/manage) so a change to a document in the Studio reaches your other apps within seconds instead of waiting for the next poll. It covers published documents and drafts. Deleting that webhook in Sanity turns real-time updates off until Whalesync re-registers it; turning the sync off removes it.
+
+Deploying a new Studio schema does not trigger the webhook, so after `npx sanity schema deploy` refresh the schema in Whalesync.
+
 ## Drafts and publishing
 
 In Sanity, a document with unpublished edits exists twice: the published version and a draft. Whalesync treats the pair as one record.
