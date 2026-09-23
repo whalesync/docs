@@ -31,6 +31,8 @@
 * [Attio](connectors/attio/README.md)
   * [Attio lists](connectors/attio/attio-lists.md)
   * [Attio custom objects](connectors/attio/attio-custom-objects.md)
+  * [Attio tasks](connectors/attio/attio-tasks.md)
+  * [Attio notes](connectors/attio/attio-notes.md)
 * [Google Sheets](connectors/google-sheets/README.md)
   * [Formatting columns](connectors/google-sheets/formatting-columns.md)
   * [Foreign keys](connectors/google-sheets/foreign-keys.md)
