@@ -6,8 +6,8 @@ Either way, a connection reaches one Klaviyo account.
 
 ## Sign in
 
-1. In Whalesync, choose Klaviyo and click **Sign in with Klaviyo**.
-2. Approve the access Whalesync asks for: read access to the account, read and write access to profiles and lists, and read access to segments.
+1. In Whalesync, choose Klaviyo and click **Authorize**.
+2. In Klaviyo, approve the access Whalesync asks for: read access to the account, read and write access to profiles and lists, and read access to segments.
 3. Pick the account to sync.
 
 The sign-in lasts until the Whalesync app is removed from the Klaviyo account. Klaviyo also ends a sign-in that goes unused for 90 days.
@@ -19,7 +19,7 @@ The sign-in lasts until the Whalesync app is removed from the Klaviyo account. K
    * A full access key.
    * A custom key with read access to **Accounts** and **Segments** and full access to **Profiles** and **Lists**.
 3. Create the key and copy it. It starts with `pk_`. Klaviyo shows it only once.
-4. In the connect step in Whalesync, choose to use a private API key instead, paste the key, and click **Authorize**.
+4. In Whalesync, choose Klaviyo, click **Use a private api key instead**, paste the key, and click **Authorize**.
 5. Pick the account to sync.
 
 A read-only key is not enough: Klaviyo refuses every write with a permission error. Reauthorizing with a key from a different Klaviyo account than the one the connection already syncs is refused.
