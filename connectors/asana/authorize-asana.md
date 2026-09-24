@@ -6,7 +6,7 @@ Either way, Whalesync acts as the Asana user who connected: it sees that user's 
 
 ## Sign in
 
-1. In Whalesync, choose Asana and click **Sign in with Asana**.
+1. In Whalesync, choose Asana and click **Authorize**.
 2. Pick the Asana account to use and click **Allow**. Whalesync asks for full access to that account, which is what Asana requires to list a project's sections.
 3. Pick the workspace to sync.
 
