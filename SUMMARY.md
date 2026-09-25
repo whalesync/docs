@@ -45,6 +45,8 @@
   * [Merging records](connectors/hubspot/merging-records.md)
 * [Klaviyo](connectors/klaviyo/README.md)
   * [Authorize Klaviyo](connectors/klaviyo/authorize-klaviyo.md)
+* [Mailchimp](connectors/mailchimp/README.md)
+  * [Authorize Mailchimp](connectors/mailchimp/authorize-mailchimp.md)
 * [Memberstack](connectors/memberstack/README.md)
   * [Authorize Memberstack](connectors/memberstack/authorize-memberstack.md)
   * [Memberstack custom fields](connectors/memberstack/memberstack-custom-fields.md)
