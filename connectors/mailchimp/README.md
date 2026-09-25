@@ -22,11 +22,26 @@ The Mailchimp connector is available on Whalesync's Starter plan and up.
 
 ### Connecting to Mailchimp
 
-Whalesync connects by signing in to Mailchimp, or with an API key you paste in. See [Authorize Mailchimp](authorize-mailchimp.md) for both.
-
-1. In Whalesync, choose Mailchimp and sign in, or paste an API key.
+1. In Whalesync, choose Mailchimp and click **Authorize**, then sign in to Mailchimp.
 2. Pick the audience to sync. The base is named after the audience.
 3. Pick the tables to sync.
+
+#### Using an API key
+
+{% hint style="info" %}
+You do not need an API key. Clicking **Authorize** and signing in to Mailchimp is enough. An API key is only an alternative for people who prefer not to sign in.
+{% endhint %}
+
+To find an API key in Mailchimp:
+
+1. Click your profile icon and choose **Profile**.
+2. Open the **Extras** menu and choose **API keys**.
+3. Under **Your API Keys**, click **Create A Key**, name it, for example "Whalesync", and click **Generate Key**.
+4. Click **Copy Key to Clipboard**. Mailchimp shows the key only once.
+
+Then in Whalesync, choose Mailchimp, click **Use a api key instead**, paste the key, and click **Authorize**.
+
+Mailchimp API keys created after June 22, 2026 expire a year after they are created. When a key expires, create a new one and reconnect Mailchimp with it.
 
 ### Syncing Data
 
@@ -157,7 +172,7 @@ A survey created after the sync is set up appears as a new table once you refres
 * **Emoji in text fields are stored as `?`.** Mailchimp replaces them, and the `?` syncs back to your other app.
 * **Tags, segments, surveys, campaigns, and archived contacts change on the regular sync only.** Mailchimp sends no webhook for them.
 * **Mailchimp limits merge fields per audience.** The limit depends on your Mailchimp plan.
-* **API keys created after June 22, 2026 expire after a year.** See [Authorize Mailchimp](authorize-mailchimp.md).
+* **API keys created after June 22, 2026 expire after a year.** See [Using an API key](#using-an-api-key).
 
 ## Troubleshooting
 
