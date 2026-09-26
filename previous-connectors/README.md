@@ -31,7 +31,6 @@ Just reach out to [support@whalesync.com](mailto:support@whalesync.com) and we'l
 # Previous connectors
 
 - [Bubble](bubble/)
-- [Close](close.md)
 - [Copper](copper.md)
 - [MS Dynamics CRM](ms-dynamics-crm.md)
 - [Outreach](outreach.md)
