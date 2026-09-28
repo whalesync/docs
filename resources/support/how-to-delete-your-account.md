@@ -1,7 +1,7 @@
 ---
 description: >-
-  How to permanently delete your Whalesync account from Settings and what happens
-  when you do
+  How to permanently delete your Whalesync account from Settings and what
+  happens when you do
 ---
 
 # How to delete your account
@@ -20,11 +20,30 @@ Cancel your subscription on the [Billing tab](https://app.whalesync.com/settings
 
 ## Delete your account
 
-1. Go to [Settings > Account](https://app.whalesync.com/settings/profile)
-2. Scroll to the _Delete account_ card
-3. Click _Delete account_
-4. Read what the dialog tells you, then type your account email to confirm
-5. Click _Delete account_
+1.  Go to [Settings > Account](https://app.whalesync.com/settings/profile)<br>
+
+    <figure><img src="../../.gitbook/assets/CleanShot 2026-09-29 at 01.34.28.png" alt=""><figcaption></figcaption></figure>
+
+
+2.  Scroll to the _Delete account_ card<br>
+
+    <figure><img src="../../.gitbook/assets/CleanShot 2026-09-29 at 01.34.52.png" alt=""><figcaption></figcaption></figure>
+
+
+3.  Click _Delete account_<br>
+
+    <figure><img src="../../.gitbook/assets/CleanShot 2026-09-29 at 01.35.09.png" alt=""><figcaption></figcaption></figure>
+
+
+4.  Read what the dialog tells you, then type your account email to confirm\
+    <br>
+
+    <figure><img src="../../.gitbook/assets/CleanShot 2026-09-29 at 01.35.32.png" alt=""><figcaption></figcaption></figure>
+
+
+5.  Click _Delete account_<br>
+
+    <figure><img src="../../.gitbook/assets/CleanShot 2026-09-29 at 01.35.51.png" alt=""><figcaption></figcaption></figure>
 
 You'll be signed out right away, and we'll email you a confirmation naming the exact date your data will be deleted.
 
@@ -40,10 +59,10 @@ The dialog and the confirmation email both name your exact deletion date, and so
 
 ## What we don't delete
 
-- **Data in your connected apps.** Records Whalesync wrote into Airtable, Notion, Webflow, or anywhere else stay exactly where they are. We never delete anything from the apps you connected. If you want those records gone, delete them in that app.
-- **Whalesync's access from the app's side.** We destroy our copy of your credentials, but revoking the connection at the source is done in each app's own settings. Look there for connected apps, integrations, or authorized applications.
-- **Your invoices.** Billing records live in Stripe and we keep them, because we're required to retain financial records.
-- **Security logs.** We keep a record of actions taken on the account as a security record.
+* **Data in your connected apps.** Records Whalesync wrote into Airtable, Notion, Webflow, or anywhere else stay exactly where they are. We never delete anything from the apps you connected. If you want those records gone, delete them in that app.
+* **Whalesync's access from the app's side.** We destroy our copy of your credentials, but revoking the connection at the source is done in each app's own settings. Look there for connected apps, integrations, or authorized applications.
+* **Your invoices.** Billing records live in Stripe and we keep them, because we're required to retain financial records.
+* **Security logs.** We keep a record of actions taken on the account as a security record.
 
 ## Need help?
 
