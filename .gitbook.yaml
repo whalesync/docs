@@ -1,3 +1,4 @@
 redirects:
   previous-connectors/close: connectors/close/README.md
   connectors/memberstack/tutorials: connectors/memberstack/README.md
+  previous-connectors/zoho-crm: connectors/zoho-crm.md
