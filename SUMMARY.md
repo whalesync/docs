@@ -107,6 +107,7 @@
   * [Tutorial](connectors/wordpress.org/tutorial.md)
   * [WordPress status field](connectors/wordpress.org/wordpress-status-field.md)
   * [REST API endpoints](connectors/wordpress.org/rest-api-endpoints.md)
+* [Zoho CRM](connectors/zoho-crm.md)
 
 ***
 
@@ -125,7 +126,6 @@
   * [Webflow E-Commerce](previous-connectors/webflow-e-commerce/README.md)
     * [Quick Start Guide: WF E-Comm](previous-connectors/webflow-e-commerce/quick-start-guide-wf-e-comm.md)
     * [How to Create Products & Variants](previous-connectors/webflow-e-commerce/how-to-create-products-and-variants.md)
-  * [Zoho CRM](previous-connectors/zoho-crm.md)
 
 ## Features
 

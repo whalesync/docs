@@ -36,4 +36,3 @@ Just reach out to [support@whalesync.com](mailto:support@whalesync.com) and we'l
 - [Outreach](outreach.md)
 - [Shopify](shopify/)
 - [Webflow E-commerce](webflow-e-commerce/)
-- [Zoho CRM](zoho-crm.md)
