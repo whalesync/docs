@@ -1,5 +1,7 @@
 ---
-description: Details about Whalesync file hosting
+description: >-
+  Whalesync temporarily hosts the files and attachments it syncs. Hosted files
+  are capped at 20 MB, and image formats like WebP are not converted for you.
 ---
 
 # File hosting

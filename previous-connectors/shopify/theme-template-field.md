@@ -1,5 +1,7 @@
 ---
-description: A field that behaves uniquely
+description: >-
+  Whalesync no longer offers Shopify, but existing syncs keep running. Theme
+  Template syncs two-way if your value exactly matches a Shopify theme.
 ---
 
 {% hint style="warning" %}

@@ -1,4 +1,7 @@
 ---
+description: >-
+  Two-way sync Google Sheets with Airtable, Notion, HubSpot, Postgres, and more.
+  Covers connecting, header row rules, formatting, and supported fields.
 cover: ../../.gitbook/assets/gitbook-cover_google-sheets.jpg
 coverY: 0
 ---

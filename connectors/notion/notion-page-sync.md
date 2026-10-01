@@ -1,5 +1,7 @@
 ---
-description: Sync the contents of Notion pages to write blog posts and more
+description: >-
+  Map the Page Content field to sync Notion pages to rich text fields in Webflow
+  and other apps. Covers supported blocks and limits when syncing into Notion.
 ---
 
 # Notion page sync
@@ -8,7 +10,7 @@ description: Sync the contents of Notion pages to write blog posts and more
 
 ### About Notion Page Sync
 
-Notion Page Sync is one of Whalesync's most powerful Notion features. As you might have guessed, it allows you to sync data from Notion pages to rich text fields in other apps!
+Notion Page Sync syncs the content of Notion pages to rich text fields in other apps.
 
 This enables you to write entire blog posts in Notion and sync them instantly to your live blog or site. You can even use Notion AI to write these posts for you.
 
@@ -57,7 +59,7 @@ If syncing Notion pages to the Webflow CMS, **some content may not appear in the
 
 - **200 block limit**: Each Notion page is limited to 200 blocks when syncing into Notion
 - **No style preservation**: Classes and styles are not preserved when syncing into Notion
-  {% endhint %}
+{% endhint %}
 
 <figure><img src="../../.gitbook/assets/CMS vs Site (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -74,5 +76,5 @@ If there are blocks or media formats that you need but do not see listed below, 
 {% hint style="info" %}
 **Captions can be used to add alt text to images**
 
-We support the alt property on the image html tag and use the caption text for its value. We use the embed html tag for Unsplash images (because doesn't work otherwise) and the image tag for all other images.
+We support the alt property on the image html tag and use the caption text for its value. We use the embed html tag for Unsplash images (the image tag doesn't work for them) and the image tag for all other images.
 {% endhint %}

@@ -1,5 +1,8 @@
 ---
-description: Paths, authentication, and conventions for the Whalesync API
+description: >-
+  Whalesync API reference covering the base URL, API-key authentication,
+  pagination, and endpoints for syncs, mappings, schema, records, and
+  monitoring.
 ---
 
 # API reference
@@ -256,7 +259,7 @@ A `PUT` can also fail on a table the connector couldn't prepare for syncing — 
 
 A table pair carries two settings that are configured in the app and returned for reading only. Both are absent when there is nothing to report, and both are ignored on a `PUT`.
 
-* `filter` is the sync filter on the pair. Records that fail it sync in neither direction, and show `is_filtered` on their record status. It is a structured object: `match` (`all` or `any`) over `conditions`, which may nest further groups, plus a `summary` sentence safe to relay to a person. Filters are edited in the app, before the first sync. See [Filters](https://docs.whalesync.com/features/filters).
+* `filter` is the sync filter on the pair. Records that fail it sync in neither direction, and show `is_filtered` on their record status. It is a structured object: `match` (`all` or `any`) over `conditions`, which may nest further groups, plus a `summary` sentence safe to relay to a person. Filters are edited in the app, when you create the table mapping or later by pausing the sync. See [Filters](https://docs.whalesync.com/features/filters).
 * `advanced_settings` lists the pair's advanced settings that are off their default: `delay_before_syncing` (changes wait out a quiet period), `row_level_sync` (only records whose sync-enabled field is true sync out of that table), and `connector_option` (a per-table choice the connector asks for). Each entry names the `side` it's on, its `value`, and a one-sentence `description` safe to relay.
 
 ## Starting and stopping

@@ -1,7 +1,8 @@
 ---
 description: >-
-  How to turn Airtable multi-select fields into multi-reference fields that can
-  be synced with Webflow
+  Video walkthrough for turning an Airtable multi-select field into a
+  multi-reference field, so those values can sync to a Webflow multi-reference
+  field.
 ---
 
 # Multi-select to multi-reference

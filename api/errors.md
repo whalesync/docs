@@ -1,5 +1,7 @@
 ---
-description: Handling failures from the Whalesync API
+description: >-
+  Every error code the Whalesync API returns, with its HTTP status, error type,
+  and how to handle it, plus the issue codes returned when validating mappings.
 ---
 
 # Error reference

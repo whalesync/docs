@@ -1,5 +1,7 @@
 ---
-description: Guide for AI agents building syncs with the Whalesync API
+description: >-
+  Guide for AI agents building syncs with the Whalesync API. Get an API key,
+  create a sync, relay human steps, write mappings, and monitor the sync.
 ---
 
 # Agent quickstart

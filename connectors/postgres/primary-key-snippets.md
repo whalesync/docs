@@ -1,5 +1,7 @@
 ---
-description: Handy snippets to help you set up Postgres to work with Whalesync
+description: >-
+  SQL snippets to create, change, and auto-generate Postgres primary keys with
+  gen_random_uuid() or serial. Whalesync requires a generated primary key.
 ---
 
 # Primary key snippets
@@ -45,7 +47,7 @@ _\*Supabase blocks access to altering a table outside of its UI, thus please use
 Whalesync requires that the primary key is generated (i.e. has an automatic default value). These are a few examples of functions that would generate data for you:
 
 ```
-uuid_genetate_v4()
+uuid_generate_v4()
 ```
 
 ```

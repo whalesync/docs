@@ -1,5 +1,7 @@
 ---
-description: Automatically map tables or fields that share the same name
+description: >-
+  Whalesync automaps fields with exactly the same name in both apps and suggests
+  table mappings when table names match. You can still map fields by hand.
 ---
 
 # Automapping

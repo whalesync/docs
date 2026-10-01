@@ -1,5 +1,7 @@
 ---
-description: Disable sync for specific records
+description: >-
+  Pause syncing for individual records with a checkbox or boolean control field,
+  using the Selective row-level sync setting in a table's Advanced settings.
 ---
 
 # Selective row-level sync
@@ -12,7 +14,7 @@ Selective row-level sync lets you pause syncing for individual records without t
 
 ![Selective Sync Interface](../../.gitbook/assets/selective-sync.png)
 
-1. Edit your Whalesync base
+1. Open your sync
 2. Select the desired table
 3. Open the **Advanced settings** tab
 4. Enable the "Selective row-level sync" toggle for the app you want to control from

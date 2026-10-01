@@ -1,5 +1,7 @@
 ---
-description: A simple guide for creating a "slug" field in Airtable using formulas
+description: >-
+  Create a unique slug field in Airtable for Webflow and other CMS syncs, typed
+  by hand or generated with a recommended formula. Includes a Notion version.
 ---
 
 # How to create a slug field in Airtable

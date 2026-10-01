@@ -1,12 +1,14 @@
 ---
-description: Sync localized Webflow CMS content across every locale on your site
+description: >-
+  Sync localized Webflow CMS content in every locale. Each secondary locale is
+  its own table, such as Blog Posts (FR-FR), and syncs independently.
 ---
 
 # Webflow localization
 
 {% embed url="https://www.loom.com/share/27af9bc5964149f2a26fc6b0f3db78a3" %}
 
-If your Webflow site uses [Webflow Localization](https://webflow.com/localization) to publish CMS content in more than one language, Whalesync can sync each locale.
+If your Webflow site uses [Webflow Localization](https://webflow.com/feature/localize) to publish CMS content in more than one language, Whalesync can sync each locale.
 
 ### How localized collections appear in Whalesync
 
@@ -18,7 +20,7 @@ When your Webflow site has secondary locales, each localized CMS collection show
 Each of these is a regular Whalesync table. You map fields, turn on two-way sync, filter, and otherwise work with a locale table exactly like any other Webflow table: point it at a table in Airtable, Notion, Google Sheets, etc., and it syncs normally.
 
 {% hint style="info" %}
-The locale shown in brackets is Webflow's [BCP-47 locale tag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language), uppercased: `FR-FR` for French (France), `EN-GB` for English (United Kingdom), and so on. This keeps regional variants of the same language unambiguous.
+The locale shown in brackets is Webflow's [BCP-47 locale tag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Language), uppercased: `FR-FR` for French (France), `EN-GB` for English (United Kingdom), and so on. This keeps regional variants of the same language unambiguous.
 {% endhint %}
 
 ### How records are created across locales

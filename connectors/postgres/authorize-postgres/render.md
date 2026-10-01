@@ -1,5 +1,7 @@
 ---
-description: How to find get your Postgres connection URI when using Render
+description: >-
+  Copy the External Database URL from your Render Postgres database's Info page
+  and paste it into Whalesync as your Postgres connection URI.
 ---
 
 # Render

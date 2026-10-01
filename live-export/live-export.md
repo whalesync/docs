@@ -1,5 +1,8 @@
 ---
-description: Keep a live, updated copy of your data in another tool
+description: >-
+  Live Export keeps a read-only copy of your data in Airtable, Notion, or
+  Supabase, refreshed on demand or on a schedule, and creates the tables for
+  you.
 ---
 
 # Live Export
@@ -24,7 +27,7 @@ Unlike a standard Whalesync sync, **Live Export** is one-way and read-only: your
 
 ## Supported apps
 
-**Live Export** supports a different set of services than two-way sync. You can see what's available [here](https://app.whalesync.com/exports/setup/new/connect). We are always adding more services, so [reach out](resources/support/README.md) if there's something you are missing.
+**Live Export** supports a different set of services than two-way sync. You can see what's available [here](https://app.whalesync.com/exports/setup/new/connect). We are always adding more services, so [reach out](../resources/support/README.md) if there's something you are missing.
 
 ## Setting up a Live Export
 

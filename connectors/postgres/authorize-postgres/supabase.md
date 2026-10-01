@@ -1,5 +1,7 @@
 ---
-description: How to authorize Supabase
+description: >-
+  Connect a Supabase database to Whalesync in two steps. Pick Supabase when you
+  add the connection, then authorize Whalesync's access with Supabase OAuth.
 ---
 
 # Supabase

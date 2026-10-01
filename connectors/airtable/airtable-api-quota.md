@@ -1,3 +1,9 @@
+---
+description: >-
+  Airtable's Free and Team plans cap monthly API calls. How Whalesync uses your
+  Airtable API quota, and which Airtable plan to choose for syncing.
+---
+
 # Airtable API quota
 
 Airtable has strict API quota limits on its two lowest plans:

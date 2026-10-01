@@ -1,3 +1,9 @@
+---
+description: >-
+  Find your Memberstack app's secret key to connect Memberstack to Whalesync,
+  and pick the right key for your test or production data.
+---
+
 # Authorize Memberstack
 
 To authorize Memberstack, you just need to grab your App's Secret Key:

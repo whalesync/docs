@@ -1,3 +1,9 @@
+---
+description: >-
+  Fix SSL and self-signed certificate errors when connecting Postgres to
+  Whalesync by adding sslmode=no-verify to your connection string.
+---
+
 # Common errors - Postgres
 
 ### SSL errors while authorizing Postgres (e.g. "self-signed certificate in certificate chain")

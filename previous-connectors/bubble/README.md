@@ -1,4 +1,7 @@
 ---
+description: >-
+  Whalesync no longer offers the Bubble connector, but existing syncs keep
+  running. Notes on Bubble's API pricing, supported fields, and sync behavior.
 cover: ../../.gitbook/assets/gitbook-cover_bubble.jpg
 coverY: 0
 ---
@@ -47,6 +50,6 @@ If you need to rename a table in Bubble, we suggest making sure that every recor
 **The email field for User "things" has a record sync delay if syncing with Airtable**\
 Bubble has a special data table called User that they treat differently than other tables.  Specifically, you need to send it a valid email address. When syncing Bubble with Airtable, this can cause problems since Airtable saves every keystroke.\
 \
-To avoid this issue, Whalesync defaults to a 30-second record sync delay. See [record sync delay](broken-reference) for more details.
+To avoid this issue, Whalesync defaults to a 10-second record sync delay. See [record sync delay](../../features/additional-features/delay-before-syncing.md) for more details.
 {% endhint %}
 

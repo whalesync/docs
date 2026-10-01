@@ -1,5 +1,7 @@
 ---
-description: Step-by-step on how to change the email associated to your account
+description: >-
+  Change your Whalesync account email in Settings: add and verify a new address,
+  set it as your primary email, then optionally remove the old one.
 ---
 
 # How to change your email

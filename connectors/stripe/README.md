@@ -1,4 +1,7 @@
 ---
+description: >-
+  Sync Stripe customers, subscriptions, invoices, products, prices, and more one
+  way into Airtable, Notion, Google Sheets, and other apps.
 cover: ../../.gitbook/assets/gitbook-cover_stripe.jpg
 coverY: 0
 ---

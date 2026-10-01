@@ -1,5 +1,7 @@
 ---
-description: Common error messages in Webflow and how to resolve them
+description: >-
+  Fix Webflow errors in Whalesync, including name and slug ValidationErrors,
+  duplicate slugs, InconsistentPublicationsError, and unpublished CMS changes.
 ---
 
 # Common errors - Webflow
@@ -16,7 +18,7 @@ Certain apps (eg. Webflow) require a value in the "name" field to create records
 
 #### `ValidationError: 'fields.slug' must be of string type`
 
-Certain apps (eg. Webflow) have a required "slug" field. If you map the slug field, you will need to ensure you have valid values in that field. Slugs cannot be empty, have spaces, or contain certain such as periods.
+Certain apps (eg. Webflow) have a required "slug" field. If you map the slug field, you will need to ensure you have valid values in that field. Slugs cannot be empty, have spaces, or contain certain characters, such as periods.
 
 Note - you are not always required to map the slug field. For example, with Webflow, if you do not map the slug field, Webflow will auto-generate slugs for you.
 
@@ -35,7 +37,7 @@ If the above is not the case, it could be an indicator that you have more than o
 <mark style="color:green;">Suggested Action:</mark>
 
 * If you're syncing with Webflow, republish your Webflow site and then retry sync
-* If you're syncing Airtable, we suggest using an Airtable formula to create slugs: [https://docs.whalesync.com/resources/faq](https://docs.whalesync.com/resources/faq)
+* If you're syncing Airtable, we suggest using an Airtable formula to create slugs: [How to create a slug field in Airtable](how-to-create-a-slug-field-in-airtable.md)
 * Alternatively, you can unmap the slug field:
   * 1\) edit your Whalesync base
   * 2\) unmap the slug field

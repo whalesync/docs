@@ -1,7 +1,8 @@
 ---
 description: >-
-  How to create users thru a sync in apps like Memberstack or Webflow
-  Memberships
+  Create Memberstack members through a sync from Airtable or another app. Covers
+  write-once email fields and why these tables default to a 10-second sync
+  delay.
 ---
 
 # Creating users via Whalesync
@@ -10,7 +11,11 @@ description: >-
 
 #### About creating users
 
-Whalesync supports syncing with memberships apps like Memberstack and Webflow Memberships. When syncing with these apps we allow you to create users.
+Whalesync supports syncing with membership apps like Memberstack. When syncing with these apps we allow you to create users.
+
+{% hint style="info" %}
+Webflow Memberships (later User Accounts) was discontinued by Webflow on January 29, 2026, so Webflow users can no longer be created or synced. See [Webflow Memberships sync](../../connectors/webflow/webflow-memberships-sync.md).
+{% endhint %}
 
 For example, you can add a new user in Airtable and have that create a new member in Memberstack (:tada:).
 
@@ -30,10 +35,10 @@ _"Please set the email address back from john2@gmail.com to john@gmail.com"_
 
 Write-once fields can normally cause issues if synced with an app like Airtable since Airtable saves every keystroke. The result can be sending a partial email to Memberstack (e.g. "john@gmai".)
 
-To avoid this issue, we default to a record sync delay of 30 seconds for these types of tables. See the record sync delay page for more details:
+To avoid this issue, we default to a record sync delay of 10 seconds for these types of tables. See the record sync delay page for more details:
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="delay-before-syncing.md" %}
+[delay-before-syncing.md](delay-before-syncing.md)
 {% endcontent-ref %}
 
 

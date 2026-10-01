@@ -1,4 +1,7 @@
 ---
+description: >-
+  Two-way sync Airtable bases with Notion, Webflow, HubSpot, Postgres, and more.
+  Covers connecting, view sync, API quotas, and supported fields.
 cover: ../../.gitbook/assets/gitbook-cover_airtable.jpg
 coverY: 0
 ---

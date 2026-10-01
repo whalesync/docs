@@ -1,5 +1,7 @@
 ---
-description: A quick tutorial on how to sync a Postgres (or Supabase) view with Whalesync
+description: >-
+  Sync a Postgres or Supabase view with Whalesync by adding a unique, non-null,
+  stable whalesync_postgres_id column, with SQL examples and an AI prompt.
 ---
 
 # How to sync Postgres views

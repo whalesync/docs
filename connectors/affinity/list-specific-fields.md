@@ -1,5 +1,7 @@
 ---
-description: How to sync list-specific fields in Affinity
+description: >-
+  Sync Affinity list-specific fields, which only appear on certain lists.
+  Whalesync shows them as fields you can map, prefixed with the list's name.
 ---
 
 # List-specific fields

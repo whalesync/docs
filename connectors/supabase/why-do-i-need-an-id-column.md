@@ -1,5 +1,7 @@
 ---
-description: Details on why an ID column is required in Supabase for two-way sync
+description: >-
+  Two-way sync needs a unique ID for every Supabase record. Whalesync uses your
+  primary key, or adds a whalesync_postgres_id column if the table has none.
 ---
 
 # Why do I need an ID column?

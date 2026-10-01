@@ -1,7 +1,8 @@
 ---
 description: >-
-  Merging records in HubSpot will cause records to be deleted in your synced
-  spreadsheet
+  Merging HubSpot records deletes both originals and creates a new one, so
+  Whalesync does the same in your synced Airtable, Google Sheets, or Notion
+  table.
 ---
 
 # Merging records

@@ -1,5 +1,7 @@
 ---
-description: How to sync WordPress custom taxonomies with Whalesync
+description: >-
+  Sync WordPress custom taxonomies, which Whalesync doesn't list as tables, by
+  mapping term IDs to the native taxonomy field or an ACF Taxonomy field.
 ---
 
 # Syncing custom taxonomies

@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect Whalesync to Postgres with a connection URI, add SSL and other query
+  parameters, and find guides for popular Postgres hosts.
+---
+
 # Authorize Postgres
 
 Whalesync uses a [Postgres connection URI](https://www.postgresql.org/docs/current/libpq-connect.html#id-1.7.3.8.3.6) to connect to a database instance. The following pages describe how to find your connection URI from popular hosting services. If you don't see your hosting service, explore some of the other examples. Your hosting service should be something similar.
@@ -21,9 +27,6 @@ Please refer to your hosting service's documentation for the recommended setting
 * [https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
 * [https://github.com/brianc/node-postgres/tree/master/packages/pg-connection-string#tcp-connections](https://github.com/brianc/node-postgres/tree/master/packages/pg-connection-string#tcp-connections)
 
-Note that Whalesync does not yet support:
+If your database only accepts connections from known IP addresses, allowlist Whalesync's static IP. See [Allowlisting Whalesync IP addresses](../../../resources/support/allowlist-ip.md).
 
-* Whitelisted IP addresses
-* Custom SSL/TLS certificates
-
-If you need these to connect to your instance, please [reach out and let us know](../../../resources/support/).
+Note that Whalesync does not yet support custom SSL/TLS certificates. If you need them to connect to your instance, please [reach out and let us know](../../../resources/support/).

@@ -1,5 +1,7 @@
 ---
-description: How to sync Shopify product images
+description: >-
+  Whalesync no longer offers Shopify, but existing syncs keep running. Sync
+  Shopify product images through a separate Media table linked to Products.
 ---
 
 {% hint style="warning" %}

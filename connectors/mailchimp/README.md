@@ -1,5 +1,7 @@
 ---
-description: Two-way sync Mailchimp contacts, tags, and groups with Airtable, Notion, Google Sheets, and more.
+description: >-
+  Two-way sync Mailchimp contacts, tags, merge fields, and groups with Airtable,
+  Notion, Google Sheets, and more, plus read-only campaigns and surveys.
 cover: ../../.gitbook/assets/gitbook-cover_mailchimp.jpg
 coverY: 0
 ---

@@ -1,5 +1,7 @@
 ---
-description: Sync your Attio custom objects just like People and Companies
+description: >-
+  Sync Attio custom objects such as Projects or Invoices just like People and
+  Companies, including foreign keys in both directions and lists built on them.
 ---
 
 # Attio custom objects

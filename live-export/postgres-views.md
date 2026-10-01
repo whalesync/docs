@@ -1,5 +1,7 @@
 ---
-description: How to choose an ID column when using a Supabase or Postgres view as a Live Export source
+description: >-
+  Using a Supabase or Postgres view as a Live Export source? Choose an ID column
+  that is unique and never empty, since views have no primary key.
 ---
 
 # Using Supabase or Postgres views as a source

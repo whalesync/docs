@@ -1,7 +1,7 @@
 ---
 description: >-
-  How to resolve the "Databases with multiple data sources are not supported"
-  error in Whalesync
+  Fix the Notion error "Databases with multiple data sources are not supported"
+  by creating a new sync or moving extra data sources out of the database.
 ---
 
 # Multiple data sources

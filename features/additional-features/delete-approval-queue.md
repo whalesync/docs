@@ -1,5 +1,7 @@
 ---
-description: Review and approve deletes before they sync to your destination
+description: >-
+  Hold deletes in a Pending deletes queue so you can approve or ignore them
+  before Whalesync syncs them to your destination, or auto-approve all deletes.
 ---
 
 # Delete approval queue

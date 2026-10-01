@@ -1,5 +1,7 @@
 ---
-description: Definitions of the Postgres terminology we use in our errors and messaging
+description: >-
+  What primary key, foreign key, and generated column mean in Whalesync's
+  Postgres errors, and why each mapped table needs one generated primary key.
 ---
 
 # Terminology

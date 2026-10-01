@@ -1,5 +1,7 @@
 ---
-description: Control the status of a Webflow item via a field in other apps
+description: >-
+  Set a Webflow item to Active, Draft, or Archived from Airtable or Notion by
+  mapping a single-select Webflow Status field. Covers valid values and limits.
 ---
 
 # Webflow status field

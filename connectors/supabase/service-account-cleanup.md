@@ -1,5 +1,8 @@
 ---
-description: How to remove the Whalesync database user from your Supabase or Postgres project
+description: >-
+  Remove Whalesync from a Supabase or Postgres project. Delete your syncs,
+  revoke the OAuth app, and drop the whalesync_service_account_[ID] database
+  user.
 ---
 
 # Removing the Whalesync database user

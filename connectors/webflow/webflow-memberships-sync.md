@@ -1,36 +1,26 @@
 ---
-description: Sync users from Webflow into other apps
+description: >-
+  Webflow discontinued Memberships, later called User Accounts, on January 29,
+  2026, so Whalesync can no longer sync Webflow users. What it means for you.
 ---
 
 # Webflow Memberships sync
 
-<figure><img src="../../.gitbook/assets/Sept 20 Screenshot from TinyPNG.png" alt=""><figcaption><p>Whalesync supports syncing members through the "User accounts" table.</p></figcaption></figure>
+{% hint style="warning" %}
+**Discontinued:** Webflow shut down User Accounts, previously called Memberships, on January 29, 2026. Whalesync can no longer sync Webflow users.
+{% endhint %}
 
-### Supported Fields
+Webflow Memberships, later renamed User Accounts, let a Webflow site manage logged-in users. Whalesync synced those users through a **User accounts** table, so you could manage members from Airtable or another app.
 
-<table><thead><tr><th>Field</th><th>Status<select><option value="a5cd90d6db5a416a882aa7a988f0c81a" label="✅ Supported" color="blue"></option><option value="342517587230452ca3e3f62868fcdc45" label="➡️ Supported (1-way)" color="blue"></option><option value="568ec9d3184541c0a36f9ef0c2c66ce1" label="✅ Supported (Write-Once)" color="blue"></option><option value="ae9d6cd5a7bc48a2ac8067e50a4b4641" label="✖️ Not Yet" color="blue"></option></select></th></tr></thead><tbody><tr><td>Access groups</td><td><span data-option="ae9d6cd5a7bc48a2ac8067e50a4b4641">✖️ Not Yet</span></td></tr><tr><td>☑️ Accept privacy</td><td><span data-option="a5cd90d6db5a416a882aa7a988f0c81a">✅ Supported</span></td></tr><tr><td>☑️ Accept communications</td><td><span data-option="a5cd90d6db5a416a882aa7a988f0c81a">✅ Supported</span></td></tr><tr><td>✉️ Email</td><td><span data-option="568ec9d3184541c0a36f9ef0c2c66ce1">✅ Supported (Write-Once)</span></td></tr><tr><td>☑️ Email Verified</td><td><span data-option="342517587230452ca3e3f62868fcdc45">➡️ Supported (1-way)</span></td></tr><tr><td>📅 Last Login</td><td><span data-option="342517587230452ca3e3f62868fcdc45">➡️ Supported (1-way)</span></td></tr><tr><td>📝 Name</td><td><span data-option="a5cd90d6db5a416a882aa7a988f0c81a">✅ Supported</span></td></tr><tr><td>🔽 Status</td><td><span data-option="342517587230452ca3e3f62868fcdc45">➡️ Supported (1-way)</span></td></tr><tr><td>🆔 Webflow Record ID</td><td><span data-option="342517587230452ca3e3f62868fcdc45">➡️ Supported (1-way)</span></td></tr></tbody></table>
+Webflow [retired User Accounts](https://webflow.com/updates/deprecating-logic-and-user-accounts) on January 29, 2026, along with its API. Whalesync has no way to read or write Webflow users anymore.
 
+## What this means for your syncs
 
+* Syncs of your Webflow CMS collections are not affected.
+* If a sync still has the Webflow **User accounts** table mapped, unmap it. Webflow no longer serves that data, so the table can't sync.
 
-Webflow's [Memberships feature](https://webflow.com/memberships) lets you manage users in your Webflow site.
+## Moving your members to another tool
 
-### Not Yet Supported
+Webflow recommends [Memberstack](https://www.memberstack.com) and [Outseta](https://www.outseta.com) as replacements. Whalesync has a [Memberstack connector](../memberstack/README.md), so if you move to Memberstack you can sync your members with Airtable, Notion, Google Sheets, and other apps.
 
-Webflow Memberships is a relatively new feature with a relatively new API. Due to this, there are certain features we cannot support yet.
-
-1. We do not yet support custom fields.
-2. We do not yet support mapping the Access Groups table.
-
-### Creating Users
-
-Whalesync allows you to create new users in Webflow Memberships from other apps (e.g. Airtable). Note - the email field is a "write-once" field. See our docs on creating users for more details:
-
-{% content-ref url="../../features/additional-features/creating-users-via-whalesync.md" %}
-[creating-users-via-whalesync.md](../../features/additional-features/creating-users-via-whalesync.md)
-{% endcontent-ref %}
-
-### Template
-
-If you're syncing Webflow users with Airtable, you can copy our free Airtable template which includes all available fields:
-
-{% embed url="https://airtable.com/shrVADkHQUCcIWSRv" %}
+To create new members from a sync, see [Creating users via Whalesync](../../features/additional-features/creating-users-via-whalesync.md).

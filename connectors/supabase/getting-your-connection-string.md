@@ -1,5 +1,7 @@
 ---
-description: How to find get your Supabase connection string.
+description: >-
+  Copy the Direct connection string from Supabase's Connect panel, replace
+  [YOUR-PASSWORD] with your database password, and paste it into Whalesync.
 hidden: true
 ---
 

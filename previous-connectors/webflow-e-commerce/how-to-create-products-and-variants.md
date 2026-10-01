@@ -1,5 +1,8 @@
 ---
-description: Guide to creating e-comm products in Webflow from other apps (like Airtable)
+description: >-
+  Whalesync no longer offers Webflow E-Commerce, but existing syncs keep
+  running. Create products from Airtable by mapping an Initial Variant - Price
+  field.
 ---
 
 {% hint style="warning" %}

@@ -1,4 +1,7 @@
 ---
+description: >-
+  Two-way sync Pipedrive deals, persons, organizations, activities, leads, and
+  pipelines with Airtable, Notion, Google Sheets, and more.
 cover: ../../.gitbook/assets/gitbook-cover_pipedrive.jpg
 coverY: 0
 ---

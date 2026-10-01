@@ -1,7 +1,7 @@
 ---
 description: >-
-  Link records that already exist in both apps, so the initial sync joins them
-  instead of creating duplicates
+  Link records that already exist in both apps so the initial sync joins them
+  instead of creating duplicates. Choose a match field and check the results.
 ---
 
 # Record matching

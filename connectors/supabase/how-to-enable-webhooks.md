@@ -1,5 +1,7 @@
 ---
-description: Sync your Supabase data faster with Database Webhooks!
+description: >-
+  Enable Database Webhooks from Supabase's Integrations tab so Supabase pings
+  Whalesync on every create, update, and delete, and your data syncs out faster.
 hidden: true
 ---
 

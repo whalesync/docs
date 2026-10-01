@@ -1,5 +1,7 @@
 ---
-description: Sync Attio lists as their own tables in Whalesync
+description: >-
+  Sync each Attio list as its own table, with list attributes two-way and parent
+  record fields read-only, without also syncing People or Companies.
 ---
 
 # Attio lists

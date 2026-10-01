@@ -1,5 +1,7 @@
 ---
-description: Sync data bi-directionally between apps
+description: >-
+  Sync data in both directions between apps in real time. How to turn on two-way
+  sync and how read-only fields like formulas and lookups behave.
 ---
 
 # Two-way sync
@@ -32,7 +34,7 @@ The built-in "\<App> Record ID" field is a read-only field that is worth mapping
 | ----------------------------- |
 | Formula                       |
 | Lookup                        |
-| Rollout                       |
+| Rollup                        |
 | Count                         |
 | Created Time                  |
 | Last Modified Time            |

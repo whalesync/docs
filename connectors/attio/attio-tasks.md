@@ -1,5 +1,7 @@
 ---
-description: Sync Attio tasks as a table in Whalesync
+description: >-
+  Two-way sync every Attio task in one Tasks table with deadlines, completion,
+  assignees, and linked people and companies. Task text can't be edited later.
 ---
 
 # Attio tasks

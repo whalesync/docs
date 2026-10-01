@@ -1,5 +1,7 @@
 ---
-description: Preview the initial sync changes Whalesync will make.
+description: >-
+  Sync Preview shows the changes Whalesync will make in an initial sync, which
+  runs when you set up a sync, add a table mapping, or change filters.
 ---
 
 # Sync preview

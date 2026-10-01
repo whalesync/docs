@@ -1,7 +1,8 @@
 ---
 description: >-
-  How to keep using your sync after transferring your Webflow site to another
-  Webflow account
+  Keep your Whalesync sync running after moving your Webflow site to another
+  Webflow account by reauthorizing Webflow in Sync Settings and retrying the
+  sync.
 ---
 
 # Transfer Webflow site to another account

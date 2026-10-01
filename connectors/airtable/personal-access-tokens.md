@@ -1,5 +1,7 @@
 ---
-description: Connect Airtable with a token you create yourself instead of signing in
+description: >-
+  Connect Airtable with a personal access token instead of signing in. The seven
+  scopes and base access the token needs, and how to fix token errors.
 ---
 
 # Connect Airtable with a personal access token

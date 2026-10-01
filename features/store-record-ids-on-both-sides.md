@@ -1,7 +1,7 @@
 ---
 description: >-
-  Recommended best practice: map each app's built-in Record ID field into a
-  text field on the other side
+  Recommended best practice: map each app's built-in Record ID field into a text
+  field on the other side, for stable matching and faster debugging.
 ---
 
 # Store record IDs on both sides of a sync

@@ -1,5 +1,7 @@
 ---
-description: How to set up all the right tables when syncing WordPress
+description: >-
+  Set up Categories and Tags as linked supporting tables for WordPress Pages and
+  Posts, and how Whalesync handles the Users and Media tables it can't map.
 ---
 
 # Supporting tables
@@ -24,7 +26,7 @@ You can use our [Airtable template](https://www.whalesync.com/template-packs/wor
 
 ### Categories and Tags
 
-Like the Users table, if you want to sync WordPress Categories and Tags, you'll need to set up supporting tables.
+If you want to sync WordPress Categories and Tags, you'll need to set up supporting tables for them.
 
 {% hint style="info" %}
 **Tip:** Make sure "allow linking to multiple records" is toggled so you can link multiple categories and tags.

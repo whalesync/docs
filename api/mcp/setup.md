@@ -47,7 +47,7 @@ Or add the server to `~/.codex/config.toml`:
 url = "https://api.whalesync.com/mcp"
 ```
 
-`codex mcp login whalesync` starts the browser sign-in without waiting for first use. Reference: [Model Context Protocol](https://developers.openai.com/codex/mcp) in the Codex docs.
+`codex mcp login whalesync` starts the browser sign-in without waiting for first use. Reference: [Model Context Protocol](https://learn.chatgpt.com/docs/extend/mcp?surface=cli) in the Codex docs.
 
 ## Grok
 

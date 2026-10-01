@@ -1,5 +1,7 @@
 ---
-description: Sync Attio notes as a table in Whalesync
+description: >-
+  Two-way sync all Attio notes as one Notes table with Markdown content and a
+  parent record. Notes can't move to another record, and images don't sync.
 ---
 
 # Attio notes

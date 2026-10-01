@@ -1,3 +1,9 @@
+---
+description: >-
+  Create a Sanity API token with the Editor role to connect your Sanity project
+  to Whalesync, and deploy your Studio schema so document types appear.
+---
+
 # Authorize Sanity
 
 Whalesync connects to Sanity with an API token (Sanity calls these robot tokens). The token must have the **Editor** role so Whalesync can create, update, and delete documents.

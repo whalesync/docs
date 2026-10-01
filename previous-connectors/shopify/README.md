@@ -1,4 +1,7 @@
 ---
+description: >-
+  Whalesync no longer offers the Shopify connector, but existing syncs keep
+  running. Supported tables, backups, and syncing images and variants.
 cover: ../../.gitbook/assets/gitbook-cover_shopify.jpg
 coverY: 0
 ---

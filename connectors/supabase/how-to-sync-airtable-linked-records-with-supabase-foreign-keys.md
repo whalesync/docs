@@ -1,5 +1,7 @@
 ---
-description: A guide to syncing Airtable's linked record fields with Supabase
+description: >-
+  Video walkthrough of syncing Airtable linked record fields with Supabase
+  foreign keys in Whalesync, so record links in Airtable carry over to Supabase.
 ---
 
 # How to sync Airtable linked records with Supabase foreign keys

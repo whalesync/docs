@@ -1,5 +1,7 @@
 ---
-description: Connectors we've supported in the past but no longer offer
+description: >-
+  Why Whalesync retired Bubble, Copper, Outreach, Shopify, and other connectors.
+  Existing syncs keep running, and yearly plans may qualify for a refund.
 ---
 
 # FAQ

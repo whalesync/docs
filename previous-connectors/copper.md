@@ -1,4 +1,7 @@
 ---
+description: >-
+  Whalesync no longer offers the Copper connector, but existing syncs keep
+  running. Reference for the Copper objects the connector supports.
 cover: ../.gitbook/assets/gitbook-cover_copper.jpg
 coverY: 0
 ---

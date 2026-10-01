@@ -1,5 +1,7 @@
 ---
-description: Sync specific views in Salesforce
+description: >-
+  Sync a Salesforce view, a filtered subset of an object's records, instead of
+  the entire object by picking that view when you map tables in Whalesync.
 ---
 
 # Salesforce view sync

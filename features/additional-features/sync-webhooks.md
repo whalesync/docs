@@ -1,5 +1,8 @@
 ---
-description: Get an HTTP notification every time Whalesync pushes a change
+description: >-
+  Get an HTTP POST to your endpoint each time Whalesync creates, updates, or
+  deletes a record, with the payload format, signature verification, and
+  retries.
 ---
 
 # Sync webhooks

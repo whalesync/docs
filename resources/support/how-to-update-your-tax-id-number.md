@@ -1,3 +1,9 @@
+---
+description: >-
+  Add or update your business tax ID number, such as a VAT ID, from the Manage
+  subscription page in the Whalesync billing portal.
+---
+
 # How to update your tax ID number
 
 If you're a business, you can update your tax ID number in Whalesync's billing portal. You may need this if you are in a country where businesses are not normally charged VAT, such as the EU.

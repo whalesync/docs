@@ -1,5 +1,7 @@
 ---
-description: Common error messages from Notion and how to resolve them
+description: >-
+  Fix Notion errors in Whalesync: no databases shared via the integration token,
+  no page authorized for auto-created tables, and Notion's field option limit.
 ---
 
 # Common errors - Notion
@@ -16,10 +18,10 @@ A [Notion database](https://www.notion.com/help/what-is-a-database) looks like t
 
 ### “You have not authorized access to a page that can be used as a base for a sync. Please reauthorize the workspace and a page.”
 
-We recently added support for auto-create tables and fields for Notion. With this new feature, Notion now requires users to authorize a Notion page in addition to the usual databases used for syncing. The Notion page you authorized will be the destination for all auto-created tables and fields, should you choose to use this feature.
+Whalesync can auto-create tables and fields in Notion. To support this, Notion requires you to authorize a Notion page in addition to the databases used for syncing. The Notion page you authorized will be the destination for all auto-created tables and fields, should you choose to use this feature.
 
 <figure><img src="../../.gitbook/assets/CleanShot 2025-09-20 at 02.02.53@2x.png" alt=""><figcaption></figcaption></figure>
 
-### Notion limit on number of Options in a field:
+### Notion limit on number of Options in a field
 
-While we support syncing option field from other app to Notion, Notion has a limitation on the number of options that are allowed in a single field. This is currently a limitation as we don't support syncing Option fields into a text field as a comma-separated list.
+Whalesync can sync option fields from other apps into Notion, but Notion limits how many options one select or multi-select field can have. If your field has more options than Notion allows, map it to a Notion text field instead, and the values will sync as a comma-separated list.

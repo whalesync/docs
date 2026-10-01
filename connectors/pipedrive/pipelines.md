@@ -1,5 +1,7 @@
 ---
-description: How to sync specific pipelines in Pipedrive
+description: >-
+  Video walkthrough of how to sync specific Pipedrive pipelines with Whalesync,
+  rather than every pipeline in your Pipedrive account.
 ---
 
 # Pipelines

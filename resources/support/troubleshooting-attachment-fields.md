@@ -1,7 +1,7 @@
 ---
 description: >-
-  What to do if attachments (e.g. images) aren't syncing between Airtable and
-  Webflow
+  Fix Airtable images that don't sync to Webflow and show no issue: check for
+  images over 4MB, duplicate the record to test, and isolate problem images.
 ---
 
 # Troubleshooting attachment fields

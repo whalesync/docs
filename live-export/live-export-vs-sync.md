@@ -1,5 +1,7 @@
 ---
-description: When to use Live Export and when to use a standard Whalesync sync
+description: >-
+  When to use Live Export and when to use a standard Whalesync sync. Compare
+  direction, editing, update timing, destination tables, and supported apps.
 ---
 
 # Live Export vs. sync

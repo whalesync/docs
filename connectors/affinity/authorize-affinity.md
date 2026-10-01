@@ -1,5 +1,7 @@
 ---
-description: How to get your Affinity API key
+description: >-
+  Get the API key Whalesync needs to authorize Affinity. In Affinity, click
+  Settings, then API, and copy your API key to connect your account.
 ---
 
 # Authorize Affinity

@@ -1,5 +1,8 @@
 ---
-description: How to sync Memberstack custom fields
+description: >-
+  Sync Memberstack custom fields by creating a member with the email
+  schema@whalesync.com and filling in a value for each custom field you want to
+  sync.
 ---
 
 # Memberstack custom fields

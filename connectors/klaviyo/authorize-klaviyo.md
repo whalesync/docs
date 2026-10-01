@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect Klaviyo to Whalesync by signing in or with a private API key, which
+  permissions the key needs, and what to do about connection errors.
+---
+
 # Authorize Klaviyo
 
 Whalesync connects to Klaviyo in one of two ways. Signing in is the default; a private API key is an alternative if you prefer not to sign in, or are setting up a sync through the [API](../../api/reference.md) or [MCP server](../../api/mcp/README.md) and need a credential to hand over.

@@ -1,5 +1,7 @@
 ---
-description: Steps to add additional email addresses to your account for sign-in.
+description: >-
+  Add another email address to your Whalesync account from Settings so you can
+  sign in with it, and confirm it with the verification code we send.
 ---
 
 # How to add additional email addresses

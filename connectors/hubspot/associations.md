@@ -1,5 +1,7 @@
 ---
-description: How to sync HubSpot associations with Whalesync
+description: >-
+  Two-way sync HubSpot associations by mapping them to Airtable linked records,
+  Notion relations, Postgres foreign keys, or Webflow reference fields.
 ---
 
 # Associations
@@ -9,6 +11,7 @@ description: How to sync HubSpot associations with Whalesync
 * Whalesync supports two-way syncing HubSpot associations :tada:
 * In order to two-way sync associations, you'll need to map the field correctly
 * You can map associations with foreign keys (i.e. linked records)
+* Associations to custom objects sync too. Map them from the standard object's table, such as Contacts or Deals
 
 #### **Compatible Fields**
 
@@ -27,10 +30,3 @@ For a more detailed explanation of how these types of fields work, see :point\_d
 {% content-ref url="../../features/additional-features/reference-fields.md" %}
 [reference-fields.md](../../features/additional-features/reference-fields.md)
 {% endcontent-ref %}
-
-#### **Caveats**
-
-{% hint style="warning" %}
-For now, Whalesync is not able to sync associations for custom objects.
-{% endhint %}
-

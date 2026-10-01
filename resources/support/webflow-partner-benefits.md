@@ -1,5 +1,7 @@
 ---
-description: Get your first month free as a certified Webflow Partner
+description: >-
+  Certified Webflow Partners get their first month of Whalesync free. Email
+  hello@whalesync.com to redeem and to ask about becoming a Whalesync Partner.
 hidden: true
 noIndex: true
 ---

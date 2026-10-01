@@ -1,5 +1,7 @@
 ---
-description: Two-way sync Klaviyo profiles and lists with Airtable, Notion, Google Sheets, and more.
+description: >-
+  Two-way sync Klaviyo profiles, custom properties, and list membership with
+  Airtable, Notion, Google Sheets, and more. Segments sync as a read-only table.
 cover: ../../.gitbook/assets/gitbook-cover_klaviyo.jpg
 coverY: 0
 ---

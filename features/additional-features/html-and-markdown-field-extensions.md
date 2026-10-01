@@ -1,7 +1,8 @@
 ---
 description: >-
-  Sync raw HTML and Markdown from Airtable, Google Sheets, and Postgres into a
-  rich text field
+  Add _html or _md to an Airtable or Postgres field name to sync HTML or
+  Markdown into a rich text field like Webflow's. Google Sheets supports only
+  _html.
 ---
 
 # HTML and Markdown field extensions

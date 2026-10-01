@@ -1,5 +1,8 @@
 ---
-description: How to sync Shopify product variants
+description: >-
+  Whalesync no longer offers Shopify, but existing syncs keep running. Sync
+  product variants with separate Variants and Options tables, up to 100
+  variants.
 ---
 
 {% hint style="warning" %}

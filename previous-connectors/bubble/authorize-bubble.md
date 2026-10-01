@@ -1,3 +1,9 @@
+---
+description: >-
+  Enable the Bubble Data API and find your app's API key and URL to connect
+  Bubble to Whalesync. The Bubble connector is no longer offered.
+---
+
 # Authorize Bubble
 
 {% hint style="warning" %}
