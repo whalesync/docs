@@ -80,7 +80,7 @@
 * [Supabase](connectors/supabase/README.md)
   * [Getting your connection string](connectors/supabase/getting-your-connection-string.md)
   * [Adding default values to primary keys](connectors/supabase/adding-default-values-to-primary-keys.md)
-  * [How to sync Airtable linked records with Supabase foreign keys](connectors/supabase/how-to-sync-airtable-linked-records-with-supabase-foreign-keys.md)
+  * [Airtable linked records and Supabase foreign keys](connectors/supabase/how-to-sync-airtable-linked-records-with-supabase-foreign-keys.md)
   * [Why does Whalesync create a database user?](connectors/supabase/why-does-whalesync-create-a-database-user.md)
   * [Removing the Whalesync database user](connectors/supabase/service-account-cleanup.md)
   * [Why do I need an ID column?](connectors/supabase/why-do-i-need-an-id-column.md)
