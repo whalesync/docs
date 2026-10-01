@@ -1,7 +1,7 @@
 ---
 description: >-
-  Whalesync offers out-of-the-box support for reference fields (i.e. linked
-  record fields)
+  Sync reference fields like Airtable linked records, Notion relations, HubSpot
+  associations, and Webflow references, plus best practices for using them.
 ---
 
 # Reference fields
@@ -13,7 +13,7 @@ When setting up a database, it's incredibly powerful to relate data across table
 * Airtable = [_linked record fields_](https://www.airtable.com/guides/build/connect-data-with-linked-records)
 * HubSpot = [_association fields_](https://knowledge.hubspot.com/records/associate-records)
 * Notion = [_relation fields_](https://www.notion.so/help/relations-and-rollups)
-* Webflow = [_reference fields_](https://help.webflow.com/hc/en-us/articles/33961317363091-Reference-field-overview)
+* Webflow = [_reference fields_](https://help.webflow.com/hc/en-us/articles/33961317363091-Reference-Collection-field)
 
 ![Example of Airtable linked record fields](../../.gitbook/assets/linked_records.png)
 

@@ -1,7 +1,7 @@
 ---
 description: >-
-  Allowlist Whalesync's static outbound IP address to grant access to your
-  databases and internal systems.
+  Allowlist Whalesync's static outbound IP, 34.66.3.22, in your AWS or GCP
+  security group, Supabase network restrictions, or on-premise firewall.
 ---
 
 # Allowlisting Whalesync IP addresses

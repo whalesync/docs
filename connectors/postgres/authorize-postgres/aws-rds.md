@@ -1,7 +1,8 @@
 ---
 description: >-
-  How to find get your Postgres connection URI when using Amazon Web Services
-  RDS
+  Find your Amazon RDS endpoint, port, and username, build the Postgres
+  connection URI for Whalesync, and allowlist Whalesync's IP in your security
+  group.
 ---
 
 # AWS (RDS)
@@ -42,9 +43,6 @@ This is the string you will paste into the Whalesync Postgres connection dialog:
 
 ## Caveats
 
-Note that Whalesync does not yet support:
+If your database only accepts connections from known IP addresses, allowlist Whalesync's static IP. See [Allowlisting Whalesync IP addresses](../../../resources/support/allowlist-ip.md).
 
-* Whitelisted IP addresses
-* Custom SSL/TLS certificates
-
-If you need these to connect to your instance, please [reach out and let us know](../../../resources/support/).
+Note that Whalesync does not yet support custom SSL/TLS certificates. If you need them to connect to your instance, please [reach out and let us know](../../../resources/support/).

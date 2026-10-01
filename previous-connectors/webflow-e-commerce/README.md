@@ -1,4 +1,7 @@
 ---
+description: >-
+  Whalesync no longer offers the Webflow E-Commerce connector, but existing
+  syncs keep running. Supported collections and e-commerce sync notes.
 hidden: true
 cover: ../../.gitbook/assets/gitbook-cover_webflow.jpg
 coverY: 0

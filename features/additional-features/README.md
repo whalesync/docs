@@ -1,10 +1,16 @@
+---
+description: >-
+  Whalesync features beyond core two-way sync, including automapping, reference
+  fields, HTML and Markdown fields, delete protection, and sync webhooks.
+---
+
 # Additional features
 
 {% hint style="info" %}
 Navigate to sub-pages to learn more about Whalesync's powerful suite of integration features like:
 
-* [Automapping](https://docs.whalesync.com/features/additional-features/automapping)
-* [HTML field extension](https://docs.whalesync.com/features/additional-features/html-field-extension)
-* [Reference fields](https://docs.google.com/spreadsheets/d/1j15_dDCH4kaBsP_p4-uQ6vl1JxgoYjxpsF0TmdqHAiI/edit?gid=0#gid=0)
+* [Automapping](automapping.md)
+* [HTML and Markdown field extensions](html-and-markdown-field-extensions.md)
+* [Reference fields](reference-fields.md)
 {% endhint %}
 

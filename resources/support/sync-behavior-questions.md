@@ -1,7 +1,7 @@
 ---
 description: >-
-  Syncing can be non-obvious. These are some common questions and answers
-  regarding sync behavior.
+  What happens when you add, remove, or re-add a field mapping on an existing
+  sync, and how to keep records paired when you rebuild or recreate a sync.
 ---
 
 # Sync behavior questions

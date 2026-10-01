@@ -1,4 +1,7 @@
 ---
+description: >-
+  Two-way sync Salesforce accounts, contacts, leads, opportunities, cases, and
+  custom objects with Airtable, Notion, Google Sheets, and more.
 cover: ../../.gitbook/assets/gitbook-cover_salesforce.jpg
 coverY: 0
 ---

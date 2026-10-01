@@ -1,5 +1,7 @@
 ---
-description: How to find the Record ID for each connector
+description: >-
+  Find a record's ID in Airtable, Webflow, Postgres, and Notion, and map each
+  app's built-in Record ID field to a text field on the other side of a sync.
 ---
 
 # How to get record IDs

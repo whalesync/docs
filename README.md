@@ -1,5 +1,7 @@
 ---
-description: An introduction to our product and mission
+description: >-
+  Whalesync is a no-code tool that two-way syncs your SaaS apps with Airtable,
+  Notion, and Google Sheets. What it does and how it differs from Zapier.
 ---
 
 # What is Whalesync?

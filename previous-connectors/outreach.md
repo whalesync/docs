@@ -1,3 +1,9 @@
+---
+description: >-
+  Whalesync no longer offers the Outreach connector, but existing syncs keep
+  running. Supported objects, the default owner filter, and read-only fields.
+---
+
 # Outreach
 
 {% hint style="warning" %}

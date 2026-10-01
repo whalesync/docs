@@ -1,5 +1,7 @@
 ---
-description: Code to help you quickly create Postgres tables to sync with other apps
+description: >-
+  CREATE TABLE scripts for Postgres tables that match HubSpot contacts, Shopify
+  products, and WordPress posts and pages, ready to sync with Whalesync.
 ---
 
 # SQL scripts

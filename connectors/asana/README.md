@@ -1,5 +1,8 @@
 ---
-description: Two-way sync Asana tasks with Airtable, Notion, Google Sheets, and more.
+description: >-
+  Two-way sync Asana tasks, sections, assignees, and custom fields with
+  Airtable, Notion, Google Sheets, and more. Each Asana project syncs as a
+  table.
 cover: ../../.gitbook/assets/gitbook-cover_asana.jpg
 coverY: 0
 ---

@@ -1,3 +1,9 @@
+---
+description: >-
+  Create a Stripe secret API key and paste it into Whalesync to connect your
+  Stripe account. Use the secret key, not the publishable key.
+---
+
 # Authorize Stripe
 
 To authorize Stripe, you need to generate an API key:

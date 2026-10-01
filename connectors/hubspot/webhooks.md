@@ -1,7 +1,8 @@
 ---
 description: >-
-  Info on which properties HubSpot supports webhooks for and how that impacts
-  syncing
+  Which HubSpot contact, company, deal, and ticket properties sync within
+  seconds via webhooks, and which, like custom properties, are polled every 3
+  hours.
 ---
 
 # Webhooks
@@ -196,25 +197,24 @@ hubspot_owner_id
 
 {% tab title="Tickets" %}
 ```
-
-subject changed
-content changed
-source_type changed
-hs_resolution changed
-createdate changed
-hs_ticket_priority changed
-hs_pipeline changed
-hs_pipeline_stage changed
-hs_ticket_category changed
-closed_date changed
-hs_file_upload changed
-hs_last_closed_date changed
-hs_all_assigned_business_unit_ids changed
-hs_shared_team_ids changed
-hs_shared_user_ids changed
-hs_time_to_close_in_operating_hours changed
-hs_time_to_first_response_in_operating_hours changed
-hubspot_owner_id changed
+subject
+content
+source_type
+hs_resolution
+createdate
+hs_ticket_priority
+hs_pipeline
+hs_pipeline_stage
+hs_ticket_category
+closed_date
+hs_file_upload
+hs_last_closed_date
+hs_all_assigned_business_unit_ids
+hs_shared_team_ids
+hs_shared_user_ids
+hs_time_to_close_in_operating_hours
+hs_time_to_first_response_in_operating_hours
+hubspot_owner_id
 ```
 {% endtab %}
 {% endtabs %}

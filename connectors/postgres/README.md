@@ -1,4 +1,7 @@
 ---
+description: >-
+  Two-way sync Postgres tables with Airtable, Notion, Google Sheets, and more.
+  Covers setup requirements, primary keys, supported field types, and tips.
 cover: ../../.gitbook/assets/gitbook-cover_postgres.jpg
 coverY: 0
 ---

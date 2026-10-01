@@ -1,5 +1,7 @@
 ---
-description: Why Whalesync adds a "Whalesync ID" column to your sheets
+description: >-
+  Google Sheets doesn't give rows a unique ID, so Whalesync adds a Whalesync ID
+  column to each synced sheet. Avoid editing it, since it identifies each row.
 ---
 
 # Whalesync ID column

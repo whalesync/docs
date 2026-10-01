@@ -1,5 +1,7 @@
 ---
-description: Things to be aware of when syncing Affinity notes
+description: >-
+  Whalesync can edit only the content of an Affinity note, not its linked
+  people, organizations, or opportunities, and writes rich text as raw Markdown.
 ---
 
 # Notes in Affinity

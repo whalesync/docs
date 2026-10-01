@@ -1,5 +1,7 @@
 ---
-description: Understanding why certain fields are not compatible and cannot be synced
+description: >-
+  Which field types can sync to each other in Whalesync, with a compatibility
+  table for text, URL, number, currency, checkbox, date, JSON, and relation.
 ---
 
 # Field compatibility
@@ -27,7 +29,9 @@ Relation fields must be mapped to other relation fields in order to sync.
 
 ### Table of compatible fields
 
-<table><thead><tr><th width="219.85546875">Field type (from: left, , to: top)</th><th>Normal text<select><option value="5YS9L34xs4mc" label="❌ Incompatible" color="blue"></option><option value="HpRBofSXFHA5" label="✅ Compatible" color="blue"></option></select></th><th>Rich text<select><option value="PFS2BxilCrgi" label="❌ Incompatible" color="blue"></option><option value="78DyTnPIRts4" label="✅ Compatible" color="blue"></option></select></th><th>URL<select><option value="I1FgKECS1Ci0" label="❌ Incompatible" color="blue"></option><option value="ppC0hWnlSnlO" label="✅ Compatible" color="blue"></option></select></th><th>Number<select><option value="mT5ONFScztzs" label="✅ Compatible" color="blue"></option><option value="jR9uGR5ecIA7" label="❌ Incompatible" color="blue"></option></select></th><th>Currency<select><option value="TqSjMvjusKIY" label="✅ Compatible" color="blue"></option><option value="fmXg8wSpkuOr" label="❌ Incompatible" color="blue"></option></select></th><th>Checkbox / boolean<select><option value="a1KIxolzQuMY" label="✅ Compatible" color="blue"></option><option value="nRV19vbBupqP" label="❌ Incompatible" color="blue"></option></select></th><th>Date / time<select><option value="rYARsw7sg0mj" label="✅ Compatible" color="blue"></option><option value="n8TfuJ3QCZf1" label="❌ Incompatible" color="blue"></option></select></th><th>JSON<select><option value="IsBASaKtOdun" label="✅ Compatible" color="blue"></option><option value="8kAqhjWn41tp" label="❌ Incompatible" color="blue"></option></select></th><th>Relation<select><option value="9hOA6VtiUygs" label="✅ Compatible" color="blue"></option><option value="aHdf1h6DamTs" label="❌ Incompatible" color="blue"></option></select></th></tr></thead><tbody><tr><td>Normal text</td><td><span data-option="HpRBofSXFHA5">✅ Compatible</span></td><td><span data-option="78DyTnPIRts4">✅ Compatible</span></td><td><span data-option="ppC0hWnlSnlO">✅ Compatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>Rich text</td><td><span data-option="HpRBofSXFHA5">✅ Compatible</span></td><td><span data-option="78DyTnPIRts4">✅ Compatible</span></td><td><span data-option="ppC0hWnlSnlO">✅ Compatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>URL</td><td><span data-option="HpRBofSXFHA5">✅ Compatible</span></td><td><span data-option="78DyTnPIRts4">✅ Compatible</span></td><td><span data-option="ppC0hWnlSnlO">✅ Compatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>Number</td><td><span data-option="5YS9L34xs4mc">❌ Incompatible</span></td><td><span data-option="PFS2BxilCrgi">❌ Incompatible</span></td><td><span data-option="I1FgKECS1Ci0">❌ Incompatible</span></td><td><span data-option="mT5ONFScztzs">✅ Compatible</span></td><td><span data-option="TqSjMvjusKIY">✅ Compatible</span></td><td><span data-option="a1KIxolzQuMY">✅ Compatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>Currency</td><td><span data-option="5YS9L34xs4mc">❌ Incompatible</span></td><td><span data-option="PFS2BxilCrgi">❌ Incompatible</span></td><td><span data-option="I1FgKECS1Ci0">❌ Incompatible</span></td><td><span data-option="mT5ONFScztzs">✅ Compatible</span></td><td><span data-option="TqSjMvjusKIY">✅ Compatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>Checkbox / boolean</td><td><span data-option="5YS9L34xs4mc">❌ Incompatible</span></td><td><span data-option="PFS2BxilCrgi">❌ Incompatible</span></td><td><span data-option="I1FgKECS1Ci0">❌ Incompatible</span></td><td><span data-option="mT5ONFScztzs">✅ Compatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="a1KIxolzQuMY">✅ Compatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>Date / time</td><td><span data-option="5YS9L34xs4mc">❌ Incompatible</span></td><td><span data-option="PFS2BxilCrgi">❌ Incompatible</span></td><td><span data-option="I1FgKECS1Ci0">❌ Incompatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="rYARsw7sg0mj">✅ Compatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>JSON</td><td><span data-option="HpRBofSXFHA5">✅ Compatible</span></td><td><span data-option="78DyTnPIRts4">✅ Compatible</span></td><td><span data-option="ppC0hWnlSnlO">✅ Compatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="IsBASaKtOdun">✅ Compatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>Relation</td><td><span data-option="5YS9L34xs4mc">❌ Incompatible</span></td><td><span data-option="PFS2BxilCrgi">❌ Incompatible</span></td><td><span data-option="I1FgKECS1Ci0">❌ Incompatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="9hOA6VtiUygs">✅ Compatible</span></td></tr></tbody></table>
+<table><thead><tr><th width="219.85546875">Field type (from: left, to: top)</th><th>Normal text<select><option value="5YS9L34xs4mc" label="❌ Incompatible" color="blue"></option><option value="HpRBofSXFHA5" label="✅ Compatible" color="blue"></option></select></th><th>Rich text<select><option value="PFS2BxilCrgi" label="❌ Incompatible" color="blue"></option><option value="78DyTnPIRts4" label="✅ Compatible" color="blue"></option></select></th><th>URL<select><option value="I1FgKECS1Ci0" label="❌ Incompatible" color="blue"></option><option value="ppC0hWnlSnlO" label="✅ Compatible" color="blue"></option></select></th><th>Number<select><option value="mT5ONFScztzs" label="✅ Compatible" color="blue"></option><option value="jR9uGR5ecIA7" label="❌ Incompatible" color="blue"></option></select></th><th>Currency<select><option value="TqSjMvjusKIY" label="✅ Compatible" color="blue"></option><option value="fmXg8wSpkuOr" label="❌ Incompatible" color="blue"></option></select></th><th>Checkbox / boolean<select><option value="a1KIxolzQuMY" label="✅ Compatible" color="blue"></option><option value="nRV19vbBupqP" label="❌ Incompatible" color="blue"></option></select></th><th>Date / time<select><option value="rYARsw7sg0mj" label="✅ Compatible" color="blue"></option><option value="n8TfuJ3QCZf1" label="❌ Incompatible" color="blue"></option></select></th><th>JSON<select><option value="IsBASaKtOdun" label="✅ Compatible" color="blue"></option><option value="8kAqhjWn41tp" label="❌ Incompatible" color="blue"></option></select></th><th>Relation<select><option value="9hOA6VtiUygs" label="✅ Compatible" color="blue"></option><option value="aHdf1h6DamTs" label="❌ Incompatible" color="blue"></option></select></th></tr></thead><tbody><tr><td>Normal text</td><td><span data-option="HpRBofSXFHA5">✅ Compatible</span></td><td><span data-option="78DyTnPIRts4">✅ Compatible</span></td><td><span data-option="ppC0hWnlSnlO">✅ Compatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>Rich text</td><td><span data-option="HpRBofSXFHA5">✅ Compatible</span></td><td><span data-option="78DyTnPIRts4">✅ Compatible</span></td><td><span data-option="ppC0hWnlSnlO">✅ Compatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>URL</td><td><span data-option="HpRBofSXFHA5">✅ Compatible</span></td><td><span data-option="78DyTnPIRts4">✅ Compatible</span></td><td><span data-option="ppC0hWnlSnlO">✅ Compatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>Number</td><td><span data-option="HpRBofSXFHA5">✅ Compatible</span></td><td><span data-option="78DyTnPIRts4">✅ Compatible</span></td><td><span data-option="I1FgKECS1Ci0">❌ Incompatible</span></td><td><span data-option="mT5ONFScztzs">✅ Compatible</span></td><td><span data-option="TqSjMvjusKIY">✅ Compatible</span></td><td><span data-option="a1KIxolzQuMY">✅ Compatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>Currency</td><td><span data-option="HpRBofSXFHA5">✅ Compatible</span></td><td><span data-option="78DyTnPIRts4">✅ Compatible</span></td><td><span data-option="I1FgKECS1Ci0">❌ Incompatible</span></td><td><span data-option="mT5ONFScztzs">✅ Compatible</span></td><td><span data-option="TqSjMvjusKIY">✅ Compatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>Checkbox / boolean</td><td><span data-option="HpRBofSXFHA5">✅ Compatible</span></td><td><span data-option="78DyTnPIRts4">✅ Compatible</span></td><td><span data-option="I1FgKECS1Ci0">❌ Incompatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="a1KIxolzQuMY">✅ Compatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>Date / time</td><td><span data-option="HpRBofSXFHA5">✅ Compatible</span></td><td><span data-option="78DyTnPIRts4">✅ Compatible</span></td><td><span data-option="I1FgKECS1Ci0">❌ Incompatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="rYARsw7sg0mj">✅ Compatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>JSON</td><td><span data-option="HpRBofSXFHA5">✅ Compatible</span></td><td><span data-option="PFS2BxilCrgi">❌ Incompatible</span></td><td><span data-option="ppC0hWnlSnlO">✅ Compatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="IsBASaKtOdun">✅ Compatible</span></td><td><span data-option="aHdf1h6DamTs">❌ Incompatible</span></td></tr><tr><td>Relation</td><td><span data-option="5YS9L34xs4mc">❌ Incompatible</span></td><td><span data-option="PFS2BxilCrgi">❌ Incompatible</span></td><td><span data-option="I1FgKECS1Ci0">❌ Incompatible</span></td><td><span data-option="jR9uGR5ecIA7">❌ Incompatible</span></td><td><span data-option="fmXg8wSpkuOr">❌ Incompatible</span></td><td><span data-option="nRV19vbBupqP">❌ Incompatible</span></td><td><span data-option="n8TfuJ3QCZf1">❌ Incompatible</span></td><td><span data-option="8kAqhjWn41tp">❌ Incompatible</span></td><td><span data-option="9hOA6VtiUygs">✅ Compatible</span></td></tr></tbody></table>
+
+Compatibility goes one way. A number can sync into a text field, but text can't sync into a number field, so a mapping between them only syncs from the number side.
 
 ### Normal text
 
@@ -92,18 +96,20 @@ If a number field is the source field, then the following are compatible/incompa
 
 #### Compatible
 
+* Normal text
+* Rich text
 * Number
 * Currency
+* Checkbox / boolean
 
 #### Incompatible
 
-* Normal text
-* Rich text
 * URL
-* Checkbox / boolean
 * Date / time
 * JSON
 * Relation
+
+Syncing a number into a checkbox shows a warning: values that can't be read as true or false may not sync.
 
 ### Currency
 
@@ -111,13 +117,13 @@ If a currency field is the source field, then the following are compatible/incom
 
 #### Compatible
 
+* Normal text
+* Rich text
 * Number
 * Currency
 
 #### Incompatible
 
-* Normal text
-* Rich text
 * URL
 * Checkbox / boolean
 * Date / time
@@ -130,12 +136,12 @@ If a checkbox/boolean field is the source field, then the following are compatib
 
 #### Compatible
 
+* Normal text
+* Rich text
 * Checkbox / boolean
 
 #### Incompatible
 
-* Normal text
-* Rich text
 * URL
 * Number
 * Currency
@@ -149,12 +155,12 @@ If a date/time field is the source field, then the following are compatible/inco
 
 #### Compatible
 
+* Normal text
+* Rich text
 * Date / time
 
 #### Incompatible
 
-* Normal text
-* Rich text
 * URL
 * Number
 * Currency
@@ -164,22 +170,24 @@ If a date/time field is the source field, then the following are compatible/inco
 
 ### JSON
 
-If normal text is the source field, then the following are compatible/incompatible options to sync to:
+If a JSON field is the source field, then the following are compatible/incompatible options to sync to:
 
 #### Compatible
 
 * Normal text
-* Rich text
 * URL
 * JSON
 
 #### Incompatible
 
+* Rich text
 * Number
 * Currency
 * Checkbox / boolean
 * Date / time
 * Relation
+
+Syncing JSON into a text field writes the object as a JSON string.
 
 ### Relation
 

@@ -1,5 +1,7 @@
 ---
-description: The WordPress REST API endpoints Whalesync uses under the hood
+description: >-
+  The WordPress REST API (wp-json) endpoints Whalesync calls to list post types,
+  read and write records, and upload media, for network-level debugging.
 ---
 
 # REST API endpoints

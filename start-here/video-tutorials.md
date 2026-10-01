@@ -1,5 +1,7 @@
 ---
-description: Whalesync tutorials made by us and automation experts
+description: >-
+  Video tutorials from automation experts and Webflow on Airtable + Webflow,
+  Airtable + Notion, HubSpot + Airtable, programmatic SEO, and blog content.
 ---
 
 # Video tutorials
@@ -50,7 +52,7 @@ description: Whalesync tutorials made by us and automation experts
 
 {% tabs %}
 {% tab title="Programmatic SEO Landing Pages" %}
-### Progammatic SEO
+### Programmatic SEO
 
 {% embed url="https://www.youtube.com/watch?v=FOoNh_OGlYI" %}
 {% endtab %}

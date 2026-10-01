@@ -1,5 +1,7 @@
 ---
-description: How to sync Airtable and WordPress to create programmatic SEO pages
+description: >-
+  Video tutorial on syncing Airtable and WordPress with Whalesync to generate
+  hundreds of programmatic SEO landing pages, with OpenAI writing the content.
 hidden: true
 ---
 

@@ -1,5 +1,7 @@
 ---
-description: Build your first sync by chatting with your AI agent
+description: >-
+  Build a Whalesync sync by chatting with your AI agent. Connect the Whalesync
+  MCP server, sign in to your apps, map tables, then review and activate.
 ---
 
 # MCP quickstart

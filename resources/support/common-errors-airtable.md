@@ -1,5 +1,7 @@
 ---
-description: Common error messages from Airtable and how to resolve them
+description: >-
+  Fix Airtable errors in Whalesync, including maximum access authorizations,
+  duplicate slug values, Airtable synced tables, and invalid user permissions.
 ---
 
 # Common errors - Airtable
@@ -57,7 +59,7 @@ Airtable is blocking Whalesync from making changes to your Airtable base due to 
 
 1.  Go to your Airtable base and check the permissions of the user you authorized with
 
-    <figure><img src="../../.gitbook/assets/permissions.png" alt=""><figcaption><p>Your user will have your email address and not "founders@whalesync.coM"</p></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/permissions.png" alt=""><figcaption><p>Your user will have your email address and not "founders@whalesync.com"</p></figcaption></figure>
 2.  Check permissions in your Airtable Workspace settings
 
     <figure><img src="../../.gitbook/assets/Permissions 2.png" alt=""><figcaption></figcaption></figure>

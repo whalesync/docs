@@ -1,5 +1,7 @@
 ---
-description: Frequently asked questions
+description: >-
+  Answers to common Whalesync questions: how it differs from Zapier, how records
+  are counted, what data Whalesync stores, and pausing your subscription.
 ---
 
 # FAQ

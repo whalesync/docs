@@ -1,5 +1,7 @@
 ---
-description: Delay record changes to reduce unnecessary updates
+description: >-
+  Set Delay Before Syncing (0-300 seconds) in a table's Advanced settings to
+  combine rapid edits to a record into one sync operation and cut extra updates.
 ---
 
 # Delay before syncing
@@ -14,7 +16,7 @@ When you enable record sync delay, Whalesync will wait the specified number of s
 
 ### How to set record sync delay in table settings
 
-1. Edit your Whalesync base
+1. Open your sync
 2. Select the desired table
 3. Click the **Advanced settings** tab
 4. Set the **Delay Before Syncing** field to your desired number of seconds (0-300)

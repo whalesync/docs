@@ -1,5 +1,7 @@
 ---
-description: Setting to disable deletes in one of your tables for extra piece of mind
+description: >-
+  Turn on Delete Protection in a table's Advanced settings to stop Whalesync
+  from deleting records there while every other change keeps syncing two-way.
 ---
 
 # Delete protection
@@ -16,7 +18,7 @@ If you turn off deletes for a table, Whalesync will continue to 2-way sync all c
 
 ### How to turn off deletes in table settings
 
-1. Edit your Whalesync base
+1. Open your sync
 2. Select the desired table
 3. Click the **Advanced settings** tab
 4. Set the **Delete Protection** field to enabled

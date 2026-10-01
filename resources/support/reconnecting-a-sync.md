@@ -1,5 +1,7 @@
 ---
-description: How to fix a broken connection and resume syncing
+description: >-
+  Fix a Broken connection in Whalesync by reconnecting the app from the sync's
+  Settings tab, plus common causes and what to try if reconnecting doesn't work.
 ---
 
 # Reconnecting a sync

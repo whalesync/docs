@@ -1,3 +1,9 @@
+---
+description: >-
+  Create a Close API key to connect your Close organization to Whalesync, and
+  what to do about each Close connection error.
+---
+
 # Authorize Close
 
 Whalesync connects to Close with an API key you paste in. A key reaches exactly one Close organization, and that organization is the base the connection syncs.

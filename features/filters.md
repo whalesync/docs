@@ -1,5 +1,7 @@
 ---
-description: Set filters that determine which data syncs
+description: >-
+  Set filters on a table mapping to control which records sync. Change filters
+  later by pausing the sync, and see how case sensitivity and percentages work.
 ---
 
 # Filters

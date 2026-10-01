@@ -1,5 +1,7 @@
 ---
-description: Understanding what a "shallow record" is in Affinity
+description: >-
+  Why Whalesync syncs Affinity records as shallow records with only a name and
+  email by default, and how to fully sync a list to get every field.
 ---
 
 # Full records vs. shallow records
@@ -11,10 +13,11 @@ Unless you are on Affinity's Enterprise plan, Affinity has significant API limit
 
 #### Affinity API limits
 
-Affinity has the following API quota limits on its plans:
+Affinity has the following [monthly API limits](https://developer.affinity.co/pages/external-api-v2/rate-limits) on its plans:
 
-* Starter = none
-* Premium = 100,000 calls/mo
+* Essentials = none (no API access)
+* Scale = 100,000 calls/mo
+* Advanced = 100,000 calls/mo
 * Enterprise = unlimited
 
 **Difference between full records and shallow records**

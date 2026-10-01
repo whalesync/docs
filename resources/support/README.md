@@ -1,5 +1,7 @@
 ---
-description: Where to get help if you have questions
+description: >-
+  Email support@whalesync.com or chat with us in Intercom (Operator plans and
+  above), and find guides to common errors, sync behavior, and your account.
 ---
 
 # Support

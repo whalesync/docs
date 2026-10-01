@@ -1,5 +1,7 @@
 ---
-description: Control how often Whalesync scans a connection for changes
+description: >-
+  Control how often Whalesync scans each connection for changes. Turn off
+  real-time webhooks and set an interval or cron schedule to cut API calls.
 ---
 
 # Sync frequency

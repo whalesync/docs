@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect Asana to Whalesync by signing in or with a personal access token, and
+  what to do about each Asana connection error.
+---
+
 # Authorize Asana
 
 Whalesync connects to Asana in one of two ways. Signing in is the default; a personal access token is an alternative if you prefer not to sign in, or are setting up a sync through the [API](../../api/reference.md) or [MCP server](../../api/mcp/README.md) and need a credential to hand over.

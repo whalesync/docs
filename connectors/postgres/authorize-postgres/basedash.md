@@ -1,5 +1,7 @@
 ---
-description: How to find get your Postgres connection URI when using Basedash
+description: >-
+  Find your database credentials under Manage credentials in Basedash and build
+  the Postgres connection URI to paste into the Whalesync connection dialog.
 ---
 
 # Basedash
@@ -36,9 +38,6 @@ This is the string you will paste into the Whalesync Postgres connection dialog:
 
 ## Caveats
 
-Note that Whalesync does not yet support:
+If your database only accepts connections from known IP addresses, allowlist Whalesync's static IP. See [Allowlisting Whalesync IP addresses](../../../resources/support/allowlist-ip.md).
 
-* Whitelisted IP addresses
-* Custom SSL/TLS certificates
-
-If you need these to connect to your instance, please [reach out and let us know](../../../resources/support/).
+Note that Whalesync does not yet support custom SSL/TLS certificates. If you need them to connect to your instance, please [reach out and let us know](../../../resources/support/).

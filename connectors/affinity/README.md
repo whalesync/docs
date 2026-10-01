@@ -1,4 +1,7 @@
 ---
+description: >-
+  Two-way sync Affinity people, organizations, opportunities, notes, and lists
+  with Airtable, Notion, Google Sheets, and more.
 cover: ../../.gitbook/assets/gitbook-cover_affinity.jpg
 coverY: 0
 ---

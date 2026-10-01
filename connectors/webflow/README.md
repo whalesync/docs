@@ -1,4 +1,7 @@
 ---
+description: >-
+  Two-way sync Webflow CMS collections with Airtable, Notion, Google Sheets, and
+  more. Covers connecting, the Webflow status field, and supported fields.
 cover: ../../.gitbook/assets/gitbook-cover_webflow.jpg
 coverY: 0
 ---
@@ -19,10 +22,7 @@ When you set up Webflow in Whalesync, you'll be redirected to Webflow's website.
 
 Whalesync treats your Webflow **Sites** as "bases" and your **Collections** as "tables". This allows you to sync data between your Webflow CMS and other apps.
 
-Whalesync can sync several types of data from Webflow:
-
-* **CMS Data**: Sync items from your Webflow CMS Collections.
-* **Users**: If you use Webflow Memberships, you can sync your user accounts.
+Whalesync syncs items from your Webflow CMS Collections. Webflow users can no longer be synced, because Webflow discontinued User Accounts (formerly Memberships) on January 29, 2026. See [Webflow Memberships sync](webflow-memberships-sync.md).
 
 A special feature of the Webflow connector is the **"Webflow Status"** field. When you map a Webflow table, Whalesync creates this field. It lets you control whether a CMS item is "Published", "Draft", or "Archived".
 

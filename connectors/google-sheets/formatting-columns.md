@@ -1,5 +1,7 @@
 ---
-description: Quick guide on how to format columns (i.e. data types) in Google Sheets
+description: >-
+  Format Google Sheets columns as numbers, percentages, or dates so they match
+  field types in other apps and two-way sync. Text columns need no formatting.
 ---
 
 # Formatting columns
@@ -37,7 +39,7 @@ Text fields will two-way sync by default. No additional formatting is needed for
 * Text
 * Long-text
 * Drop-down
-* Multiple Select
+* Multiple Select (name the column `multi_[column name]`, see [Multi-select fields](multi-select-fields.md))
 * Email
 
 #### Numbers

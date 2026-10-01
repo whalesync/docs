@@ -1,5 +1,8 @@
 ---
-description: Tips to help you get started syncing Webflow E-Comm
+description: >-
+  Whalesync no longer offers Webflow E-Commerce, but existing syncs keep
+  running. Setup tips, like the required Variants table and Initial Variant -
+  Price.
 ---
 
 {% hint style="warning" %}
@@ -52,8 +55,6 @@ The 'Things to Keep in Mind' section of the doc below walks through concepts tha
 [.](./)
 {% endcontent-ref %}
 
-### 5) Join our Slack channel
+### 5) Get help
 
-If you have any questions, don't hesitate to ask! We love to help :relaxed:.
-
-{% embed url="https://join.slack.com/t/whalesyncpioneers/shared_invite/zt-r231pg5t-L7GRWvn52GZGm11GbiXX3Q" %}
+If you have any questions, [contact support](../../resources/support/README.md).

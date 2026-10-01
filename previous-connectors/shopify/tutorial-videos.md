@@ -1,5 +1,7 @@
 ---
-description: How to sync Shopify with Airtable & Webflow
+description: >-
+  Whalesync no longer offers the Shopify connector, but existing syncs keep
+  running. Watch a video tutorial on two-way syncing Shopify with Airtable.
 ---
 
 {% hint style="warning" %}

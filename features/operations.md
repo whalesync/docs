@@ -1,5 +1,7 @@
 ---
-description: View a running list of all sync operations Whalesync has made
+description: >-
+  The Operations page shows a live history of every create, update, and delete
+  Whalesync made, with the app, table, record, and each changed value.
 ---
 
 # Operations

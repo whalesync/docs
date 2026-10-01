@@ -1,4 +1,8 @@
 ---
+description: >-
+  Two-way sync Notion databases and page content with Airtable, Google Sheets,
+  HubSpot, Postgres, and more. Covers connecting, relations, and supported
+  fields.
 cover: ../../.gitbook/assets/gitbook-cover_notion.jpg
 coverY: 0
 ---

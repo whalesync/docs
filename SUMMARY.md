@@ -92,7 +92,7 @@
   * [Multiple foreign keys in a single field](connectors/supabase/multiple-foreign-keys-in-a-single-field.md)
   * [How to sync Postgres views](connectors/supabase/how-to-sync-postgres-views.md)
 * [Webflow](connectors/webflow/README.md)
-  * [Supported fields - (AT x WF)](connectors/webflow/supported-fields-at-x-wf.md)
+  * [Supported fields (Airtable and Webflow)](connectors/webflow/supported-fields-at-x-wf.md)
   * [Webflow Memberships sync](connectors/webflow/webflow-memberships-sync.md)
   * [Webflow status field](connectors/webflow/webflow-status-field.md)
   * [Webflow localization](connectors/webflow/webflow-localization.md)

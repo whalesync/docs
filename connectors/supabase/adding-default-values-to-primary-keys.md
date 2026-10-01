@@ -1,5 +1,8 @@
 ---
-description: How to make your primary keys auto-generate values in Supabase
+description: >-
+  Make a Supabase primary key auto-generate values. Edit the column, set its
+  type to uuid and its default value to gen_random_uuid(), and turn on Is
+  Unique.
 ---
 
 # Adding default values to primary keys

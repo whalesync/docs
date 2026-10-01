@@ -1,5 +1,7 @@
 ---
-description: Handy snippets to help you set up Postgres to work with Whalesync
+description: >-
+  SQL snippets to add Postgres foreign keys for Whalesync, plus the _fk naming
+  workaround that lets a uuid[] array column sync Airtable linked records.
 ---
 
 # Foreign key snippets
@@ -48,7 +50,7 @@ To create a foreign key array you can:
     1. The "\_fk" designates to Whalesync that you want this to be a foreign key.
     2. The "\_Contacts" designates that it should point to the Contacts table.
 
-    (\*note - must match capitlization)
+    (\*note - must match capitalization)
 3. Set up your sync in Whalesync as normal, mapping your fields.
 
 **Example snippet**

@@ -1,5 +1,8 @@
 ---
-description: How to get connection string from Neon
+description: >-
+  Get the Postgres connection string for your Neon project to connect it to
+  Whalesync. Open the project in your Neon dashboard, click Connect, and copy
+  it.
 ---
 
 # Neon

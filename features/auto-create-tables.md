@@ -1,7 +1,7 @@
 ---
 description: >-
-  Automatically generate tables/fields in Airtable, Notion, or Google Sheets
-  from your other connected app.
+  Auto-create tables and fields in Airtable, Notion, or Google Sheets from a
+  table in your other connected app, like a Webflow Blog Posts collection.
 ---
 
 # Auto-create tables

@@ -1,7 +1,8 @@
 ---
 description: >-
-  An explanation of how to set up foreign key (aka reference) field
-  relationships in Sheets
+  Set up foreign keys in Google Sheets with a Related_[Table Name] column
+  holding Whalesync IDs, mapped to linked records or reference fields in other
+  apps.
 ---
 
 # Foreign keys
@@ -29,7 +30,7 @@ Capitalization matters, so make sure the table name matches exactly.&#x20;
 Google Sheets foreign key fields map with [reference fields](../../features/additional-features/reference-fields.md) in other apps.
 
 {% hint style="info" %}
-You will likely need to click "Referesh" to ensure Whalesync sees your newest fields
+You will likely need to click "Refresh" to ensure Whalesync sees your newest fields
 {% endhint %}
 
 #### 3. Insert Foreign Key values

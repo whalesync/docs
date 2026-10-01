@@ -1,4 +1,7 @@
 ---
+description: >-
+  Whalesync no longer offers the MS Dynamics CRM connector, but existing syncs
+  keep running. Supported objects, and why deletes are best done in Dynamics.
 cover: ../.gitbook/assets/gitbook-cover_ms-dynamics.jpg
 coverY: 0
 ---

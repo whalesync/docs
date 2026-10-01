@@ -1,5 +1,8 @@
 ---
-cover: ../../.gitbook/assets/gitbook-cover_wix.png
+description: >-
+  Two-way sync Wix CMS collections with Airtable, Notion, Google Sheets, and
+  more. Covers connecting your Wix site and which field types sync.
+cover: ../.gitbook/assets/gitbook-cover_wix.png
 coverY: 0
 ---
 
@@ -19,7 +22,7 @@ When you connect, you'll be redirected to Wix to approve the connection. As part
 
 ### Compatible fields
 
-Whalesync does not provide full support for all fields in Wix CMS. If you need anything that is missing, please [reach out and let us know](../../resources/support/) to inform our planning.
+Whalesync does not provide full support for all fields in Wix CMS. If you need anything that is missing, please [reach out and let us know](../resources/support/README.md) to inform our planning.
 
 | Field                     | Status                        | Notes                           |
 | ------------------------- | ----------------------------- | ------------------------------- |

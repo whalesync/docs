@@ -10,7 +10,7 @@ coverY: 0
 
 ## Close Connector Guide
 
-This guide covers how to connect Whalesync to [Close](https://www.close.com), which tables and fields sync, and a few things to know before you start.
+This guide covers how to connect Whalesync to [Close](https://close.com), which tables and fields sync, and a few things to know before you start.
 
 In Whalesync terms, a Close **organization** is the base you pick. Each Close object Whalesync supports is a table, and each lead, contact, opportunity, task, or note is a row. Leads, Contacts, Opportunities, Tasks, and Notes sync in both directions. Pipelines sync both ways too, but only the pipeline name is writable. Users, Lead Statuses, and Opportunity Statuses are your organization's configuration and are read only.
 

@@ -1,5 +1,7 @@
 ---
-description: Sync specific views in Airtable
+description: >-
+  Sync a filtered Airtable view instead of the entire table. Changes to the
+  view's filters don't sync until Whalesync's next full sync.
 ---
 
 # Airtable view sync

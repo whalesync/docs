@@ -1,8 +1,7 @@
 ---
 description: >-
-  tl;dr -> so that we can connect to your Supabase database in the simplest/most
-  reliable way
-noIndex: true
+  Whalesync creates a whalesync_service_account_[ID] role in your Supabase
+  project so you can revoke its access without rotating your postgres password.
 ---
 
 # Why does Whalesync create a database user?

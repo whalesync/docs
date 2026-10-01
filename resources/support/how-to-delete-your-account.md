@@ -1,7 +1,7 @@
 ---
 description: >-
-  How to permanently delete your Whalesync account from Settings and what
-  happens when you do
+  Delete your Whalesync account in Settings after canceling any renewing plan.
+  Data is permanently deleted 30 days later; you can cancel before then.
 ---
 
 # How to delete your account

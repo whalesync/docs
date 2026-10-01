@@ -1,5 +1,7 @@
 ---
-description: Set up your first sync in less than 5 minutes
+description: >-
+  Set up your first Whalesync sync in under five minutes. Create a sync, connect
+  your apps, map tables and fields, then activate it.
 ---
 
 # Quick start

@@ -1,5 +1,7 @@
 ---
-description: A quick demo for syncing images into WordPress posts/pages
+description: >-
+  Video demo of syncing images into WordPress posts and pages by linking an
+  Airtable Media table to an ACF image field named image_fk_media.
 hidden: true
 ---
 

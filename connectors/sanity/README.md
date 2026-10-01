@@ -1,5 +1,7 @@
 ---
-description: Two-way sync Sanity documents with Airtable, Notion, Google Sheets, and more.
+description: >-
+  Two-way sync Sanity documents with Airtable, Notion, Google Sheets, and more.
+  Covers Studio schema deployment, API tokens, supported fields, and drafts.
 cover: ../../.gitbook/assets/gitbook-cover_sanity.jpg
 coverY: 0
 ---

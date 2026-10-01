@@ -1,10 +1,12 @@
 ---
-description: An explanation of how to set up multi-select fields in Google Sheets
+description: >-
+  Sync multi-select fields in Google Sheets by naming the column multi_[column
+  name] and, optionally, setting data validation to allow multiple selections.
 ---
 
 # Multi-select fields
 
-You can now use Whalesync to sync multi-select fields in Google Sheets. Multi-select allows you to store multiple values in a single cell, such as tags, categories, or any other list of options.&#x20;
+Whalesync can sync multi-select fields in Google Sheets. Multi-select allows you to store multiple values in a single cell, such as tags, categories, or any other list of options.&#x20;
 
 ### How to Set Up Multi-Select in Google Sheets
 
@@ -38,10 +40,3 @@ You can now use Whalesync to sync multi-select fields in Google Sheets. Multi-se
 * Multi-select fields will appear as shown below.&#x20;
 
 <figure><img src="../../.gitbook/assets/Screenshot 2025-01-11 162501.png" alt=""><figcaption><p>Shows how Google Sheets multi-select fields appear in Table Mapping</p></figcaption></figure>
-
-
-
-
-
-
-

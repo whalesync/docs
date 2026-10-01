@@ -1,5 +1,7 @@
 ---
-description: View and manage errors impacting your sync
+description: >-
+  The Whalesync Issues page lists errors affecting your sync, with the record
+  impacted, the full error message, an AI fix suggestion, and a retry button.
 ---
 
 # Issues

@@ -1,4 +1,7 @@
 ---
+description: >-
+  Two-way sync Supabase tables with Airtable, Notion, Google Sheets, and more.
+  Covers connecting, primary keys, supported schemas, and field types.
 cover: ../../.gitbook/assets/Supabase Gitbook Cover.jpg
 coverY: 0
 ---
@@ -57,12 +60,11 @@ For example, "text\_html", will preserve that column's values as HTML while sync
 
 See [HTML and Markdown Field Extensions](../../features/additional-features/html-and-markdown-field-extensions.md) for a way to sync HTML or Markdown into a rich text field.
 
-#### Unsupported
+#### Network and SSL
 
-Note that Whalesync does not yet support:
+If your database only accepts connections from known IP addresses, allowlist Whalesync's static IP. See [Allowlisting Whalesync IP addresses](../../resources/support/allowlist-ip.md).
 
-* Whitelisted IP addresses
-* Custom SSL/TLS certificates
+Note that Whalesync does not yet support custom SSL/TLS certificates.
 
 ## Supported Schemas
 

@@ -1,4 +1,7 @@
 ---
+description: >-
+  Two-way sync Memberstack members, plan IDs, permissions, custom fields, and
+  metadata with Airtable, Webflow, Notion, Google Sheets, and more.
 cover: ../../.gitbook/assets/gitbook-cover_memberstack.jpg
 coverY: 0
 ---
@@ -65,4 +68,4 @@ We support 2-way syncing of Memberstack Metadata fields as JSON blobs. You can e
 
 Copy our Airtable or Notion templates to instantly have a table set up to sync with Memberstack.
 
-{% embed url="https://whalesync.com/template-packs" %}
+{% embed url="https://www.whalesync.com/template-packs" %}

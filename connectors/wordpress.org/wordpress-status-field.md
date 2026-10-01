@@ -1,5 +1,7 @@
 ---
-description: Control the status of a WordPress post via a field in other apps
+description: >-
+  Set a WordPress post to publish, draft, or pending from Airtable or Notion by
+  mapping a single-select Status field with exactly those three options.
 ---
 
 # WordPress status field

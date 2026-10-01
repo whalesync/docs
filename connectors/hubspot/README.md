@@ -1,4 +1,7 @@
 ---
+description: >-
+  Two-way sync HubSpot contacts, companies, deals, tickets, custom objects, and
+  more with Airtable, Notion, Google Sheets, and other apps.
 cover: ../../.gitbook/assets/gitbook-cover_hubspot.jpg
 coverY: 0
 ---
@@ -21,8 +24,8 @@ HubSpot does not have built-in backup/restore functionality. Two-way sync is ver
 
 As a precaution, we suggest using a HubSpot backup solution such as:
 
-- [SysCloud Backup](https://ecosystem.hubspot.com/marketplace/apps/syscloud-backup-for-hubspot-595013)
-- [Pro Backup](https://ecosystem.hubspot.com/marketplace/apps/pro-backup-380854)
+- [SysCloud Backup](https://ecosystem.hubspot.com/marketplace/listing/syscloud-backup-for-hubspot-595013)
+- [Pro Backup](https://ecosystem.hubspot.com/marketplace/listing/pro-backup-380854)
 
 ### Associations
 

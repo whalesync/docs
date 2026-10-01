@@ -1,3 +1,9 @@
+---
+description: >-
+  Connect WordPress to Whalesync with your user email and an application
+  password, and which WordPress user role the connection needs.
+---
+
 # Authorize WordPress.org
 
 ### How to get your user email
