@@ -39,12 +39,12 @@ Whalesync offers two ways to move your data, built for different jobs:
 | **Destination**        | Editable — two-way sends your edits back      | Read-only mirror, overwritten on each run          |
 | **Updates**            | Real time, as data changes                    | On demand or on a schedule                         |
 | **Destination tables** | Existing tables or newly created tables       | Newly created for you                              |
-| **Apps**               | Any connected app, on either side             | From any app, into Airtable, Notion, or Supabase   |
+| **Apps**               | Any connected app, on either side             | Its own set of sources and destinations            |
 
 A few of these deserve a note:
 
 - **Edits in a Live Export destination don't stick.** They aren't sent back to your source, and each run overwrites them. If you need edits to flow back, use a two-way sync.
 - **Live Export builds the destination for you.** It creates the tables and fields in the base, schema, or page you choose. To write into tables you already maintain, use a sync.
-- **Live Export destinations are Airtable, Notion, and Supabase.** You can export *from* any connected app; see what's available [here](https://app.whalesync.com/exports/setup/new/connect).
+- **Live Export has its own list of sources and destinations.** See which apps are available [in the app](https://app.whalesync.com/exports/setup/new/connect).
 
 Still unsure? [Reach out](../resources/support/README.md) and we'll help you pick.

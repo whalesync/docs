@@ -40,15 +40,11 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `insufficient_scope`
 
-`403` · The key's scope is below what the endpoint needs. The message names both scopes, for example `This API key has the "read" scope. The endpoint requires the "operate" scope.` From weakest to strongest the scopes are `read`, `operate`, and `readwrite`. `read` keys may call every `GET` and `POST …/validate`, which writes nothing. `operate` adds pausing and activating syncs, retrying issues, refetching records, and triggering and canceling Live Export runs. Everything else that changes state needs `readwrite`. Ask a person for a key with the scope the message names; scope can't be changed after creation.
+`403` · The key's scope is below what the endpoint needs. The message names both scopes, for example `This API key has the "read" scope. The endpoint requires the "operate" scope.` From weakest to strongest the scopes are `read`, `operate`, and `readwrite`. `read` keys may call every `GET` and `POST …/validate`, which writes nothing. `operate` adds pausing and activating syncs, retrying issues, refetching records, and triggering and canceling Live Export runs. Everything else that changes state needs `readwrite`, including creating, editing, and deleting Live Exports and their mappings, saving them, and changing their schedules. Ask a person for a key with the scope the message names; scope can't be changed after creation.
 
 ### `sync_restricted_key`
 
 `403` · The key is limited to one sync, and this endpoint isn't about one existing sync. The message is `This API key is limited to one sync and cannot be used on this endpoint.` Creating a sync and every Live Export endpoint refuse limited keys. Ask a person for a key with access to all syncs. A limited key that asks for a different sync, or for another sync's issues, operations, or records, gets `not_found` instead.
-
-### `public_api_not_enabled`
-
-`403` · The key is valid but the account isn't in the API's launch yet. This is not something the account owner can turn on. They should ask for API access at support@whalesync.com. Existing keys keep working once it's enabled; a new key won't help. Deliberately not a `requires_action`, because no browser step resolves it.
 
 ### `rate_limit_exceeded`
 
@@ -66,7 +62,7 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `invalid_limit`
 
-`400` · `limit` is outside the allowed range.
+`400` · `limit` is outside the allowed range. Live Export lists accept 1 to 25.
 
 ### `invalid_cursor`
 
@@ -96,9 +92,17 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 `400` · A `type` filter value was outside the issue types.
 
+### `missing_query`
+
+`400` · `GET /sync/records` requires `query`.
+
+### `invalid_state`
+
+`400` · The `state` filter on `/sync/pending-deletes` must be `awaiting_review` or `ignored`.
+
 ### `not_found`
 
-`404` · No such resource, or it belongs to someone else. The two are indistinguishable on purpose, so the API never reveals that an id exists. A key limited to one sync also gets this for any other sync and for the issues, operations, and records of other syncs.
+`404` · No such resource, or it belongs to someone else. The two are indistinguishable on purpose, so the API never reveals that an id exists. A key limited to one sync also gets this for any other sync and for the issues, operations, and records of other syncs. A `lex_…` or `run_…` id also returns `404` when Live Export isn't available to the account. `GET /live-export/live-exports/{id}/save` returns `404` for an export that was never saved, and `GET …/schedule` returns `404` after the first save until a schedule is created.
 
 ### `invalid_idempotency_key`
 
@@ -111,6 +115,20 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 ### `idempotency_key_in_use`
 
 `409` · A duplicate landed while the first request was still running. Retry after it finishes.
+
+The `Idempotency-Key` header is accepted on `POST /sync/syncs`, the sync mappings `PUT`, and `POST /live-export/live-exports`.
+
+### `forbidden`
+
+`403` · A fallback for a refusal that has no more specific code. Rare.
+
+### `conflict`
+
+`409` · A fallback for a state conflict that has no more specific code. Rare.
+
+### `unprocessable`
+
+`422` · A fallback for a request that was understood but can't be processed, when no more specific code applies. Rare.
 
 ## Building a sync
 
@@ -166,6 +184,10 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 `409` · A side's `connector` or `base` can only be changed while the sync is a `draft`. Credentials (`auth`) can be rotated at any time.
 
+### `initial_sync_running`
+
+`409` · `activate` was called while the sync's first sync is still running. The sync turns itself on when that finishes. Poll the sync until `status` is `active`.
+
 ## Mappings and schema
 
 ### `sync_active`
@@ -178,7 +200,7 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `revision_mismatch`
 
-`412` · The `If-Match` revision is stale. The mappings changed since you read them, probably edited in the app. Fetch the document again and reapply your edit.
+`412` · The `If-Match` revision is stale. The mappings changed since you read them, probably edited in the app. Fetch the document again and reapply your edit. This applies to the Live Export mappings `PUT` too. Over MCP, the stale value is the `revision` argument rather than `If-Match`.
 
 ### `create_failed`
 
@@ -194,7 +216,7 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `auth_required`
 
-`409` · `requires_action` · A side still has no connection, so there's nothing to map or list schema for. The `required_action` links a person to the step that connects it. Poll the sync until the side stops being `null`.
+`409` · `requires_action` · A side still has no connection, so there's nothing to map or list schema for. The `required_action` links a person to the step that connects it. Poll the sync or live export until the side stops being `null`. On Live Export, `side` is `source` or `destination`. Live Export mappings validation also reports `auth_required` as an issue code when a side isn't connected.
 
 ### `confirmation_required`
 
@@ -203,6 +225,8 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 ## Validation issues
 
 These are not errors. `POST …/validate` returns `200` with an `issues` array, and the mappings `PUT` repeats the same objects in `details.issues` when it refuses. Each carries a `path` pointing into your document. `severity: "error"` means a person can't start the sync until it's fixed; `warning` never blocks.
+
+Live Export validation (`POST /live-export/live-exports/{id}/mappings/validate`) returns a different shape: `{"valid": bool, "issues": [{"code", "message", "path"}]}`, with `path` like `tables[0]` or `null` and no `severity`. Its issue codes are the [Live Export](#live-export) codes a mappings `PUT` would return, plus `auth_required` and `internal`.
 
 ### `incompatible_field_types`
 
@@ -256,15 +280,119 @@ The connector can't create tables or fields, so a `{"create": …}` placeholder 
 
 Something with that name already exists, and the create will adopt it rather than make a new one. Severity `warning`; it never blocks.
 
+### `internal`
+
+Live Export only. Validation itself failed unexpectedly. Retry.
+
 ## Records and deletes
 
 ### `ambiguous_record`
 
 `400` · A record id from a connected app matched records in more than one table. Add `?table=` to pick one. A `rec_` id is never ambiguous.
 
+### `no_copy_to_refetch`
+
+`400` · `POST /sync/records/{record_id}/refetch` asked for a side that has no copy of the record, or, with no `side`, neither side has one. The message names the side, for example "This record has no copy on the left side to fetch." Refetch the other side, or omit `side`.
+
 ### `delete_approval_disabled`
 
 `409` · `/sync/pending-deletes` was called on a sync that auto-approves deletes, so it has no queue. A sync's `delete_approval` field says which mode it is in before you call.
+
+## Live Export
+
+These codes come from the `/live-export/` endpoints. The [Live Export API reference](https://docs.whalesync.com/api/live-export) describes the flow they belong to.
+
+### `live_export_unavailable`
+
+`403` · Live Export isn't available to this account, either because the plan doesn't include it (the message names the plan) or because it isn't enabled. Returned on writes; reads return empty lists or `404` instead. A person resolves it in billing.
+
+### `connector_not_supported`
+
+`400` · The connector isn't available for that role (source or destination) on Live Export. Check `GET /live-export/connectors` and its `roles`.
+
+### `oauth_auth_not_allowed`
+
+`400` · `auth` was sent for a connector that connects with OAuth in the browser. Omit `auth` and relay the pending action.
+
+### `connection_failed`
+
+`400` · The app rejected the inline credentials. The message carries the app's reason. On create, nothing was kept, so retry with corrected credentials.
+
+### `side_already_connected`
+
+`409` · A `PATCH` sent `auth` for a side that is already connected. Reconnecting is done in the app (`app_url`).
+
+### `invalid_location`
+
+`400` · The `location` isn't one this destination offers, or `location` was sent on the source. Use an id from `GET …/destination/locations`.
+
+### `live_export_invalid_structure`
+
+`409` · The export was changed outside Whalesync and can't be operated on over the API. Open it in the app.
+
+### `missing_live_export`
+
+`400` · `/live-export/runs` requires `?live_export=`.
+
+### `invalid_live_export`
+
+`400` · The `live_export` filter value isn't a `lex_…` id.
+
+### `unknown_source_table`
+
+`400` · A `source_table` isn't a table of the source. Use ids from `GET …/source/tables`.
+
+### `unknown_source_field`
+
+`400` · A `source_field` isn't an exportable field of that table. Use ids from `GET …/fields`. Link fields are never offered.
+
+### `duplicate_source_table`
+
+`400` · The same source table appears twice in the mappings document.
+
+### `duplicate_field_name`
+
+`400` · Two fields in one table would create the same destination column name.
+
+### `multiple_primary_fields`
+
+`400` · More than one field in a table has `"primary": true`.
+
+### `empty_table_mapping`
+
+`400` · A table maps no fields.
+
+### `existing_field_not_supported`
+
+`400` · A new table maps onto an existing destination column instead of using `{"create": …}`. This isn't supported over the API yet; use the app.
+
+### `applied_table_not_editable`
+
+`400` · The document changes the fields of a table already created in the destination. Remove the whole table from the document, or edit it in the app.
+
+### `empty_mappings`
+
+`400` · `POST …/save` was called with no tables mapped. `PUT` a mappings document first.
+
+### `not_provisioned`
+
+`409` · The schedule or `trigger` was called before the export's first save. Map and save first (`mappings_url`).
+
+### `unsaved_changes`
+
+`409` · `trigger` was called while the mappings have unsaved edits, so the run would use the last-saved mappings. Save first, or send `{"force": true}` to run the last-saved version deliberately.
+
+### `run_in_progress`
+
+`409` · A run is already in progress, and the message names it. Wait for it to finish or cancel it.
+
+### `run_not_active`
+
+`409` · `cancel` was called on a run that already finished.
+
+### `plan_required`
+
+`403` · The schedule `cadence` is above what the plan allows. Pick one from `allowed_cadences`.
 
 ## Server
 

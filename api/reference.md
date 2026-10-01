@@ -2,15 +2,15 @@
 description: >-
   Whalesync API reference covering the base URL, API-key authentication,
   pagination, and endpoints for syncs, mappings, schema, records, and
-  monitoring.
+  monitoring. Live Export has its own reference page.
 ---
 
 # API reference
 
-The Whalesync API creates and monitors syncs programmatically. It is a REST API with JSON request and response bodies, API-key authentication, cursor pagination, and stable machine-readable error codes. Responses include URLs for the next available operations, and anything that requires a human comes back as a structured action to relay.
+The Whalesync API creates and monitors syncs and Live Exports programmatically. It is a REST API with JSON request and response bodies, API-key authentication, cursor pagination, and stable machine-readable error codes. Responses include URLs for the next available operations, and anything that requires a human comes back as a structured action to relay.
 
 * **Base URL:** `https://api.whalesync.com/v1`. Paths in this reference are relative to it: `GET /sync/connectors` means `GET https://api.whalesync.com/v1/sync/connectors`.
-* **Prefix:** Everything under `/sync/` belongs to the sync feature. Other Whalesync features will get their own prefix under the same base URL.
+* **Prefix:** Everything under `/sync/` belongs to the sync feature and is documented on this page. Everything under `/live-export/` belongs to Live Export and is documented in the [Live Export API reference](https://docs.whalesync.com/api/live-export).
 * **Spec:** OpenAPI 3.1 at `https://api.whalesync.com/v1/openapi.json`
 * **Discovery:** `https://api.whalesync.com/llms.txt`
 * **Companion pages:** [Agent quickstart](https://docs.whalesync.com/api/agent-quickstart) walks through the typical sync creation flow · [Error reference](https://docs.whalesync.com/api/errors) documents every error code
@@ -64,7 +64,7 @@ A key limited to one sync:
 
 * Sees only that sync. `GET /sync/syncs` returns just that sync.
 * Gets `404 not_found` for any other sync, and for the issues, operations, and records of other syncs, as if they didn't exist.
-* Is refused with `403 sync_restricted_key` on endpoints that aren't about one existing sync: creating a sync (`POST /sync/syncs`) and every Live Export endpoint.
+* Is refused with `403 sync_restricted_key` on endpoints that aren't about one existing sync: creating a sync (`POST /sync/syncs`) and every [Live Export endpoint](https://docs.whalesync.com/api/live-export).
 * Can still list connectors with `GET /sync/connectors`.
 
 {% hint style="info" %}
@@ -95,8 +95,8 @@ Some steps require a human signed in to Whalesync (connecting an app, starting a
    "action": "open_in_browser",
    "side": "right",
    "connector": "airtable",
-   "url": "https://app.whalesync.com/syncs/9f2c…/connect-apps?connector=airtable&side=right",
-   "instruction": "Give this link to a person. They sign in to Whalesync and connect airtable in the browser — credentials entered there never pass through the API or an agent. Agents cannot complete this step."}
+   "url": "https://app.whalesync.com/syncs/edit/9f2c…/connect/right?connector=airtable",
+   "instruction": "Give this link to a person. They sign in to Whalesync and connect Airtable in the browser — credentials entered there never pass through the API or an agent. Agents cannot complete this step."}
 ]
 ```
 
@@ -106,15 +106,15 @@ Calling an endpoint one of them is blocking returns a `409` with the *same objec
 {"error": {"type": "requires_action", "code": "auth_required",
   "message": "Both sides have to be connected before mappings can be read or written.",
   "required_action": {"type": "user_authorization", "audience": "end_user", "action": "open_in_browser",
-    "side": "right", "connector": "airtable", "url": "https://app.whalesync.com/syncs/9f2c…/connect-apps?connector=airtable&side=right",
+    "side": "right", "connector": "airtable", "url": "https://app.whalesync.com/syncs/edit/9f2c…/connect/right?connector=airtable",
     "instruction": "Give this link to a person. …"}}}
 ```
 
-`type` is `user_authorization` (connect an app), `user_confirmation` (review and start the sync), or `user_api_key` (create the key itself, which only ever appears on a `401`). Relay `instruction` and `url` to your user; don't fetch the URL.
+`type` is `user_authorization` (connect an app), `user_confirmation` (review and start the sync), or `user_api_key` (create the key itself, which only ever appears on a `401`). Relay `instruction` and `url` to your user; don't fetch the URL. On Live Export, `side` is `source` or `destination` instead of `left` or `right`.
 
 ### Pagination
 
-List endpoints take `limit` and `cursor`, and return `{"data": […], "has_more": true, "next_cursor": "…"}`.
+List endpoints take `limit` and `cursor`, and return `{"data": […], "has_more": true, "next_cursor": "…"}`. Live Export lists accept a `limit` of 1 to 25, defaulting to 10.
 
 ### IDs
 
@@ -126,13 +126,13 @@ Responses include `*_url` fields (`tables_url`, `fields_url`, `mappings_url`, an
 
 ### Idempotency
 
-Send an `Idempotency-Key` header on `POST /sync/syncs` and on the mappings `PUT`, the two calls that create objects, to make retries safe. The other writes are already safe to repeat: pause, activate, and issue retry converge on the same state.
+Send an `Idempotency-Key` header on `POST /sync/syncs`, the sync mappings `PUT`, and `POST /live-export/live-exports`, the calls that create objects, to make retries safe. The Live Export mappings `PUT` doesn't accept it; use `If-Match` there. The other writes are already safe to repeat: pause, activate, and issue retry converge on the same state.
 
 A retry with the same key and body replays the original response (marked with an `Idempotent-Replayed: true` header). The same key with a different body is a `400 idempotency_key_reused`, and a retry that lands while the first request is still running is a `409 idempotency_key_in_use`. Keys expire after 24 hours; a failed request releases its key so the retry runs fresh.
 
 ### Rate limits
 
-Per-key limits; `429` with `Retry-After` when exceeded. `RateLimit-*` headers on every response show the budget.
+120 requests per minute per key, shared across all endpoints; `429` with `Retry-After` when exceeded. `RateLimit-*` headers on every response show the budget.
 
 ### Credentials are not returned
 

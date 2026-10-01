@@ -1,12 +1,13 @@
 ---
 description: >-
-  Guide for AI agents building syncs with the Whalesync API. Get an API key,
-  create a sync, relay human steps, write mappings, and monitor the sync.
+  Guide for AI agents building syncs and Live Exports with the Whalesync API.
+  Get an API key, create a sync or Live Export, relay human steps, write
+  mappings, and monitor the result.
 ---
 
 # Agent quickstart
 
-This page is for AI agents driving the Whalesync API on someone's behalf, and for the people setting them up. Full endpoint documentation is in the [API reference](https://docs.whalesync.com/api/reference). Every error code is in the [Error reference](https://docs.whalesync.com/api/errors).
+This page is for AI agents building syncs and Live Exports with the Whalesync API on someone's behalf, and for the people setting them up. Full endpoint documentation is in the [API reference](https://docs.whalesync.com/api/reference) and the [Live Export API reference](https://docs.whalesync.com/api/live-export). Every error code is in the [Error reference](https://docs.whalesync.com/api/errors).
 
 If your runtime supports MCP, prefer the [MCP server](https://docs.whalesync.com/api/mcp). It wraps the same API, signs in through the browser instead of an API key, and helps guide you through the right steps.
 
@@ -16,7 +17,7 @@ If your runtime supports MCP, prefer the [MCP server](https://docs.whalesync.com
 Base URL:  https://api.whalesync.com/v1
 Spec:      https://api.whalesync.com/v1/openapi.json   (describes every endpoint)
 Auth:      Authorization: Bearer ws_tok_…
-Scopes:    read (monitor) · operate (pause, activate, retry) · readwrite (build and change)
+Scopes:    read (monitor) · operate (pause, activate, retry, trigger and cancel Live Export runs) · readwrite (build and change)
 ```
 
 Fetch the OpenAPI spec first. Everything else can be read from it. Paths in this guide are relative to the base URL: `GET /sync/connectors` means `GET https://api.whalesync.com/v1/sync/connectors`.
@@ -51,7 +52,7 @@ Keys can be revoked at any time from the same page. Revocation is immediate.
 
 The API can create a sync, read the tables and fields on both sides, create tables and fields on a side where they don't exist yet, write and validate mappings, pause, activate, and delete syncs, read the operations log and open issues, look up a single record's sync state, and list the deletes waiting for review.
 
-Three steps require a human. All are deliberate design decisions, so there is no API path around them.
+For a sync, three steps require a human. All are deliberate design decisions, so there is no API path around them.
 
 **Connecting a side in the browser.** A person connects a side whenever its credentials aren't sent inline. That is always the case for apps that sign in through a browser — HubSpot, Salesforce, Webflow, and similar OAuth connectors, whose credentials cannot be sent over the API at all. Airtable takes a personal access token inline (`{"connector": "airtable", "auth": {"apiKey": "pat..."}, "base": "app..."}`) or can be left for a person like any other side. It is also a choice for connectors that take credentials inline (Postgres, Supabase, and others): if your user would rather not paste an app's credentials — a database password, a service API key — into the conversation, you can defer that side to a person too. Either way, declare that side with `connector` only and omit `auth` and `base`. The created sync has that side `null` and a `pending_actions` entry with a link for a human, who signs in, connects the app, and picks its base.
 
@@ -63,6 +64,8 @@ Any side can be left for a person to connect in the browser: declare it by conne
 
 **Deciding a pending delete.** On a sync with `delete_approval: "review_required"`, a record that goes missing on one side waits for a person before the delete reaches the other side. Approving or ignoring one is irreversible, so no endpoint does it. `GET /sync/pending-deletes?sync=…` lists what's waiting; relay each entry's `review_url`.
 
+**Live Export.** The only human step is connecting a side in the browser, where the person also picks where the destination tables go. There is no review step before an export runs, so you are responsible for confirming with your user that the destination tables can be overwritten.
+
 ## How human steps appear in the API
 
 The same object appears on the sync as `pending_actions` and on a blocked call's `409` as `required_action`:
@@ -70,8 +73,8 @@ The same object appears on the sync as `pending_actions` and on a blocked call's
 ```json
 {"type": "user_authorization", "audience": "end_user", "action": "open_in_browser",
  "side": "right", "connector": "airtable",
- "url": "https://app.whalesync.com/syncs/edit/9f2c…/connect-apps?connector=airtable&side=right",
- "instruction": "Give this link to a person. They sign in to Whalesync and connect airtable in the browser — credentials entered there never pass through the API or an agent. Agents cannot complete this step."}
+ "url": "https://app.whalesync.com/syncs/edit/9f2c…/connect/right?connector=airtable",
+ "instruction": "Give this link to a person. They sign in to Whalesync and connect Airtable in the browser — credentials entered there never pass through the API or an agent. Agents cannot complete this step."}
 ```
 
 Relay `instruction` and `url` to your user. Do not fetch the URL; it is a login-protected page for a human. Poll the sync until the step is complete.
@@ -86,6 +89,19 @@ Relay `instruction` and `url` to your user. Do not fetch the URL; it is a login-
 6. Relay the sync's `user_confirmation` pending action. Poll until `status` is `active`.
 7. Monitor with `GET …/status`, `/sync/operations?sync=…`, and `/sync/issues?sync=…`. Issues carry `remediation` written to be acted on; `POST /sync/issues/{id}/retry` once the cause is fixed.
 8. For a question about one record ("why hasn't this contact arrived?"), `GET /sync/records?sync=…&query=…` to find it, then follow the hit's `url` for its status: both sides, its open issues, what's queued for it, and whether a delete is waiting on a person.
+
+## Typical Live Export flow
+
+A live export copies tables from a source app into new tables in a destination app, one way. Runs overwrite the tables the export manages. Endpoint details are in the [Live Export API reference](https://docs.whalesync.com/api/live-export).
+
+1. `GET /live-export/connectors`. Pick a source whose `roles.source` is `true` and a destination whose `roles.destination` is `true`.
+2. `POST /live-export/live-exports` with connector names only, unless credentials were handed to you programmatically.
+3. Relay each `pending_actions` entry. Poll until both sides are non-null. If `destination.location` is still `null` and `GET …/destination/locations` returns entries, set one with `PATCH`.
+4. `GET …/source/tables`, then `…/fields` for each chosen table. Present them for your user to pick from.
+5. `POST …/mappings/validate`, then `PUT …/mappings` with `If-Match`.
+6. `POST …/save`, then `GET …/save?wait=50` until `state` is `succeeded`. Check that the export shows `unsaved_changes: false`.
+7. Confirm with your user that the destination can be overwritten. Then `PATCH …/schedule {"enabled": true, "cadence": "<one of allowed_cadences>"}`, or `POST …/trigger` to run once.
+8. Monitor with `GET …/status` and `/live-export/runs?live_export=…`.
 
 ## Creating tables and fields
 
@@ -108,7 +124,7 @@ Creation happens when you `PUT …/mappings`: the response returns the document 
 
 * Follow the `*_url` fields in responses instead of constructing URLs. They point at the next valid steps for the resource's current state.
 * Read the schema; don't ask your user for it. Once a side is connected you can list its tables and fields yourself and present them to pick from. A destination table or field that doesn't exist yet doesn't have to be built by hand either — create it with `{"create": {"name": "…"}}`.
-* Send `Idempotency-Key` on `POST /sync/syncs` and the mappings `PUT`, the two calls that create objects, so retries are safe.
+* Send `Idempotency-Key` on `POST /sync/syncs`, the sync mappings `PUT`, and `POST /live-export/live-exports`, the calls that create objects, so retries are safe.
 * Use `If-Match` on the mappings `PUT` with the revision you read, so a concurrent edit made in the app fails with `412 revision_mismatch` instead of being overwritten.
 * Prefer `remote_id` over names when referencing bases, tables, and fields. Names are not unique and can be renamed.
 * Don't ask the user to paste an app's credentials into the conversation unless they offer — create that side without `auth` and hand over the connect link.

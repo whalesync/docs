@@ -162,6 +162,7 @@
   * [Client setup](api/mcp/setup.md)
 * [Agent quickstart](api/agent-quickstart.md)
 * [API reference](api/reference.md)
+* [Live Export API reference](api/live-export.md)
 * [Error reference](api/errors.md)
 
 ## Resources

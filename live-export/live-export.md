@@ -46,6 +46,10 @@ A **Live Export** can update two ways:
 
 Scheduling is off by default (manual only). When you turn it on, you can choose to run every 10 minutes, every 30 minutes, hourly, or daily.
 
+## Set up Live Export from an AI agent or the API
+
+AI agents can create, schedule, and monitor Live Exports through the [MCP server](https://docs.whalesync.com/api/mcp). Developers can do the same with the [Live Export API](https://docs.whalesync.com/api/live-export).
+
 ## FAQs
 
 <details>

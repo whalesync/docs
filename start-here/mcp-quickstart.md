@@ -20,6 +20,12 @@ Tell the agent what you want to sync, for example:
 
 The agent will walk you through the remaining steps.
 
+You can also ask for a Live Export, for example:
+
+> Set up a Live Export from HubSpot into Airtable, refreshed daily.
+
+The agent sends you a connect link for each app, asks which tables to copy, saves the export, and turns on the schedule. A Live Export has no review step, and its runs overwrite the tables it manages, so the agent confirms with you that the destination can be overwritten. The rest of this page follows a sync.
+
 ## Step 3: Sign in to your apps
 
 To connect an app, the agent sends you a link that opens Whalesync in your browser. Your credentials go straight to Whalesync and never pass through the agent.
