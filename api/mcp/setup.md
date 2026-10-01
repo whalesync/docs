@@ -84,7 +84,7 @@ Any client that supports remote MCP servers over streamable HTTP works. Add `htt
 ## Approving the connection
 
 1. The first time the agent uses the server, the client opens your browser to Whalesync's consent page. 
-2. The page shows the client's name and the access it requested. A request for read and write can be downgraded to read only.
+2. The page shows the client's name and the access it requested. You can grant that access or a weaker scope, never a stronger one: a request for `readwrite` can be lowered to `operate` or `read`. See [Scopes](https://docs.whalesync.com/api/mcp#scopes).
 3. Click **Connect**. The browser returns to the client and the agent is connected.
 
 The new connection appears under [Settings → MCP](https://app.whalesync.com/settings/mcp).

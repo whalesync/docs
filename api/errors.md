@@ -40,7 +40,11 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `insufficient_scope`
 
-`403` · A `read` key was used for something that changes state. `read` keys may call every `GET` and `POST …/validate`, which writes nothing. Ask a person for a `readwrite` key; scope can't be changed after creation.
+`403` · The key's scope is below what the endpoint needs. The message names both scopes, for example `This API key has the "read" scope. The endpoint requires the "operate" scope.` From weakest to strongest the scopes are `read`, `operate`, and `readwrite`. `read` keys may call every `GET` and `POST …/validate`, which writes nothing. `operate` adds pausing and activating syncs, retrying issues, refetching records, and triggering and canceling Live Export runs. Everything else that changes state needs `readwrite`. Ask a person for a key with the scope the message names; scope can't be changed after creation.
+
+### `sync_restricted_key`
+
+`403` · The key is limited to one sync, and this endpoint isn't about one existing sync. The message is `This API key is limited to one sync and cannot be used on this endpoint.` Creating a sync and every Live Export endpoint refuse limited keys. Ask a person for a key with access to all syncs. A limited key that asks for a different sync, or for another sync's issues, operations, or records, gets `not_found` instead.
 
 ### `public_api_not_enabled`
 
@@ -94,7 +98,7 @@ Two fields appear on some errors. `required_action` is the step a person must ta
 
 ### `not_found`
 
-`404` · No such resource, or it belongs to someone else. The two are indistinguishable on purpose, so the API never reveals that an id exists.
+`404` · No such resource, or it belongs to someone else. The two are indistinguishable on purpose, so the API never reveals that an id exists. A key limited to one sync also gets this for any other sync and for the issues, operations, and records of other syncs.
 
 ### `invalid_idempotency_key`
 

@@ -16,7 +16,7 @@ If your runtime supports MCP, prefer the [MCP server](https://docs.whalesync.com
 Base URL:  https://api.whalesync.com/v1
 Spec:      https://api.whalesync.com/v1/openapi.json   (describes every endpoint)
 Auth:      Authorization: Bearer ws_tok_…
-Scopes:    read (monitor) · readwrite (build and change)
+Scopes:    read (monitor) · operate (pause, activate, retry) · readwrite (build and change)
 ```
 
 Fetch the OpenAPI spec first. Everything else can be read from it. Paths in this guide are relative to the base URL: `GET /sync/connectors` means `GET https://api.whalesync.com/v1/sync/connectors`.
@@ -31,12 +31,19 @@ A request without a usable key returns a `401` with a `required_action` containi
 >
 > 1. Open **https://app.whalesync.com/settings/api-keys**
 > 2. Click **Create key**
-> 3. Choose **Read and write** so I can build the sync (**Read only** is enough if you just want me to watch it)
-> 4. Copy the key and paste it here. It's shown only once.
+> 3. Choose **Read & write** so I can build the sync. **Read & operate** is enough if you only want me to pause, resume, and retry it, and **Read only** if you just want me to watch it.
+> 4. If I'm only looking after one existing sync, choose **One sync** and pick it.
+> 5. Copy the key and paste it here. It's shown only once.
 >
 > Treat it like a password: it can read and change your syncs, including the contents of synced records.
 
-Request the `read` scope if you only need monitoring. A `read` key can call every `GET` and `POST …/validate`; anything that changes state needs `readwrite`. Scope is fixed at creation.
+Ask for the weakest scope that covers the job. From weakest to strongest:
+
+* `read` (Read only): every `GET` and `POST …/validate`.
+* `operate` (Read & operate): everything `read` allows, plus pausing and activating syncs, retrying issues, refetching records, and triggering and canceling Live Export runs. Activating never starts a `draft` sync.
+* `readwrite` (Read & write): everything, including creating, editing, and deleting syncs, mappings, and Live Exports.
+
+Scope is fixed at creation. A key can also be limited to one sync. It then sees only that sync, gets `404 not_found` for every other sync, and can't create syncs or use Live Export endpoints (`403 sync_restricted_key`). If you only need to monitor or run one existing sync, ask for a `read` or `operate` key limited to that sync. See [Scopes](https://docs.whalesync.com/api/reference#scopes) and [Keys limited to one sync](https://docs.whalesync.com/api/reference#keys-limited-to-one-sync).
 
 Keys can be revoked at any time from the same page. Revocation is immediate.
 

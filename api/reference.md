@@ -31,12 +31,45 @@ Create keys in **Settings → API keys** in the Whalesync app. You can have mult
 **There is no endpoint that creates an API key.** API keys are created manually by a human in the app. A request without a key returns a `401` naming the smallest sufficient scope and carrying a key-creation link to give to a person.
 {% endhint %}
 
-Keys have one of two scopes:
-
-* `readwrite`: full access.
-* `read`: monitoring only. Anything that changes something fails with `403 insufficient_scope`. The one `POST` a `read` key may call is `…/validate`, which only checks a document and never writes. Note that `read` exposes the *contents* of synced records (before/after values in the operations log).
-
 There is no OAuth for the REST API itself. Browser sign-in without an API key is available through the [MCP server](https://docs.whalesync.com/api/mcp).
+
+### Scopes
+
+Each key has one of three scopes. From weakest to strongest they are `read`, `operate`, and `readwrite`, and each scope includes everything the weaker ones allow.
+
+| Scope | Label in Settings | Allows |
+| --- | --- | --- |
+| `read` | Read only | Reading syncs, mappings, status, operations, issues, and records. The one `POST` a `read` key may call is `…/validate`, which only checks a document and never writes. |
+| `operate` | Read & operate | Everything `read` allows, plus running things: pausing and activating syncs, retrying issues, refetching records, and triggering and canceling Live Export runs. It can't change how anything is set up. Activating never starts a `draft` sync; that still needs a person in the app. |
+| `readwrite` | Read & write | Everything, including creating, editing, and deleting syncs, mappings, and Live Exports. |
+
+These endpoints need `operate`:
+
+```
+POST /sync/syncs/{sync_id}/pause
+POST /sync/syncs/{sync_id}/activate
+POST /sync/issues/{id}/retry
+POST /sync/records/{record_id}/refetch
+POST /live-export/live-exports/{id}/trigger
+POST /live-export/runs/{id}/cancel
+```
+
+A key below the scope an endpoint needs gets `403 insufficient_scope`, and the message names both scopes: `This API key has the "read" scope. The endpoint requires the "operate" scope.` Scope is fixed when the key is created. Note that every scope, including `read`, exposes the *contents* of synced records (before/after values in the operations log).
+
+### Keys limited to one sync
+
+When creating a key in **Settings → API keys**, choose **All syncs** (the default) or **One sync** and pick the sync from the list. The key list shows which syncs each key can reach. Scope and the sync limit are independent, so a key can be `read` or `operate` and also limited to one sync.
+
+A key limited to one sync:
+
+* Sees only that sync. `GET /sync/syncs` returns just that sync.
+* Gets `404 not_found` for any other sync, and for the issues, operations, and records of other syncs, as if they didn't exist.
+* Is refused with `403 sync_restricted_key` on endpoints that aren't about one existing sync: creating a sync (`POST /sync/syncs`) and every Live Export endpoint.
+* Can still list connectors with `GET /sync/connectors`.
+
+{% hint style="info" %}
+When giving a key to a less-trusted tool or sharing it with someone, create a `read` or `operate` key limited to the one sync it needs.
+{% endhint %}
 
 ## Conventions
 
@@ -283,6 +316,8 @@ Calling `activate` on a `draft` sync returns the standard prerequisite error:
 
 Once started, `pause` and `activate` toggle the sync freely from the API, until the mappings change, which returns it to `draft`.
 
+Both endpoints need the `operate` scope.
+
 ## Monitoring
 
 ```
@@ -291,7 +326,7 @@ GET  /sync/operations?sync=…                   Record-level change log (also f
 GET  /sync/operations/{id}
 GET  /sync/issues?sync=…                       Open issues, with remediation guidance.
 GET  /sync/issues/{id}
-POST /sync/issues/{id}/retry                   Clear an issue and retry the failed work.
+POST /sync/issues/{id}/retry                   Clear an issue and retry the failed work. Needs operate.
 ```
 
 Operations and issues are their own collections rather than sub-resources of a sync, filtered by `?sync=`, with the filter param named after the resource. The `sync` filter is required: both collections are always read one sync at a time. Every sync response links to its own slices via `operations_url` and `issues_url`.
@@ -327,11 +362,12 @@ An issue (note `remediation`, written to be actionable by an agent):
 ## Records
 
 ```
-GET /sync/records?sync=…&query=…       Find records by remote id, rec_ id, or display text.
-GET /sync/records/{record_id}          Everything known about one record's sync state.
+GET  /sync/records?sync=…&query=…      Find records by remote id, rec_ id, or display text.
+GET  /sync/records/{record_id}         Everything known about one record's sync state.
+POST /sync/records/{record_id}/refetch Fetch the record again from the connected app. Needs operate.
 ```
 
-These answer questions about one record: why it hasn't arrived, whether something is blocking it, whether it's waiting on a delete review. They report state only. Nothing in this API creates, edits, or deletes record data in a connected app — writing records is what the sync itself does.
+These answer questions about one record: why it hasn't arrived, whether something is blocking it, whether it's waiting on a delete review. Nothing in this API creates, edits, or deletes record data in a connected app. Writing records is what the sync itself does.
 
 Search is capped rather than paginated. `limit` is at most 25, `next_cursor` is always null, and `has_more: true` means more matched than came back, so narrow the `query`. Exact id matches come first, and `table` restricts the search to one table. Each hit carries a `url` to that record's status document and a `browser_url` that opens the record in the connected app.
 
@@ -345,6 +381,14 @@ The status document gathers everything about one record:
 `queued_operations` distinguishes empty from unknown: `[]` means nothing is queued, `null` means the queue couldn't be consulted just then. Each entry has a `type` (`push` writes to the app, `refetch` re-reads the record, `verify_delete` checks that a record detected as missing is really gone) and its `position` in the queue.
 
 `record_id` may be a `rec_` id or the record's id in the connected app. For the latter, `?sync=` is required, and `?table=` picks a table when the same id exists in more than one; without it the call fails with `400 ambiguous_record`.
+
+`POST /sync/records/{record_id}/refetch` fetches the record again from the connected app and syncs whatever changed, like the **Refetch record** button in the app. It takes the same `record_id`, `?sync=`, and `?table=` as the status document. Send `{"side": "left"}` or `{"side": "right"}` to fetch one side only; with no body, every side that has a copy is fetched. The fetch is queued after any operations already queued for the record, and the response is a `202`:
+
+```json
+{"record_id": "rec_1d0b…", "sides": ["left", "right"]}
+```
+
+A `side` with no copy of the record fails with `400 no_copy_to_refetch`. Refetching needs the `operate` scope.
 
 ## Pending deletes
 
