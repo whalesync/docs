@@ -11,9 +11,10 @@ Whalesync connects to Framer with the project URL and a Server API key from that
 ## Connect a Framer project
 
 1. Open the project in Framer and copy its URL from your browser's address bar. It looks like `https://framer.com/projects/My-Site--aBcD1234`.
-2. In the project, open **Site Settings** and go to the **General** section to generate an API key. Keys are bound to one project, so create the key in the same project as the URL. Framer's own guide is [here](https://www.framer.com/developers/server-api-quick-start).
+2. In the project, open **Site Settings** and go to the **General** section to generate an API key. Keys are bound to one project, so create the key in the same project as the URL. Framer's Server API is in beta. Framer's own guide is [here](https://www.framer.com/developers/server-api-quick-start).
 3. In Whalesync, choose Framer, paste the URL into **Framer project URL** and the key into **Framer Server API key**, and click **Authorize**. Whalesync checks the URL and key with Framer before it saves the connection.
 4. Pick the project. A connection reaches one project, so there is one to pick.
+5. Pick the collections to sync.
 
 To sync a different Framer site, add another connection with that site's URL and API key.
 
