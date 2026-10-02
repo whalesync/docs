@@ -37,6 +37,8 @@
   * [Authorize Close](connectors/close/authorize-close.md)
 * [Copper](connectors/copper/README.md)
   * [Authorize Copper](connectors/copper/authorize-copper.md)
+* [Framer](connectors/framer/README.md)
+  * [Authorize Framer](connectors/framer/authorize-framer.md)
 * [Google Sheets](connectors/google-sheets/README.md)
   * [Formatting columns](connectors/google-sheets/formatting-columns.md)
   * [Foreign keys](connectors/google-sheets/foreign-keys.md)
