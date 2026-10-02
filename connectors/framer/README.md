@@ -2,6 +2,8 @@
 description: >-
   Two-way sync Framer CMS collections with Airtable, Notion, Google Sheets, and
   more. Covers the project URL, Server API keys, supported fields, and slugs.
+cover: ../../.gitbook/assets/gitbook-cover_framer.jpg
+coverY: 0
 ---
 
 # Framer
