@@ -55,9 +55,7 @@ Whalesync adds a field that is not part of your collection.
 
 ## Images and files
 
-Framer copies every image and file Whalesync sends it to Framer's own storage (`framerusercontent.com`). After the first sync, the URL in Framer is different from the original URL. This is expected and does not cause repeated updates.
-
-Images from Airtable attachment fields arrive in Framer, and Framer images and galleries arrive in Airtable as attachments.
+Framer copies every image and file Whalesync sends it to Framer's own storage (`framerusercontent.com`). After the first sync, the URL in Framer is different from the original URL. Images from Airtable attachment fields arrive in Framer, and Framer images and galleries arrive in Airtable as attachments.
 
 ## Slugs
 
