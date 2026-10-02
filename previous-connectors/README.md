@@ -1,6 +1,6 @@
 ---
 description: >-
-  Why Whalesync retired Bubble, Copper, Outreach, Shopify, and other connectors.
+  Why Whalesync retired Bubble, Outreach, Shopify, and other connectors.
   Existing syncs keep running, and yearly plans may qualify for a refund.
 ---
 
@@ -33,7 +33,6 @@ Just reach out to [support@whalesync.com](mailto:support@whalesync.com) and we'l
 # Previous connectors
 
 - [Bubble](bubble/)
-- [Copper](copper.md)
 - [MS Dynamics CRM](ms-dynamics-crm.md)
 - [Outreach](outreach.md)
 - [Shopify](shopify/)
