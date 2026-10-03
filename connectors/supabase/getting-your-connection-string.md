@@ -11,7 +11,7 @@ hidden: true
 
 ## Step 1: Choose your database
 
-Navigate to your [Supabase dashboard](https://app.supabase.com/projects) and select the database you want to connect:
+Navigate to your [Supabase dashboard](https://supabase.com/dashboard/organizations) and select the database you want to connect:
 
 <figure><img src="../../.gitbook/assets/image (4).png" alt="Screenshot of a database on the Supabase dashboard"><figcaption><p>Pick your database</p></figcaption></figure>
 

@@ -6,7 +6,7 @@ description: >-
 
 # Live Export API reference
 
-A live export copies tables from a source app into tables it creates in a destination app. It runs one way, on demand or on a schedule, and never writes to the source. Everything for Live Export lives under `/live-export/`. [Live Export](https://docs.whalesync.com/live-export/live-export) describes the feature itself, and [Live Export vs. sync](https://docs.whalesync.com/live-export/live-export-vs-sync) compares it with a sync.
+A live export copies tables from a source app into tables it creates in a destination app. It runs one way, on demand or on a schedule, and never writes to the source. Everything for Live Export lives under `/live-export/`. [Live Export](https://docs.whalesync.com/live-export/live-export) describes the feature itself, and [Live Export vs. sync](https://docs.whalesync.com/live-export/live-export/live-export-vs-sync) compares it with a sync.
 
 Paths are relative to `https://api.whalesync.com/v1`, as on the [API reference](https://docs.whalesync.com/api/reference). Authentication, scopes, error responses, pending actions, pagination, and rate limits work as described there. This page covers what is specific to Live Export.
 
