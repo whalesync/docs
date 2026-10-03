@@ -11,7 +11,7 @@ description: >-
 
 #### Issue
 
-Webflow is very particular about what images it accepts and will silently fail to sync images that do not meet certain criteria. Specifically [images](https://help.webflow.com/hc/en-us/articles/33961290329235) can be synced to Webflow if:
+Webflow is very particular about what images it accepts and will silently fail to sync images that do not meet certain criteria. Specifically [images](https://help.webflow.com/hc/en-us/articles/33961290329235-Image) can be synced to Webflow if:
 
 1. They are less than 4 MB in size
 2. They are configured correctly on the server with a known image [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types) that has lowercase letters

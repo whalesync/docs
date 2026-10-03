@@ -10,7 +10,7 @@ coverY: 0
 
 ## Zoho CRM Connector Guide
 
-This guide covers how to connect Whalesync to [Zoho CRM](https://www.zoho.com/crm/), which modules and fields sync, and how syncing uses your Zoho API credits.
+This guide covers how to connect Whalesync to [Zoho CRM](https://www.zoho.com/en-us/crm/), which modules and fields sync, and how syncing uses your Zoho API credits.
 
 In Whalesync terms, your Zoho CRM **organization** is the base. Each Zoho module is a table, and each record is a row. Whalesync reads the modules and fields from your organization when you connect, so the tables match your Zoho setup, custom modules and custom fields included. A read-only Users table lists the people in your organization, so owner fields have something to link to.
 
