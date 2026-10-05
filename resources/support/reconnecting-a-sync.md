@@ -12,7 +12,7 @@ When Whalesync loses authorization to one of your connected apps, syncing pauses
 
 Whalesync surfaces broken connections in three places:
 
-* **Email** — you'll receive a "Reconnect [app]" email listing each affected sync.
+* **Email** — you'll receive a "Reconnect \[app]" email listing each affected sync.
 * **Dashboard** — affected syncs show a red **Broken connection** pill on the sync list.
 * **Sync settings** — open the sync and you'll see a warning on the connection card.
 
@@ -20,10 +20,18 @@ While a connection is broken, Whalesync stops polling for new changes and pauses
 
 ### How to reconnect
 
-1. Open the affected sync from your dashboard
-2. Go to the **Settings** tab
-3. Find the connection card for the broken app and click **Reconnect**
-4. You'll be redirected to the app's authorization flow — sign in and approve access
+1.  Open the affected sync from your dashboard<br>
+
+    <figure><img src="../../.gitbook/assets/CleanShot 2026-10-05 at 23.41.46.png" alt=""><figcaption></figcaption></figure>
+2.  Go to the **Settings** tab<br>
+
+    <figure><img src="../../.gitbook/assets/CleanShot 2026-10-05 at 23.42.33.png" alt=""><figcaption></figcaption></figure>
+3.  Find the connection card for the broken app and click **Reconnect**<br>
+
+    <figure><img src="../../.gitbook/assets/CleanShot 2026-10-05 at 23.42.51.png" alt=""><figcaption></figcaption></figure>
+4.  You'll be redirected to the app's authorization flow — sign in and approve access<br>
+
+    <figure><img src="../../.gitbook/assets/CleanShot 2026-10-05 at 23.43.32.png" alt=""><figcaption></figcaption></figure>
 
 Once reconnected, Whalesync resumes syncing automatically. Any record changes that happened while the connection was broken will be picked up on the next sync cycle.
 
