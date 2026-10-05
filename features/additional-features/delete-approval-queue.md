@@ -27,9 +27,15 @@ If a "missing" record reappears in your source app on a future record scan, Whal
 
 ### How to bypass the delete approval queue
 
-1. Open your sync
-2. Click the **Pending deletes** tab
-3. Open the settings menu and toggle on **Auto-approve all deletes**
+1.  Open your sync<br>
+
+    <figure><img src="../../.gitbook/assets/CleanShot 2026-10-05 at 23.31.35.png" alt=""><figcaption></figcaption></figure>
+2.  Click the **Pending deletes** tab and open the settings menu<br>
+
+    <figure><img src="../../.gitbook/assets/CleanShot 2026-10-05 at 23.33.54.png" alt=""><figcaption></figcaption></figure>
+3.  Toggle on **Auto-approve all deletes**<br>
+
+    <figure><img src="../../.gitbook/assets/CleanShot 2026-10-05 at 23.35.39.png" alt=""><figcaption></figcaption></figure>
 
 When this setting is turned on, all deletes will be immediately auto-approved and synced. We highly recommend not enabling this unless you're 100% sure that deleting records will not result in data loss.
 
@@ -37,16 +43,16 @@ When this setting is turned on, all deletes will be immediately auto-approved an
 
 The Pending deletes tab lists each record waiting for review:
 
-- **Destination** — which sync side and table the record would be deleted from
-- **Record** — the primary field or remote ID of the record
-- **Detected missing** — when Whalesync first noticed the record was gone
+* **Destination** — which sync side and table the record would be deleted from
+* **Record** — the primary field or remote ID of the record
+* **Detected missing** — when Whalesync first noticed the record was gone
 
 Select records individually with the checkboxes, or use **Select all** to act on every pending delete in the sync.
 
 You have two actions:
 
-- **Approve** — sync the delete to your destination. This permanently removes the record in your destination app and cannot be undone.
-- **Ignore** — leave the record alone. Ignored records move to the **Ignored** tab so you can find them later if you change your mind. They're hidden from the active queue and don't trigger email notifications.
+* **Approve** — sync the delete to your destination. This permanently removes the record in your destination app and cannot be undone.
+* **Ignore** — leave the record alone. Ignored records move to the **Ignored** tab so you can find them later if you change your mind. They're hidden from the active queue and don't trigger email notifications.
 
 ### Email notifications
 
