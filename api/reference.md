@@ -1,8 +1,7 @@
 ---
 description: >-
-  Whalesync API reference covering the base URL, API-key authentication,
-  pagination, and endpoints for syncs, mappings, schema, records, and
-  monitoring. Live Export has its own reference page.
+  Whalesync API base URL, authentication, pagination, and endpoints for syncs,
+  mappings, schema, records, and monitoring. Live Export has its own page.
 ---
 
 # API reference

@@ -1,8 +1,7 @@
 ---
 description: >-
-  Guide for AI agents building syncs and Live Exports with the Whalesync API.
-  Get an API key, create a sync or Live Export, relay human steps, write
-  mappings, and monitor the result.
+  Guide for AI agents building syncs and Live Exports with the Whalesync API:
+  get a key, relay human steps, write mappings, and monitor the result.
 ---
 
 # Agent quickstart

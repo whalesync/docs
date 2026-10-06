@@ -21,6 +21,8 @@ coverY: 0
 
 {% embed url="https://www.youtube.com/watch?v=OcViUBYHcjE" %}
 
+For the Airtable template and the tables your base needs, see the [Quick Start Guide: WF E-Comm](quick-start-guide-wf-e-comm.md).
+
 ## E-Commerce Specific Things to Keep in Mind <a href="#h_bccce14d8a" id="h_bccce14d8a"></a>
 
 {% hint style="info" %}
@@ -43,7 +45,7 @@ Webflow E-Commerce's "Products" table is really a series of small tables. When m
 
 You can’t currently create new Variants, Product Option Sets, or Product Options in your other connector (e.g. Airtable). If you try to create them, they won’t sync across).
 
-You _can_ create new Products though.
+You _can_ create new Products though. See [How to Create Products & Variants](how-to-create-products-and-variants.md).
 
 
 
