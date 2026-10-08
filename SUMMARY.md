@@ -104,6 +104,7 @@
 * [WordPress.org](connectors/wordpress.org/README.md)
   * [Quick Start Guide: WordPress.org](connectors/wordpress.org/quick-start-guide-wordpress.org.md)
   * [Authorize WordPress.org](connectors/wordpress.org/authorize-wordpress.org.md)
+  * [Whalesync Status plugin](connectors/wordpress.org/whalesync-status-plugin.md)
   * [Advanced Custom Fields (ACF)](connectors/wordpress.org/advanced-custom-fields-acf.md)
   * [How to sync images](connectors/wordpress.org/how-to-sync-images.md)
   * [Supporting tables](connectors/wordpress.org/supporting-tables.md)
